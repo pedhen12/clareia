@@ -1,0 +1,1428 @@
+import { SubjectGrade } from "./types";
+
+const SUBJECT_INFO = {
+  matematica: {
+    name: "Matemática",
+    description: "Álgebra, geometria, estatística e mais",
+    icon: "📐",
+  },
+  portugues: {
+    name: "Português",
+    description: "Literatura, gramática e interpretação",
+    icon: "📖",
+  },
+  historia: {
+    name: "História",
+    description: "História do Brasil e do mundo",
+    icon: "🏛️",
+  },
+  geografia: {
+    name: "Geografia",
+    description: "Clima, continentes e demografia",
+    icon: "🌍",
+  },
+  ingles: {
+    name: "Inglês",
+    description: "Vocabulário e gramática inglesa",
+    icon: "🌐",
+  },
+};
+
+export const data: SubjectGrade[] = [
+  // Matemática - 6º ano
+  {
+    subject: "matematica",
+    grade: "6º ano",
+    lessons: [
+      {
+        id: "mat-6-1",
+        title: "Adição e Subtração",
+        description: "Aprenda adição e subtração com Gis com Giz",
+        videoId: "HZByvDBd66g",
+        duration: 12,
+      },
+      {
+        id: "mat-6-2",
+        title: "Multiplicação",
+        description: "Aprenda multiplicação com Gis com Giz",
+        videoId: "izaSmMXZRgk",
+        duration: 10,
+      },
+      {
+        id: "mat-6-3",
+        title: "Divisão",
+        description: "Aprenda divisão com Gis com Giz",
+        videoId: "61S-Rayhc7c",
+        duration: 14,
+      },
+      {
+        id: "mat-6-4",
+        title: "Frações",
+        description: "Introdução a frações e operações com frações",
+        videoId: "esFA9XaM08g",
+        duration: 13,
+      },
+      {
+        id: "mat-6-5",
+        title: "Potenciação",
+        description: "Potências e cálculo de potências",
+        videoId: "EqSiqXyfaqA",
+        duration: 12,
+      },
+      {
+        id: "mat-6-6",
+        title: "Raiz Quadrada",
+        description: "Raízes quadradas e cálculo de raízes",
+        videoId: "eCZ3tMFmD0o",
+        duration: 11,
+      },
+    ],
+    quizzes: [
+      {
+        id: "quiz-mat-6-1",
+        lessonId: "mat-6-1",
+        question: "Qual é o resultado de 15 + 8?",
+        options: ["20", "23", "25", "28"],
+        correctAnswer: 1,
+        explanation: "15 + 8 = 23. Somando 15 com 8 obtemos 23.",
+      },
+      {
+        id: "quiz-mat-6-2",
+        lessonId: "mat-6-1",
+        question: "Quanto é 7 × 6?",
+        options: ["35", "40", "42", "48"],
+        correctAnswer: 2,
+        explanation: "7 × 6 = 42. Essa é uma operação de multiplicação básica.",
+      },
+      {
+        id: "quiz-mat-6-3",
+        lessonId: "mat-6-2",
+        question: "Se você divide uma pizza em 4 partes iguais e come 1 parte, que fração você comeu?",
+        options: ["1/2", "1/3", "1/4", "1/5"],
+        correctAnswer: 2,
+        explanation: "Se você comeu 1 de 4 partes, você comeu 1/4 da pizza.",
+      },
+      {
+        id: "quiz-mat-6-4",
+        lessonId: "mat-6-3",
+        question: "Qual é o nome da forma geométrica com 4 lados iguais?",
+        options: ["Triângulo", "Quadrado", "Pentágono", "Círculo"],
+        correctAnswer: 1,
+        explanation: "O quadrado é a forma com 4 lados iguais e 4 ângulos retos.",
+      },
+    ],
+  },
+  // Português - 6º ano
+  {
+    subject: "portugues",
+    grade: "6º ano",
+    lessons: [
+      {
+        id: "port-6-1",
+        title: "Análise Sintática",
+        description: "Aprenda análise sintática",
+        videoId: "c-eWfHEZHDE",
+        duration: 13,
+      },
+      {
+        id: "port-6-2",
+        title: "Verbos",
+        description: "Aprenda sobre verbos",
+        videoId: "T8MB4vzTAv4",
+        duration: 11,
+      },
+      {
+        id: "port-6-3",
+        title: "Literatura",
+        description: "Aprenda sobre literatura",
+        videoId: "w2Y_Fqzb3N8",
+        duration: 9,
+      },
+      {
+        id: "port-6-4",
+        title: "Substantivos",
+        description: "Conceito e tipos de substantivos",
+        videoId: "8iXiBgCnGv4",
+        duration: 11,
+      },
+      {
+        id: "port-6-5",
+        title: "Pronomes",
+        description: "Pronomes e suas aplicações em textos",
+        videoId: "PQRdgiIutrE",
+        duration: 10,
+      },
+    ],
+    quizzes: [
+      {
+        id: "quiz-port-6-1",
+        lessonId: "port-6-1",
+        question: "Qual é a principal função da leitura?",
+        options: [
+          "Fazer barulho",
+          "Compreender e adquirir conhecimento",
+          "Passar tempo",
+          "Nenhuma das anteriores",
+        ],
+        correctAnswer: 1,
+        explanation:
+          "A leitura nos ajuda a compreender o texto e adquirir novos conhecimentos.",
+      },
+      {
+        id: "quiz-port-6-2",
+        lessonId: "port-6-2",
+        question: "Qual é a classe de palavras que nomeia seres e coisas?",
+        options: ["Adjetivo", "Substantivo", "Verbo", "Advérbio"],
+        correctAnswer: 1,
+        explanation:
+          "Substantivo é a classe de palavras que nomeia seres, coisas, sentimentos, etc.",
+      },
+      {
+        id: "quiz-port-6-3",
+        lessonId: "port-6-2",
+        question: "Na frase 'O carro vermelho é lindo', qual palavra é um adjetivo?",
+        options: ["carro", "vermelho", "lindo", "é"],
+        correctAnswer: 1,
+        explanation:
+          "Tanto 'vermelho' quanto 'lindo' são adjetivos, mas entre as opções, consideramos 'vermelho'.",
+      },
+      {
+        id: "quiz-port-6-4",
+        lessonId: "port-6-3",
+        question: "Qual sinal de pontuação indica o fim de uma frase?",
+        options: ["Vírgula", "Ponto", "Ponto e vírgula", "Dois pontos"],
+        correctAnswer: 1,
+        explanation: "O ponto (.) é usado para marcar o fim de uma frase.",
+      },
+    ],
+  },
+  // História - 6º ano
+  {
+    subject: "historia",
+    grade: "6º ano",
+    lessons: [
+      {
+        id: "hist-6-1",
+        title: "Descobrimento do Brasil",
+        description: "A chegada de Pedro Álvares Cabral em 1500",
+        videoId: "X3FbJFKa8wU",
+        duration: 15,
+      },
+      {
+        id: "hist-6-2",
+        title: "Colonização Portuguesa",
+        description: "Como os portugueses colonizaram o Brasil",
+        videoId: "jtpDUdvqzGw",
+        duration: 12,
+      },
+      {
+        id: "hist-6-3",
+        title: "Povos Indígenas",
+        description: "As civilizações indígenas antes da colonização",
+        videoId: "g4Zn8f_c7Zs",
+        duration: 10,
+      },
+    ],
+    quizzes: [
+      {
+        id: "quiz-hist-6-1",
+        lessonId: "hist-6-1",
+        question: "Em que ano Pedro Álvares Cabral chegou ao Brasil?",
+        options: ["1400", "1450", "1500", "1550"],
+        correctAnswer: 2,
+        explanation: "Pedro Álvares Cabral chegou ao Brasil em 22 de abril de 1500.",
+      },
+      {
+        id: "quiz-hist-6-2",
+        lessonId: "hist-6-1",
+        question: "Qual país colonizou o Brasil?",
+        options: ["Espanha", "Inglaterra", "França", "Portugal"],
+        correctAnswer: 3,
+        explanation: "Portugal foi o país que colonizou o Brasil.",
+      },
+      {
+        id: "quiz-hist-6-3",
+        lessonId: "hist-6-2",
+        question: "Qual era o objetivo principal da colonização portuguesa no Brasil?",
+        options: [
+          "Exploração de recursos naturais",
+          "Paz com indígenas",
+          "Pesquisa científica",
+          "Turismo",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Os portugueses vieram explorar recursos naturais como ouro, madeira e açúcar.",
+      },
+      {
+        id: "quiz-hist-6-4",
+        lessonId: "hist-6-3",
+        question: "Qual povo indígena era importante no território que se tornou São Paulo?",
+        options: ["Tupis", "Guaranis", "Potiguares", "Tamoios"],
+        correctAnswer: 0,
+        explanation: "Os Tupis eram um povo indígena importante na região de São Paulo.",
+      },
+    ],
+  },
+  // Geografia - 6º ano
+  {
+    subject: "geografia",
+    grade: "6º ano",
+    lessons: [
+      {
+        id: "geog-6-1",
+        title: "Continentes e Oceanos",
+        description: "Localização dos continentes e oceanos no globo terrestre",
+        videoId: "7iw1qpxvIjQ",
+        duration: 11,
+      },
+      {
+        id: "geog-6-2",
+        title: "Clima do Brasil",
+        description: "Os diferentes tipos de clima do Brasil",
+        videoId: "xsw4PI6rUDs",
+        duration: 13,
+      },
+      {
+        id: "geog-6-3",
+        title: "Biomas Brasileiros",
+        description: "Amazônia, Cerrado, Caatinga e outros biomas",
+        videoId: "9BLvHiPZEj4",
+        duration: 14,
+      },
+      {
+        id: "geog-6-4",
+        title: "Vegetação",
+        description: "Tipos de vegetação e distribuição no Brasil",
+        videoId: "Tyqf6cO6Q20",
+        duration: 12,
+      },
+      {
+        id: "geog-6-5",
+        title: "Cartografia",
+        description: "Leitura e interpretação de mapas",
+        videoId: "JYTwqujKJW0",
+        duration: 11,
+      },
+    ],
+    quizzes: [
+      {
+        id: "quiz-geog-6-1",
+        lessonId: "geog-6-1",
+        question: "Quantos continentes existem?",
+        options: ["5", "6", "7", "8"],
+        correctAnswer: 2,
+        explanation: "Existem 7 continentes: América, Europa, Ásia, África, Oceania, Antártida e Antártica.",
+      },
+      {
+        id: "quiz-geog-6-2",
+        lessonId: "geog-6-1",
+        question: "Qual é o maior oceano do planeta?",
+        options: ["Atlântico", "Índico", "Pacífico", "Ártico"],
+        correctAnswer: 2,
+        explanation: "O Oceano Pacífico é o maior oceano da Terra.",
+      },
+      {
+        id: "quiz-geog-6-3",
+        lessonId: "geog-6-2",
+        question: "Qual é o clima predominante na maior parte do Brasil?",
+        options: ["Desértico", "Tropical e Subtropical", "Polar", "Temperado"],
+        correctAnswer: 1,
+        explanation: "O Brasil possui principalmente clima tropical e subtropical.",
+      },
+      {
+        id: "quiz-geog-6-4",
+        lessonId: "geog-6-3",
+        question: "Qual é o maior bioma do Brasil?",
+        options: ["Cerrado", "Caatinga", "Amazônia", "Mata Atlântica"],
+        correctAnswer: 2,
+        explanation: "A Amazônia é o maior bioma do Brasil, cobrindo aproximadamente 60% do território.",
+      },
+    ],
+  },
+  // Inglês - 6º ano
+  {
+    subject: "ingles",
+    grade: "6º ano",
+    lessons: [
+      {
+        id: "eng-6-1",
+        title: "Hello World - Saudações",
+        description: "Aprender a saudar em inglês",
+        videoId: "GZQnNgMdZxY",
+        duration: 8,
+      },
+      {
+        id: "eng-6-2",
+        title: "Numbers 1-100",
+        description: "Números em inglês de 1 a 100",
+        videoId: "V-pUOuDjwwE",
+        duration: 10,
+      },
+      {
+        id: "eng-6-3",
+        title: "Family Members",
+        description: "Membros da família em inglês",
+        videoId: "6rQyuuMUd6Y",
+        duration: 9,
+      },
+      {
+        id: "eng-6-4",
+        title: "Verbo To Be",
+        description: "O verbo 'to be' e suas conjugações",
+        videoId: "bSeZlT7Og8I",
+        duration: 11,
+      },
+    ],
+    quizzes: [
+      {
+        id: "quiz-eng-6-1",
+        lessonId: "eng-6-1",
+        question: "Como se diz 'Olá' em inglês?",
+        options: ["Goodbye", "Hello", "Thank you", "Sorry"],
+        correctAnswer: 1,
+        explanation: "'Hello' significa 'Olá' em inglês.",
+      },
+      {
+        id: "quiz-eng-6-2",
+        lessonId: "eng-6-1",
+        question: "Como se diz 'Tudo bem?' em inglês?",
+        options: ["How are you?", "Who are you?", "Where are you?", "What are you?"],
+        correctAnswer: 0,
+        explanation: "'How are you?' significa 'Tudo bem?' ou 'Como você está?'",
+      },
+      {
+        id: "quiz-eng-6-3",
+        lessonId: "eng-6-2",
+        question: "Qual é o número 10 em inglês?",
+        options: ["Seven", "Eight", "Nine", "Ten"],
+        correctAnswer: 3,
+        explanation: "'Ten' é o número 10 em inglês.",
+      },
+      {
+        id: "quiz-eng-6-4",
+        lessonId: "eng-6-3",
+        question: "Como se diz 'mãe' em inglês?",
+        options: ["Father", "Mother", "Sister", "Brother"],
+        correctAnswer: 1,
+        explanation: "'Mother' significa 'mãe' em inglês.",
+      },
+    ],
+  },
+
+  // 7º ano - Matemática
+  {
+    subject: "matematica",
+    grade: "7º ano",
+    lessons: [
+      {
+        id: "mat-7-1",
+        title: "Números Inteiros",
+        description: "Números positivos, negativos e suas operações",
+        videoId: "RHYscQjJpxs",
+        duration: 12,
+      },
+      {
+        id: "mat-7-2",
+        title: "Álgebra Básica",
+        description: "Expressões algébricas e resolução de equações simples",
+        videoId: "dJp-sVK1k94",
+        duration: 13,
+      },
+      {
+        id: "mat-7-3",
+        title: "Proporção e Razão",
+        description: "Entender proporções e como aplicar em problemas",
+        videoId: "1mvQLG1lp-I",
+        duration: 11,
+      },
+      {
+        id: "mat-7-4",
+        title: "Equações do 1º Grau",
+        description: "Resolvendo equações do primeiro grau",
+        videoId: "bWJrg5DyuMY",
+        duration: 12,
+      },
+      {
+        id: "mat-7-5",
+        title: "Porcentagem",
+        description: "Cálculo de porcentagens e aplicações práticas",
+        videoId: "_kYc4oJAp8Y",
+        duration: 11,
+      },
+      {
+        id: "mat-7-6",
+        title: "Ângulos",
+        description: "Tipos de ângulos e medição de ângulos",
+        videoId: "nAvqZSglTmA",
+        duration: 10,
+      },
+      {
+        id: "mat-7-7",
+        title: "Triângulos",
+        description: "Propriedades e classificação de triângulos",
+        videoId: "ALKN3Gyn78M",
+        duration: 12,
+      },
+    ],
+    quizzes: [
+      {
+        id: "quiz-mat-7-1",
+        lessonId: "mat-7-1",
+        question: "Qual é o resultado de -5 + 3?",
+        options: ["-8", "-2", "2", "8"],
+        correctAnswer: 1,
+        explanation: "-5 + 3 = -2. Somando um número negativo com positivo.",
+      },
+      {
+        id: "quiz-mat-7-2",
+        lessonId: "mat-7-1",
+        question: "Qual é o resultado de -4 × -3?",
+        options: ["-12", "-7", "7", "12"],
+        correctAnswer: 3,
+        explanation: "Negativo vezes negativo é positivo: -4 × -3 = 12.",
+      },
+      {
+        id: "quiz-mat-7-3",
+        lessonId: "mat-7-2",
+        question: "Se x + 5 = 12, qual é o valor de x?",
+        options: ["5", "7", "12", "17"],
+        correctAnswer: 1,
+        explanation: "x + 5 = 12, então x = 12 - 5 = 7.",
+      },
+      {
+        id: "quiz-mat-7-4",
+        lessonId: "mat-7-3",
+        question: "Se a razão entre dois números é 2:3 e o primeiro é 6, qual é o segundo?",
+        options: ["4", "8", "9", "12"],
+        correctAnswer: 2,
+        explanation: "Se 6:x = 2:3, então x = 6 × 3/2 = 9.",
+      },
+    ],
+  },
+
+  // 7º ano - Português
+  {
+    subject: "portugues",
+    grade: "7º ano",
+    lessons: [
+      {
+        id: "port-7-1",
+        title: "Verbos - Tempos Verbais",
+        description: "Presente, passado e futuro - conjugação de verbos",
+        videoId: "4qMzCW3MlN8",
+        duration: 14,
+      },
+      {
+        id: "port-7-2",
+        title: "Análise Sintática",
+        description: "Sujeito, predicado e complementos",
+        videoId: "c-eWfHEZHDE",
+        duration: 12,
+      },
+      {
+        id: "port-7-3",
+        title: "Literatura - Gêneros",
+        description: "Narrativo, lírico e dramático",
+        videoId: "3B8NPxAHZgU",
+        duration: 13,
+      },
+      {
+        id: "port-7-4",
+        title: "Advérbios",
+        description: "Advérbios e sua classificação",
+        videoId: "eoZ0aEJQACg",
+        duration: 11,
+      },
+    ],
+    quizzes: [
+      {
+        id: "quiz-port-7-1",
+        lessonId: "port-7-1",
+        question: "Em qual tempo verbal está o verbo 'comi'?",
+        options: ["Presente", "Passado", "Futuro", "Condicional"],
+        correctAnswer: 1,
+        explanation: "'Comi' é o pretérito perfeito, um tempo verbal do passado.",
+      },
+      {
+        id: "quiz-port-7-2",
+        lessonId: "port-7-1",
+        question: "Qual é a primeira pessoa do singular do verbo 'ser' no presente?",
+        options: ["Sou", "Somos", "Sois", "São"],
+        correctAnswer: 0,
+        explanation: "'Sou' é a primeira pessoa do singular do verbo 'ser' no presente.",
+      },
+      {
+        id: "quiz-port-7-3",
+        lessonId: "port-7-2",
+        question: "Na frase 'O gato comeu o rato', qual é o sujeito?",
+        options: ["O gato", "Comeu", "O rato", "Nenhum"],
+        correctAnswer: 0,
+        explanation: "'O gato' é o sujeito, a palavra ou termo que realiza a ação.",
+      },
+      {
+        id: "quiz-port-7-4",
+        lessonId: "port-7-3",
+        question: "Qual gênero literário expressa sentimentos e emoções?",
+        options: ["Narrativo", "Lírico", "Dramático", "Descritivo"],
+        correctAnswer: 1,
+        explanation: "O gênero lírico expressa sentimentos e emoções do poeta.",
+      },
+    ],
+  },
+
+  // 8º ano - Matemática
+  {
+    subject: "matematica",
+    grade: "8º ano",
+    lessons: [
+      {
+        id: "mat-8-1",
+        title: "Expressões Algébricas",
+        description: "Simplificação e fatoração de expressões",
+        videoId: "TyUVBbsG8ag",
+        duration: 14,
+      },
+      {
+        id: "mat-8-2",
+        title: "Quadrados Perfeitos",
+        description: "Produtos notáveis e identidades algébricas",
+        videoId: "4M0E5FTUoL0",
+        duration: 13,
+      },
+      {
+        id: "mat-8-3",
+        title: "Teorema de Pitágoras",
+        description: "Relação entre lados de triângulos retângulos",
+        videoId: "s2Z3fCKH3b0",
+        duration: 12,
+      },
+      {
+        id: "mat-8-4",
+        title: "Sistemas de Equações",
+        description: "Resolvendo sistemas de duas equações",
+        videoId: "Wk2ofyakSTs",
+        duration: 13,
+      },
+    ],
+    quizzes: [
+      {
+        id: "quiz-mat-8-1",
+        lessonId: "mat-8-1",
+        question: "Qual é a forma fatorada de x² + 2x + 1?",
+        options: ["(x + 1)²", "(x - 1)²", "(x + 2)²", "(x² + 1)"],
+        correctAnswer: 0,
+        explanation: "x² + 2x + 1 = (x + 1)². Este é um trinômio quadrado perfeito.",
+      },
+      {
+        id: "quiz-mat-8-2",
+        lessonId: "mat-8-2",
+        question: "Qual é o valor de (a + b)²?",
+        options: [
+          "a² + b²",
+          "a² + 2ab + b²",
+          "a² - 2ab + b²",
+          "a + b",
+        ],
+        correctAnswer: 1,
+        explanation: "(a + b)² = a² + 2ab + b². Este é um produto notável importante.",
+      },
+      {
+        id: "quiz-mat-8-3",
+        lessonId: "mat-8-3",
+        question: "Em um triângulo retângulo com catetos 3 e 4, qual é a hipotenusa?",
+        options: ["5", "6", "7", "8"],
+        correctAnswer: 0,
+        explanation: "Pelo Teorema de Pitágoras: 3² + 4² = 9 + 16 = 25, então c = √25 = 5.",
+      },
+    ],
+  },
+
+  // 9º ano - Matemática
+  {
+    subject: "matematica",
+    grade: "9º ano",
+    lessons: [
+      {
+        id: "mat-9-1",
+        title: "Equações do 2º Grau",
+        description: "Fórmula de Bhaskara e soluções",
+        videoId: "kZ4-1nb1dow",
+        duration: 15,
+      },
+      {
+        id: "mat-9-2",
+        title: "Funções Quadráticas",
+        description: "Parábolas e representação gráfica",
+        videoId: "HCylt5HtFMs",
+        duration: 14,
+      },
+      {
+        id: "mat-9-3",
+        title: "Trigonometria Básica",
+        description: "Seno, cosseno e tangente",
+        videoId: "D-E_A04ReTE",
+        duration: 13,
+      },
+    ],
+    quizzes: [
+      {
+        id: "quiz-mat-9-1",
+        lessonId: "mat-9-1",
+        question: "Qual é o discriminante da equação x² + 2x + 1 = 0?",
+        options: ["-3", "0", "1", "4"],
+        correctAnswer: 1,
+        explanation: "Δ = b² - 4ac = 4 - 4(1)(1) = 0. Quando Δ = 0, há uma única solução real.",
+      },
+      {
+        id: "quiz-mat-9-2",
+        lessonId: "mat-9-1",
+        question: "Quantas soluções reais tem a equação x² - 2x + 5 = 0?",
+        options: ["0", "1", "2", "Infinitas"],
+        correctAnswer: 0,
+        explanation: "Δ = 4 - 20 = -16 < 0. Quando o discriminante é negativo, não há soluções reais.",
+      },
+      {
+        id: "quiz-mat-9-3",
+        lessonId: "mat-9-2",
+        question: "Uma parábola com a > 0 tem concavidade para qual direção?",
+        options: ["Para baixo", "Para cima", "Para direita", "Para esquerda"],
+        correctAnswer: 1,
+        explanation: "Quando a > 0, a parábola tem concavidade voltada para cima.",
+      },
+      {
+        id: "quiz-mat-9-4",
+        lessonId: "mat-9-3",
+        question: "Em um triângulo retângulo, o seno é igual a:",
+        options: [
+          "Adjacente/Hipotenusa",
+          "Oposto/Hipotenusa",
+          "Oposto/Adjacente",
+          "Hipotenusa/Oposto",
+        ],
+        correctAnswer: 1,
+        explanation: "Seno = Cateto Oposto / Hipotenusa.",
+      },
+    ],
+  },
+
+
+  // 8º ano - Português
+  {
+    subject: "portugues",
+    grade: "8º ano",
+    lessons: [
+      {
+        id: "port-8-1",
+        title: "Coesão Textual",
+        description: "Conectivos e elementos de coesão em textos",
+        videoId: "jgygZnLgFes",
+        duration: 13,
+      },
+      {
+        id: "port-8-2",
+        title: "Figuras de Linguagem",
+        description: "Metáfora, metonímia, hipérbole e outras",
+        videoId: "hQS8o50k3rI",
+        duration: 14,
+      },
+      {
+        id: "port-8-3",
+        title: "Dissertação",
+        description: "Como escrever uma dissertação argumentativa",
+        videoId: "w2Y_Fqzb3N8",
+        duration: 15,
+      },
+      {
+        id: "port-8-4",
+        title: "Crase",
+        description: "Uso e aplicação da crase",
+        videoId: "yUpRa62vcSI",
+        duration: 12,
+      },
+    ],
+    quizzes: [
+      {
+        id: "quiz-port-8-1",
+        lessonId: "port-8-1",
+        question: "Qual é a principal função dos conectivos em um texto?",
+        options: ["Decorar o texto", "Ligar ideias e estabelecer relações", "Confundir o leitor", "Aumentar o tamanho"],
+        correctAnswer: 1,
+        explanation: "Os conectivos ligam ideias e estabelecem relações lógicas entre as partes do texto.",
+      },
+      {
+        id: "quiz-port-8-2",
+        lessonId: "port-8-2",
+        question: "Qual é a figura de linguagem em 'Ele tinha um coração de ouro'?",
+        options: ["Metonímia", "Metáfora", "Hipérbole", "Anáfora"],
+        correctAnswer: 1,
+        explanation: "É uma metáfora, pois compara o coração a ouro para indicar bondade.",
+      },
+      {
+        id: "quiz-port-8-3",
+        lessonId: "port-8-3",
+        question: "Qual é o objetivo principal de uma dissertação?",
+        options: ["Contar uma história", "Defender um ponto de vista com argumentos", "Descrever um local", "Instruir o leitor"],
+        correctAnswer: 1,
+        explanation: "A dissertação tem como objetivo defender um ponto de vista com argumentos sólidos.",
+      },
+      {
+        id: "quiz-port-8-4",
+        lessonId: "port-8-1",
+        question: "O conectivo 'entretanto' indica qual tipo de relação?",
+        options: ["Adição", "Consequência", "Contraste", "Explicação"],
+        correctAnswer: 2,
+        explanation: "'Entretanto' indica uma relação de contraste ou oposição entre ideias.",
+      },
+    ],
+  },
+
+  // 9º ano - Português
+  {
+    subject: "portugues",
+    grade: "9º ano",
+    lessons: [
+      {
+        id: "port-9-1",
+        title: "Modernismo Brasileiro",
+        description: "Primeira, segunda e terceira geração do Modernismo",
+        videoId: "c-eWfHEZHDE",
+        duration: 16,
+      },
+      {
+        id: "port-9-2",
+        title: "Análise de Poesias",
+        description: "Recursos estilísticos em poesias modernas",
+        videoId: "w2Y_Fqzb3N8",
+        duration: 13,
+      },
+      {
+        id: "port-9-3",
+        title: "Redação ENEM",
+        description: "Técnicas e estrutura para redação de dissertação",
+        videoId: "7K8mV-pz0cY",
+        duration: 17,
+      },
+    ],
+    quizzes: [
+      {
+        id: "quiz-port-9-1",
+        lessonId: "port-9-1",
+        question: "Em que ano começou o Modernismo Brasileiro?",
+        options: ["1912", "1922", "1930", "1945"],
+        correctAnswer: 1,
+        explanation: "O Modernismo Brasileiro começou em 1922 com a Semana de Arte Moderna de São Paulo.",
+      },
+      {
+        id: "quiz-port-9-2",
+        lessonId: "port-9-1",
+        question: "Qual poeta é associado à primeira geração do Modernismo?",
+        options: ["Carlos Drummond de Andrade", "Mário de Andrade", "Cecília Meireles", "João Cabral de Melo Neto"],
+        correctAnswer: 1,
+        explanation: "Mário de Andrade foi um dos principais poetas da primeira geração do Modernismo.",
+      },
+      {
+        id: "quiz-port-9-3",
+        lessonId: "port-9-2",
+        question: "Qual é o recurso estilístico em 'O silêncio grita'?",
+        options: ["Metonímia", "Oxímoro", "Hipérbole", "Antítese"],
+        correctAnswer: 1,
+        explanation: "É um oxímoro, pois combina palavras de significados contraditórios (silêncio e grita).",
+      },
+      {
+        id: "quiz-port-9-4",
+        lessonId: "port-9-3",
+        question: "Quantos parágrafos tem uma dissertação ENEM padrão?",
+        options: ["Dois", "Três", "Quatro", "Cinco"],
+        correctAnswer: 1,
+        explanation: "Uma dissertação ENEM padrão tem três parágrafos: introdução, desenvolvimento e conclusão.",
+      },
+    ],
+  },
+
+  // 7º ano - História
+  {
+    subject: "historia",
+    grade: "7º ano",
+    lessons: [
+      {
+        id: "hist-7-1",
+        title: "Feudalismo",
+        description: "Sistema feudal na Idade Média europeia",
+        videoId: "jtpDUdvqzGw",
+        duration: 14,
+      },
+      {
+        id: "hist-7-2",
+        title: "Renascimento",
+        description: "Movimento cultural e artístico europeu",
+        videoId: "X3FbJFKa8wU",
+        duration: 13,
+      },
+      {
+        id: "hist-7-3",
+        title: "Grande Navegações",
+        description: "Época de Ouro das navegações portuguesas e espanholas",
+        videoId: "g4Zn8f_c7Zs",
+        duration: 12,
+      },
+    ],
+    quizzes: [
+      {
+        id: "quiz-hist-7-1",
+        lessonId: "hist-7-1",
+        question: "Qual era a base econômica do Feudalismo?",
+        options: ["Comércio", "Agricultura", "Manufatura", "Mineração"],
+        correctAnswer: 1,
+        explanation: "A base econômica do Feudalismo era a agricultura, com servos trabalhando as terras dos senhores.",
+      },
+      {
+        id: "quiz-hist-7-2",
+        lessonId: "hist-7-2",
+        question: "Em qual período ocorreu o Renascimento?",
+        options: ["Século XIV-XVI", "Século XVII-XVIII", "Século XII-XIII", "Século XIX-XX"],
+        correctAnswer: 0,
+        explanation: "O Renascimento ocorreu entre os séculos XIV e XVI, principalmente na Itália.",
+      },
+      {
+        id: "quiz-hist-7-3",
+        lessonId: "hist-7-3",
+        question: "Qual navegador português famoso explorou o caminho para a Índia?",
+        options: ["Bartolomeu Dias", "Vasco da Gama", "Pedro Álvares Cabral", "Fernão de Magalhães"],
+        correctAnswer: 1,
+        explanation: "Vasco da Gama foi o navegador que chegou à Índia em 1498.",
+      },
+      {
+        id: "quiz-hist-7-4",
+        lessonId: "hist-7-1",
+        question: "Qual era o estatuto social de um servo no Feudalismo?",
+        options: ["Livre", "Preso à terra", "Escravo do rei", "Comerciante"],
+        correctAnswer: 1,
+        explanation: "O servo era preso à terra, devendo trabalhar para o senhor feudal.",
+      },
+    ],
+  },
+
+  // 8º ano - História
+  {
+    subject: "historia",
+    grade: "8º ano",
+    lessons: [
+      {
+        id: "hist-8-1",
+        title: "Iluminismo",
+        description: "Movimento filosófico do século XVIII",
+        videoId: "X3FbJFKa8wU",
+        duration: 13,
+      },
+      {
+        id: "hist-8-2",
+        title: "Revolução Francesa",
+        description: "Causas, fases e consequências da Revolução Francesa",
+        videoId: "jtpDUdvqzGw",
+        duration: 15,
+      },
+      {
+        id: "hist-8-3",
+        title: "Brasil Colonial",
+        description: "Economia e sociedade no período colonial brasileiro",
+        videoId: "8K3z9YM-4iU",
+        duration: 14,
+      },
+    ],
+    quizzes: [
+      {
+        id: "quiz-hist-8-1",
+        lessonId: "hist-8-1",
+        question: "Qual é o lema do Iluminismo?",
+        options: ["Fé e tradição", "Razão e Ciência", "Emoção e arte", "Poder absoluto"],
+        correctAnswer: 1,
+        explanation: "O lema do Iluminismo é a razão e a ciência como base para o conhecimento.",
+      },
+      {
+        id: "quiz-hist-8-2",
+        lessonId: "hist-8-2",
+        question: "Em que ano começou a Revolução Francesa?",
+        options: ["1776", "1789", "1799", "1815"],
+        correctAnswer: 1,
+        explanation: "A Revolução Francesa começou em 1789 com a queda da Bastilha.",
+      },
+      {
+        id: "quiz-hist-8-3",
+        lessonId: "hist-8-3",
+        question: "Qual era o principal produto de exportação do Brasil colonial?",
+        options: ["Algodão", "Açúcar", "Café", "Minério"],
+        correctAnswer: 1,
+        explanation: "O açúcar era o principal produto de exportação durante o período colonial.",
+      },
+      {
+        id: "quiz-hist-8-4",
+        lessonId: "hist-8-2",
+        question: "Qual foi um dos direitos declarados pela Revolução Francesa?",
+        options: ["Servidão", "Escravidão", "Igualdade de direitos", "Monarquia absoluta"],
+        correctAnswer: 2,
+        explanation: "A Revolução Francesa defendia a igualdade de direitos entre os cidadãos.",
+      },
+    ],
+  },
+
+  // 9º ano - História
+  {
+    subject: "historia",
+    grade: "9º ano",
+    lessons: [
+      {
+        id: "hist-9-1",
+        title: "Revoluções Industriais",
+        description: "1ª, 2ª e 3ª Revolução Industrial",
+        videoId: "jtpDUdvqzGw",
+        duration: 16,
+      },
+      {
+        id: "hist-9-2",
+        title: "Imperialismo Europeu",
+        description: "Expansão imperial europeia na Ásia e África",
+        videoId: "X3FbJFKa8wU",
+        duration: 14,
+      },
+      {
+        id: "hist-9-3",
+        title: "Primeira Guerra Mundial",
+        description: "Causas, desenvolvimento e consequências da Primeira Guerra",
+        videoId: "8K3z9YM-4iU",
+        duration: 17,
+      },
+    ],
+    quizzes: [
+      {
+        id: "quiz-hist-9-1",
+        lessonId: "hist-9-1",
+        question: "Quando começou a Primeira Revolução Industrial?",
+        options: ["Século XVII", "Século XVIII", "Século XIX", "Século XX"],
+        correctAnswer: 1,
+        explanation: "A Primeira Revolução Industrial começou no século XVIII, em torno de 1760.",
+      },
+      {
+        id: "quiz-hist-9-2",
+        lessonId: "hist-9-2",
+        question: "Qual foi a principal motivação para o Imperialismo Europeu?",
+        options: ["Expansão religiosa", "Busca de matérias-primas e mercados", "Ganho de conhecimento", "Ajuda a povos colonizados"],
+        correctAnswer: 1,
+        explanation: "O Imperialismo foi motivado pela busca de matérias-primas, mercados e domínio político.",
+      },
+      {
+        id: "quiz-hist-9-3",
+        lessonId: "hist-9-3",
+        question: "Em que ano terminou a Primeira Guerra Mundial?",
+        options: ["1915", "1918", "1920", "1925"],
+        correctAnswer: 1,
+        explanation: "A Primeira Guerra Mundial terminou em 1918 com a vitória dos Aliados.",
+      },
+      {
+        id: "quiz-hist-9-4",
+        lessonId: "hist-9-1",
+        question: "Qual foi o combustível principal da Segunda Revolução Industrial?",
+        options: ["Carvão", "Eletricidade e petróleo", "Lenha", "Energia solar"],
+        correctAnswer: 1,
+        explanation: "A Segunda Revolução Industrial (século XIX) foi alimentada por eletricidade e petróleo.",
+      },
+    ],
+  },
+
+  // 7º ano - Geografia
+  {
+    subject: "geografia",
+    grade: "7º ano",
+    lessons: [
+      {
+        id: "geog-7-1",
+        title: "Regiões do Brasil",
+        description: "Características geográficas das regiões brasileiras",
+        videoId: "dJp-sVK1k94",
+        duration: 14,
+      },
+      {
+        id: "geog-7-2",
+        title: "Principais Rios",
+        description: "Rios brasileiros e sua importância econômica",
+        videoId: "9BLvHiPZEj4",
+        duration: 12,
+      },
+      {
+        id: "geog-7-3",
+        title: "Economia Brasileira",
+        description: "Setores econômicos e principais atividades",
+        videoId: "kNaGjQQ0Szk",
+        duration: 13,
+      },
+    ],
+    quizzes: [
+      {
+        id: "quiz-geog-7-1",
+        lessonId: "geog-7-1",
+        question: "Quantas regiões geográficas tem o Brasil?",
+        options: ["3", "4", "5", "6"],
+        correctAnswer: 2,
+        explanation: "O Brasil tem 5 regiões: Norte, Nordeste, Centro-Oeste, Sudeste e Sul.",
+      },
+      {
+        id: "quiz-geog-7-2",
+        lessonId: "geog-7-2",
+        question: "Qual é o maior rio do Brasil?",
+        options: ["Rio de Janeiro", "Rio Amazonas", "Rio São Francisco", "Rio Paraná"],
+        correctAnswer: 1,
+        explanation: "O Rio Amazonas é o maior rio do Brasil e do mundo em volume de água.",
+      },
+      {
+        id: "quiz-geog-7-3",
+        lessonId: "geog-7-3",
+        question: "Qual é o setor econômico mais importante do Brasil?",
+        options: ["Agricultura", "Indústria", "Serviços", "Mineração"],
+        correctAnswer: 2,
+        explanation: "O setor de serviços é o mais importante da economia brasileira atualmente.",
+      },
+      {
+        id: "quiz-geog-7-4",
+        lessonId: "geog-7-1",
+        question: "Qual região do Brasil é a mais populosa?",
+        options: ["Norte", "Nordeste", "Sudeste", "Sul"],
+        correctAnswer: 2,
+        explanation: "A região Sudeste é a mais populosa e desenvolvida do Brasil.",
+      },
+    ],
+  },
+
+  // 8º ano - Geografia
+  {
+    subject: "geografia",
+    grade: "8º ano",
+    lessons: [
+      {
+        id: "geog-8-1",
+        title: "Globalização",
+        description: "Processo de integração global e seus impactos",
+        videoId: "7iw1qpxvIjQ",
+        duration: 14,
+      },
+      {
+        id: "geog-8-2",
+        title: "Geopolítica",
+        description: "Conflitos territoriais e poder político no mundo",
+        videoId: "kNaGjQQ0Szk",
+        duration: 13,
+      },
+      {
+        id: "geog-8-3",
+        title: "Recursos Naturais",
+        description: "Recursos renováveis e não renováveis",
+        videoId: "9BLvHiPZEj4",
+        duration: 12,
+      },
+    ],
+    quizzes: [
+      {
+        id: "quiz-geog-8-1",
+        lessonId: "geog-8-1",
+        question: "Qual é uma característica da globalização?",
+        options: ["Isolamento dos países", "Integração econômica e cultural", "Fortalecimento de fronteiras", "Redução do comércio"],
+        correctAnswer: 1,
+        explanation: "A globalização é caracterizada pela integração econômica, cultural e tecnológica entre países.",
+      },
+      {
+        id: "quiz-geog-8-2",
+        lessonId: "geog-8-2",
+        question: "O que estuda a Geopolítica?",
+        options: ["Apenas o relevo", "Conflitos e poder político territorial", "Apenas climas", "Minerais e rochas"],
+        correctAnswer: 1,
+        explanation: "A Geopolítica estuda os conflitos territoriais e o poder político no espaço geográfico.",
+      },
+      {
+        id: "quiz-geog-8-3",
+        lessonId: "geog-8-3",
+        question: "Qual é um exemplo de recurso natural renovável?",
+        options: ["Petróleo", "Carvão", "Energia solar", "Minério"],
+        correctAnswer: 2,
+        explanation: "A energia solar é um recurso renovável, diferentemente do petróleo que é não-renovável.",
+      },
+      {
+        id: "quiz-geog-8-4",
+        lessonId: "geog-8-1",
+        question: "Qual é um impacto negativo da globalização?",
+        options: ["Maior comércio", "Desigualdade social", "Mais tecnologia", "Melhor comunicação"],
+        correctAnswer: 1,
+        explanation: "A globalização pode aumentar a desigualdade entre países ricos e pobres.",
+      },
+    ],
+  },
+
+  // 9º ano - Geografia
+  {
+    subject: "geografia",
+    grade: "9º ano",
+    lessons: [
+      {
+        id: "geog-9-1",
+        title: "Organização Geopolítica",
+        description: "Estados, nações e territórios no mundo contemporâneo",
+        videoId: "X3FbJFKa8wU",
+        duration: 15,
+      },
+      {
+        id: "geog-9-2",
+        title: "Desenvolvimento Sustentável",
+        description: "Desafios ambientais e sustentabilidade",
+        videoId: "jtpDUdvqzGw",
+        duration: 14,
+      },
+      {
+        id: "geog-9-3",
+        title: "Urbanização",
+        description: "Crescimento das cidades e problemas urbanos",
+        videoId: "g4Zn8f_c7Zs",
+        duration: 13,
+      },
+    ],
+    quizzes: [
+      {
+        id: "quiz-geog-9-1",
+        lessonId: "geog-9-1",
+        question: "Qual é a diferença entre estado e nação?",
+        options: ["Não há diferença", "Estado é político, nação é cultural", "São termos sinônimos", "Nação tem mais poder"],
+        correctAnswer: 1,
+        explanation: "Estado refere-se à organização política, enquanto nação refere-se a um grupo com identidade cultural comum.",
+      },
+      {
+        id: "quiz-geog-9-2",
+        lessonId: "geog-9-2",
+        question: "Qual é o principal objetivo do desenvolvimento sustentável?",
+        options: ["Crescimento econômico rápido", "Equilíbrio entre economia e ambiente", "Maximizar a exploração", "Parar a industrialização"],
+        correctAnswer: 1,
+        explanation: "O desenvolvimento sustentável busca equilibrar crescimento econômico com preservação ambiental.",
+      },
+      {
+        id: "quiz-geog-9-3",
+        lessonId: "geog-9-3",
+        question: "Qual é um dos principais problemas das metrópoles?",
+        options: ["Falta de pessoas", "Tráfego e poluição", "Excesso de vegetação", "Pouca tecnologia"],
+        correctAnswer: 1,
+        explanation: "Metrópoles enfrentam problemas como tráfego congestionado e poluição do ar e água.",
+      },
+      {
+        id: "quiz-geog-9-4",
+        lessonId: "geog-9-1",
+        question: "Qual é um desafio da globalização para o planeta?",
+        options: ["Nenhum", "Maior consumo e poluição", "Redução de conflitos", "Igualdade perfeita"],
+        correctAnswer: 1,
+        explanation: "A globalização aumenta o consumo e consequentemente a poluição ambiental.",
+      },
+    ],
+  },
+
+  // 7º ano - Inglês
+  {
+    subject: "ingles",
+    grade: "7º ano",
+    lessons: [
+      {
+        id: "eng-7-1",
+        title: "Verb Tenses - Present Perfect",
+        description: "Present Perfect tense - have/has + past participle",
+        videoId: "GZQnNgMdZxY",
+        duration: 12,
+      },
+      {
+        id: "eng-7-2",
+        title: "Modal Verbs",
+        description: "Can, could, may, might, must, should",
+        videoId: "V-pUOuDjwwE",
+        duration: 11,
+      },
+      {
+        id: "eng-7-3",
+        title: "Phrasal Verbs",
+        description: "Common phrasal verbs and their meanings",
+        videoId: "6rQyuuMUd6Y",
+        duration: 10,
+      },
+    ],
+    quizzes: [
+      {
+        id: "quiz-eng-7-1",
+        lessonId: "eng-7-1",
+        question: "How do we form the Present Perfect tense?",
+        options: ["Verb + ed", "Have/Has + past participle", "Will + verb", "Is/Are + ing"],
+        correctAnswer: 1,
+        explanation: "The Present Perfect is formed with have/has + past participle.",
+      },
+      {
+        id: "quiz-eng-7-2",
+        lessonId: "eng-7-2",
+        question: "Which modal verb expresses obligation?",
+        options: ["Can", "May", "Must", "Could"],
+        correctAnswer: 2,
+        explanation: "'Must' is used to express obligation or strong necessity.",
+      },
+      {
+        id: "quiz-eng-7-3",
+        lessonId: "eng-7-3",
+        question: "What does 'look after' mean?",
+        options: ["Procurar", "Cuidar de", "Olhar para", "Buscar"],
+        correctAnswer: 1,
+        explanation: "'Look after' is a phrasal verb meaning 'cuidar de' or 'take care of'.",
+      },
+      {
+        id: "quiz-eng-7-4",
+        lessonId: "eng-7-1",
+        question: "Complete: 'I have ___ to London three times.'",
+        options: ["go", "went", "gone", "going"],
+        correctAnswer: 2,
+        explanation: "The correct form is 'gone' - the past participle of go.",
+      },
+    ],
+  },
+
+  // 8º ano - Inglês
+  {
+    subject: "ingles",
+    grade: "8º ano",
+    lessons: [
+      {
+        id: "eng-8-1",
+        title: "Conditional Sentences",
+        description: "First, Second, and Third conditionals",
+        videoId: "GZQnNgMdZxY",
+        duration: 14,
+      },
+      {
+        id: "eng-8-2",
+        title: "Reported Speech",
+        description: "Changing direct speech to reported speech",
+        videoId: "V-pUOuDjwwE",
+        duration: 13,
+      },
+      {
+        id: "eng-8-3",
+        title: "Passive Voice",
+        description: "Formation and use of passive voice",
+        videoId: "6rQyuuMUd6Y",
+        duration: 12,
+      },
+    ],
+    quizzes: [
+      {
+        id: "quiz-eng-8-1",
+        lessonId: "eng-8-1",
+        question: "What is the structure of the First Conditional?",
+        options: ["If + would, would verb", "If + present, will + verb", "If + past, would verb", "If + will, would verb"],
+        correctAnswer: 1,
+        explanation: "First Conditional: If + present simple, will + base verb",
+      },
+      {
+        id: "quiz-eng-8-2",
+        lessonId: "eng-8-2",
+        question: "Change to reported speech: 'I am happy' he said.",
+        options: ["He said I am happy", "He said he was happy", "He said he is happy", "He said I was happy"],
+        correctAnswer: 1,
+        explanation: "In reported speech, 'am' changes to 'was' and the subject changes to 'he'.",
+      },
+      {
+        id: "quiz-eng-8-3",
+        lessonId: "eng-8-3",
+        question: "Change to passive: 'They built the house'",
+        options: ["The house was build", "The house was built", "The house were built", "The house is built"],
+        correctAnswer: 1,
+        explanation: "Passive voice: The house was built (be + past participle).",
+      },
+      {
+        id: "quiz-eng-8-4",
+        lessonId: "eng-8-1",
+        question: "What does the Second Conditional express?",
+        options: ["Real future situations", "Impossible/unlikely situations", "Past events", "General truths"],
+        correctAnswer: 1,
+        explanation: "The Second Conditional expresses hypothetical or unlikely situations in the present/future.",
+      },
+    ],
+  },
+
+  // 9º ano - Inglês
+  {
+    subject: "ingles",
+    grade: "9º ano",
+    lessons: [
+      {
+        id: "eng-9-1",
+        title: "Advanced Grammar",
+        description: "Relative clauses, mixed conditionals, and advanced structures",
+        videoId: "GZQnNgMdZxY",
+        duration: 15,
+      },
+      {
+        id: "eng-9-2",
+        title: "Vocabulary Building",
+        description: "Advanced vocabulary and word families",
+        videoId: "V-pUOuDjwwE",
+        duration: 13,
+      },
+      {
+        id: "eng-9-3",
+        title: "Listening Comprehension",
+        description: "Strategies for improving listening skills",
+        videoId: "6rQyuuMUd6Y",
+        duration: 12,
+      },
+    ],
+    quizzes: [
+      {
+        id: "quiz-eng-9-1",
+        lessonId: "eng-9-1",
+        question: "What is a relative clause?",
+        options: ["A clause about family", "A clause that adds information about a noun", "A dependent clause", "A main clause"],
+        correctAnswer: 1,
+        explanation: "A relative clause adds information about a noun using relative pronouns like who, which, that.",
+      },
+      {
+        id: "quiz-eng-9-2",
+        lessonId: "eng-9-2",
+        question: "What does 'eloquent' mean?",
+        options: ["Quiet", "Fluent and persuasive in speech", "Elegant", "Excellent"],
+        correctAnswer: 1,
+        explanation: "'Eloquent' means fluent, persuasive, and expressive in speech or writing.",
+      },
+      {
+        id: "quiz-eng-9-3",
+        lessonId: "eng-9-3",
+        question: "Which is a good strategy for listening comprehension?",
+        options: ["Translate everything mentally", "Listen to key words and context clues", "Look at the speaker", "Write down every word"],
+        correctAnswer: 1,
+        explanation: "Listening for key words and using context clues helps with comprehension.",
+      },
+      {
+        id: "quiz-eng-9-4",
+        lessonId: "eng-9-1",
+        question: "Complete: 'If I had studied, I ___ passed the exam.'",
+        options: ["would pass", "would have passed", "will pass", "have passed"],
+        correctAnswer: 1,
+        explanation: "Third Conditional: If + past perfect, would + have + past participle.",
+      },
+    ],
+  },
+];
+
+export function getSubjectInfo(subject: string) {
+  return SUBJECT_INFO[subject as keyof typeof SUBJECT_INFO];
+}
+
+export function getLessons(subject: string, grade: string) {
+  const item = data.find((d) => d.subject === subject && d.grade === grade);
+  return item?.lessons || [];
+}
+
+export function getLesson(subject: string, grade: string, lessonId: string) {
+  const item = data.find((d) => d.subject === subject && d.grade === grade);
+  return item?.lessons.find((l) => l.id === lessonId);
+}
+
+export function getQuiz(subject: string, grade: string, lessonId: string) {
+  const item = data.find((d) => d.subject === subject && d.grade === grade);
+  return item?.quizzes.filter((q) => q.lessonId === lessonId) || [];
+}
