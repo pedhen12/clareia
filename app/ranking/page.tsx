@@ -1,6 +1,15 @@
 'use client';
 
+import { useEffect } from 'react';
+
 export default function RankingPage() {
+  useEffect(() => {
+    const progress = JSON.parse(localStorage.getItem('user_progress') || '{}');
+    const pointsEl = document.getElementById('user-points');
+    const lessonsEl = document.getElementById('user-lessons');
+    if (pointsEl) pointsEl.textContent = String(progress.points || 0);
+    if (lessonsEl) lessonsEl.textContent = String(progress.completedLessons?.length || 0);
+  }, []);
   // Mock data for ranking
   const topStudents = [
     {
@@ -192,6 +201,21 @@ export default function RankingPage() {
               </div>
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* User Stats */}
+      <div className="mt-8 bg-slate-800 border border-blue-500/50 rounded-lg p-6">
+        <h3 className="text-lg font-bold text-white mb-3">📊 Seu Desempenho</h3>
+        <div className="grid grid-cols-2 gap-4">
+          <div className="bg-slate-700 rounded-lg p-4 text-center">
+            <p className="text-2xl font-bold text-blue-400" id="user-points">0</p>
+            <p className="text-slate-400 text-sm">Seus Pontos</p>
+          </div>
+          <div className="bg-slate-700 rounded-lg p-4 text-center">
+            <p className="text-2xl font-bold text-green-400" id="user-lessons">0</p>
+            <p className="text-slate-400 text-sm">Aulas Concluídas</p>
+          </div>
         </div>
       </div>
 

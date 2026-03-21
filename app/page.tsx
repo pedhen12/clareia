@@ -64,7 +64,7 @@ export default function Home() {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/subjects/matematica"
+              href="/subjects"
               className="inline-block bg-white text-blue-600 font-bold py-4 px-8 rounded-lg hover:bg-blue-50 transition-all duration-300 shadow-lg hover:shadow-xl text-lg"
             >
               🚀 Começar a Estudar
@@ -76,6 +76,16 @@ export default function Home() {
               🤖 Falar com o Tutor
             </Link>
           </div>
+        </div>
+      </div>
+
+      {/* Stats Bar */}
+      <div className="bg-slate-900 border-y border-slate-700">
+        <div className="max-w-7xl mx-auto px-4 py-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          <div><p className="text-3xl font-bold text-blue-400">80+</p><p className="text-slate-400 text-sm">Aulas</p></div>
+          <div><p className="text-3xl font-bold text-green-400">5</p><p className="text-slate-400 text-sm">Matérias</p></div>
+          <div><p className="text-3xl font-bold text-purple-400">4</p><p className="text-slate-400 text-sm">Séries</p></div>
+          <div><p className="text-3xl font-bold text-yellow-400">24/7</p><p className="text-slate-400 text-sm">Tutor de IA</p></div>
         </div>
       </div>
 

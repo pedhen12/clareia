@@ -9,7 +9,8 @@ export default function Navbar() {
   const pathname = usePathname();
 
   const isActive = (href: string) => {
-    return pathname === href;
+    if (href === '/') return pathname === '/';
+    return pathname.startsWith(href);
   };
 
   const getLinkClasses = (href: string) => {

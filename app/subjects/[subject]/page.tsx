@@ -94,6 +94,7 @@ export default function SubjectsPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {grades.map((grade) => {
             const hasContent = availableGrades.includes(grade);
+            const lessonCount = data.find(d => d.subject === subject && d.grade === grade)?.lessons.length || 0;
             return (
               <Link
                 key={grade}
@@ -122,6 +123,7 @@ export default function SubjectsPage() {
                   ) : (
                     <p className="text-slate-500">Brevemente disponível</p>
                   )}
+                  {hasContent && <p className="text-slate-500 text-sm mt-1">{lessonCount} aulas</p>}
                   {hasContent && (
                     <div className="text-blue-400 group-hover:text-blue-300 transition-colors">
                       Iniciar →

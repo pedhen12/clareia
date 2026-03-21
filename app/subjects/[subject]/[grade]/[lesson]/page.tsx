@@ -131,6 +131,10 @@ export default function LessonPage() {
                 <span>3.</span>
                 <span>Ganhar pontos</span>
               </li>
+              <li className="flex gap-3">
+                <span>4.</span>
+                <span>Use o Tutor de IA para tirar dúvidas</span>
+              </li>
             </ol>
           </div>
 
@@ -139,6 +143,11 @@ export default function LessonPage() {
             <p className="text-slate-400 text-sm">
               Assista à aula completa e anote os pontos importantes antes de fazer o quiz. Isso vai ajudar você a se lembrar melhor do conteúdo!
             </p>
+            <div className="mt-4">
+              <Link href="/tutor" className="block w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded-lg transition-colors text-center text-sm">
+                🤖 Perguntar ao Tutor
+              </Link>
+            </div>
           </div>
         </div>
       </div>

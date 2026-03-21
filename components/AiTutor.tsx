@@ -17,6 +17,7 @@ export function AiTutor() {
     },
   ]);
   const [input, setInput] = useState("");
+  const [lastUserMessage, setLastUserMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [apiConfigured, setApiConfigured] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -34,6 +35,7 @@ export function AiTutor() {
     if (!input.trim() || loading) return;
 
     const userMessage: Message = { role: "user", content: input };
+    setLastUserMessage(input);
     setMessages((prev) => [...prev, userMessage]);
     setInput("");
     setLoading(true);
@@ -73,7 +75,7 @@ export function AiTutor() {
         {
           role: "assistant",
           content:
-            "Desculpe, houve um erro ao processar sua mensagem. Tente novamente.",
+            "Ops! O tutor está indisponível. Tente novamente em alguns segundos.",
         },
       ]);
     } finally {
@@ -137,6 +139,11 @@ export function AiTutor() {
           O assistente de IA não está disponível. Configure a chave API Groq
           para usar este recurso.
         </div>
+      )}
+      {messages[messages.length - 1]?.content.includes("Ops!") && (
+        <button onClick={() => { setInput(lastUserMessage); }} className="mt-2 text-blue-400 hover:text-blue-300 text-sm underline">
+          🔄 Tentar novamente
+        </button>
       )}
     </div>
   );
