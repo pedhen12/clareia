@@ -6,7 +6,7 @@ import { data } from "@/lib/data";
 import { useEffect, useState } from "react";
 
 const subjectInfo = {
-  matematica: { name: "Matemática", icon: "🔢" },
+  matematica: { name: "Matemática", icon: "📐" },
   portugues: { name: "Português", icon: "📖" },
   historia: { name: "História", icon: "🏛️" },
   geografia: { name: "Geografia", icon: "🌍" },
