@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { ProgressBar } from "@/components/ProgressBar";
 
 const subjectInfo = {
@@ -37,6 +38,23 @@ const subjectInfo = {
 };
 
 export default function Home() {
+  const [studentName, setStudentName] = useState("");
+  const [completedLessons, setCompletedLessons] = useState(0);
+  const [points, setPoints] = useState(0);
+  const [lastLesson, setLastLesson] = useState("");
+  const [lastLessonTitle, setLastLessonTitle] = useState("");
+
+  useEffect(() => {
+    const profile = JSON.parse(localStorage.getItem("student_profile") || "{}");
+    const progress = JSON.parse(localStorage.getItem("user_progress") || "{}");
+    
+    setStudentName(profile.name || "");
+    setCompletedLessons(progress.completedLessons?.length || 0);
+    setPoints(progress.points || 0);
+    setLastLesson(localStorage.getItem("last_lesson") || "");
+    setLastLessonTitle(localStorage.getItem("last_lesson_title") || "");
+  }, []);
+
   const subjects = [
     "matematica",
     "portugues",
@@ -92,6 +110,43 @@ export default function Home() {
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 py-12">
         <ProgressBar />
+
+        {/* Personalized Greeting */}
+        {studentName && (
+          <div className="bg-gradient-to-r from-blue-900/50 to-purple-900/50 border border-blue-700/50 rounded-lg p-6 mb-8 mt-8">
+            <h2 className="text-2xl font-bold text-white mb-2">
+              Olá, {studentName}! 👋
+            </h2>
+            <p className="text-slate-300 mb-4">Continue estudando e alcance seus objetivos!</p>
+            <div className="flex flex-wrap gap-4 items-center">
+              <div className="bg-slate-800/50 px-4 py-2 rounded-lg">
+                <span className="text-slate-400 text-sm">Aulas concluídas: </span>
+                <span className="text-white font-bold">{completedLessons}</span>
+              </div>
+              <div className="bg-slate-800/50 px-4 py-2 rounded-lg">
+                <span className="text-slate-400 text-sm">Pontos: </span>
+                <span className="text-yellow-400 font-bold">{points}</span>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Continue Where You Left Off */}
+        {lastLesson && (
+          <Link href={lastLesson} className="block mb-8">
+            <div className="bg-blue-600 hover:bg-blue-700 border border-blue-500 rounded-lg p-6 transition-all duration-300 shadow-lg hover:shadow-xl">
+              <div className="flex items-center gap-4">
+                <div className="text-4xl">▶️</div>
+                <div className="flex-1">
+                  <p className="text-blue-100 text-sm mb-1">Continuar de onde parou</p>
+                  <h3 className="text-xl font-bold text-white">
+                    {lastLessonTitle} →
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </Link>
+        )}
         
         <h2 className="text-3xl font-bold text-white mb-8 mt-8">Escolha uma Matéria</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">

@@ -39,6 +39,14 @@ export default function LessonPage() {
     setIsCompleted(progress.completedLessons?.includes(lessonId) || false);
   }, [lessonId]);
 
+  useEffect(() => {
+    // Save last visited lesson
+    if (lesson) {
+      localStorage.setItem('last_lesson', `/subjects/${subject}/${grade}/${lessonId}`);
+      localStorage.setItem('last_lesson_title', lesson.title);
+    }
+  }, [subject, grade, lessonId, lesson]);
+
   const handleLessonComplete = () => {
     const progress = JSON.parse(localStorage.getItem("user_progress") || "{}");
     if (!progress.completedLessons) progress.completedLessons = [];

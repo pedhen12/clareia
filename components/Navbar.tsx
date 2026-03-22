@@ -19,12 +19,6 @@ export default function Navbar() {
     return isActive(href) ? `${baseClasses} ${activeClasses}` : baseClasses;
   };
 
-  const getMobileLinkClasses = (href: string) => {
-    const baseClasses = "block text-slate-300 hover:text-white transition-colors font-medium py-2";
-    const activeClasses = "text-blue-400 border-b-2 border-blue-400";
-    return isActive(href) ? `${baseClasses} ${activeClasses}` : baseClasses;
-  };
-
   return (
     <nav className="bg-slate-950 border-b border-slate-700 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
@@ -78,49 +72,81 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-slate-900 border-t border-slate-700 py-4 px-4 space-y-3">
-          <Link
-            href="/"
-            className={getMobileLinkClasses("/")}
-            onClick={() => setIsOpen(false)}
-          >
-            Home
-          </Link>
-          <Link
-            href="/subjects"
-            className={getMobileLinkClasses("/subjects")}
-            onClick={() => setIsOpen(false)}
-          >
-            Matérias
-          </Link>
-          <Link
-            href="/search"
-            className={getMobileLinkClasses("/search")}
-            onClick={() => setIsOpen(false)}
-          >
-            🔍 Buscar
-          </Link>
-          <Link
-            href="/tutor"
-            className={getMobileLinkClasses("/tutor")}
-            onClick={() => setIsOpen(false)}
-          >
-            Tutor de IA
-          </Link>
-          <Link
-            href="/ranking"
-            className={getMobileLinkClasses("/ranking")}
-            onClick={() => setIsOpen(false)}
-          >
-            Ranking
-          </Link>
-          <Link
-            href="/perfil"
-            className={getMobileLinkClasses("/perfil")}
-            onClick={() => setIsOpen(false)}
-          >
-            👤 Perfil
-          </Link>
+        <div className="md:hidden bg-slate-900 border-t border-slate-700 py-4 px-4">
+          <div className="grid grid-cols-2 gap-3">
+            <Link
+              href="/"
+              className={`flex flex-col items-center gap-2 p-4 rounded-lg transition-colors ${
+                isActive("/")
+                  ? "bg-blue-600 text-white"
+                  : "bg-slate-800 text-slate-300 hover:bg-slate-700"
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              <span className="text-2xl">🏠</span>
+              <span className="text-sm font-medium">Home</span>
+            </Link>
+            <Link
+              href="/subjects"
+              className={`flex flex-col items-center gap-2 p-4 rounded-lg transition-colors ${
+                isActive("/subjects")
+                  ? "bg-blue-600 text-white"
+                  : "bg-slate-800 text-slate-300 hover:bg-slate-700"
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              <span className="text-2xl">📚</span>
+              <span className="text-sm font-medium">Matérias</span>
+            </Link>
+            <Link
+              href="/search"
+              className={`flex flex-col items-center gap-2 p-4 rounded-lg transition-colors ${
+                isActive("/search")
+                  ? "bg-blue-600 text-white"
+                  : "bg-slate-800 text-slate-300 hover:bg-slate-700"
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              <span className="text-2xl">🔍</span>
+              <span className="text-sm font-medium">Buscar</span>
+            </Link>
+            <Link
+              href="/tutor"
+              className={`flex flex-col items-center gap-2 p-4 rounded-lg transition-colors ${
+                isActive("/tutor")
+                  ? "bg-blue-600 text-white"
+                  : "bg-slate-800 text-slate-300 hover:bg-slate-700"
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              <span className="text-2xl">🤖</span>
+              <span className="text-sm font-medium">Tutor IA</span>
+            </Link>
+            <Link
+              href="/ranking"
+              className={`flex flex-col items-center gap-2 p-4 rounded-lg transition-colors ${
+                isActive("/ranking")
+                  ? "bg-blue-600 text-white"
+                  : "bg-slate-800 text-slate-300 hover:bg-slate-700"
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              <span className="text-2xl">🏆</span>
+              <span className="text-sm font-medium">Ranking</span>
+            </Link>
+            <Link
+              href="/perfil"
+              className={`flex flex-col items-center gap-2 p-4 rounded-lg transition-colors ${
+                isActive("/perfil")
+                  ? "bg-blue-600 text-white"
+                  : "bg-slate-800 text-slate-300 hover:bg-slate-700"
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              <span className="text-2xl">👤</span>
+              <span className="text-sm font-medium">Perfil</span>
+            </Link>
+          </div>
         </div>
       )}
     </nav>
