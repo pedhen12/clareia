@@ -40,11 +40,17 @@ export default function Navbar() {
           <Link href="/subjects" className={getLinkClasses("/subjects")}>
             Matérias
           </Link>
+          <Link href="/search" className={getLinkClasses("/search")}>
+            🔍 Buscar
+          </Link>
           <Link href="/tutor" className={getLinkClasses("/tutor")}>
             Tutor de IA
           </Link>
           <Link href="/ranking" className={getLinkClasses("/ranking")}>
             Ranking
+          </Link>
+          <Link href="/perfil" className={getLinkClasses("/perfil")}>
+            👤 Perfil
           </Link>
         </div>
 
@@ -88,6 +94,13 @@ export default function Navbar() {
             Matérias
           </Link>
           <Link
+            href="/search"
+            className={getMobileLinkClasses("/search")}
+            onClick={() => setIsOpen(false)}
+          >
+            🔍 Buscar
+          </Link>
+          <Link
             href="/tutor"
             className={getMobileLinkClasses("/tutor")}
             onClick={() => setIsOpen(false)}
@@ -100,6 +113,13 @@ export default function Navbar() {
             onClick={() => setIsOpen(false)}
           >
             Ranking
+          </Link>
+          <Link
+            href="/perfil"
+            className={getMobileLinkClasses("/perfil")}
+            onClick={() => setIsOpen(false)}
+          >
+            👤 Perfil
           </Link>
         </div>
       )}

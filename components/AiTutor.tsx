@@ -21,9 +21,12 @@ export function AiTutor() {
   const [loading, setLoading] = useState(false);
   const [apiConfigured, setApiConfigured] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (messagesContainerRef.current) {
+      messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
+    }
   };
 
   useEffect(() => {
@@ -86,7 +89,7 @@ export function AiTutor() {
   return (
     <div className="flex flex-col h-full">
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto space-y-4 mb-4">
+      <div ref={messagesContainerRef} className="flex-1 overflow-y-auto space-y-4 mb-4">
         {messages.map((message, index) => (
           <div
             key={index}
