@@ -37,6 +37,32 @@ Clareia é uma plataforma educacional interativa projetada especialmente para es
 
 ---
 
+## 📸 Capturas de Tela
+
+<div align="center">
+
+### 🏠 Página Inicial
+![Home](screenshots/home.png)
+
+### 📚 Matérias
+![Matérias](screenshots/materias.png)
+
+### 🎬 Aula com Vídeo
+![Aula](screenshots/aula.png)
+
+### 🤖 Tutor de IA
+![Tutor](screenshots/tutor.png)
+
+### 🏆 Ranking
+![Ranking](screenshots/ranking.png)
+
+### 👤 Perfil do Estudante
+![Perfil](screenshots/perfil.png)
+
+</div>
+
+---
+
 ## 🛠️ Tecnologias
 
 | Tecnologia | Uso |
