@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clareia — Plataforma Educacional · README Preview</title>
+  <style>
+    /* ── Reset / base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      line-height: 1.6;
+    }
+    a { color: #2563eb; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code {
+      font-family: 'Courier New', Courier, monospace;
+      background: #f1f5f9;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: .875em;
+      color: #dc2626;
+    }
+    pre code { background: none; color: inherit; padding: 0; font-size: inherit; }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+    }
+    section { margin-bottom: 48px; }
+    hr { border: none; border-top: 1px solid #e2e8f0; margin: 0 0 48px; }
+
+    /* ── Header ── */
+    .header { text-align: center; margin-bottom: 48px; }
+    .badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-bottom: 20px; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      border-radius: 4px; padding: 4px 10px;
+      font-size: 11px; font-weight: 700; letter-spacing: .04em;
+      color: #fff;
+    }
+    .badge-black   { background: #0f172a; }
+    .badge-blue    { background: #2563eb; }
+    .badge-sky     { background: #0ea5e9; }
+    .badge-orange  { background: #f97316; }
+    .badge-green   { background: #16a34a; }
+
+    h1.title {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: #1d4ed8;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .subtitle { font-size: 1.05rem; color: #475569; max-width: 540px; margin: 0 auto 6px; }
+    .tagline  { font-size: .9rem; color: #64748b; font-style: italic; margin-bottom: 24px; }
+
+    .btn-primary {
+      display: inline-block;
+      background: #2563eb;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.05rem;
+      padding: 12px 32px;
+      border-radius: 9999px;
+      box-shadow: 0 4px 14px rgba(37,99,235,.35);
+      transition: background .2s;
+      margin-bottom: 16px;
+    }
+    .btn-primary:hover { background: #1d4ed8; text-decoration: none; }
+
+    .header-links { display: flex; justify-content: center; gap: 20px; font-size: .875rem; }
+
+    /* ── Section titles ── */
+    h2.section-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #0f172a;
+    }
+    h3.sub-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      color: #1e293b;
+    }
+
+    /* ── Numbered steps ── */
+    .steps { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .step  { display: flex; gap: 12px; align-items: flex-start; }
+    .step-num {
+      flex-shrink: 0; width: 28px; height: 28px;
+      background: #dbeafe; color: #1d4ed8;
+      border-radius: 50%; font-size: .8rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .info-box {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #f0fdf4; border: 1px solid #bbf7d0;
+      color: #166534; border-radius: 10px;
+      padding: 10px 16px; font-size: .875rem; font-weight: 600;
+      margin-top: 16px;
+    }
+
+    /* ── Feature cards ── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 14px;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 18px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    }
+    .card-icon { font-size: 1.6rem; flex-shrink: 0; line-height: 1; }
+    .card-title { font-weight: 700; font-size: .95rem; color: #0f172a; margin-bottom: 3px; }
+    .card-desc  { font-size: .8rem; color: #64748b; }
+
+    /* ── Tables ── */
+    .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+    table { width: 100%; border-collapse: collapse; font-size: .875rem; }
+    thead tr { background: #2563eb; color: #fff; }
+    thead th { padding: 12px 18px; text-align: left; font-weight: 600; }
+    tbody tr { background: #fff; border-top: 1px solid #f1f5f9; transition: background .15s; }
+    tbody tr:hover { background: #eff6ff; }
+    tbody td { padding: 12px 18px; color: #334155; }
+    tbody td strong { color: #0f172a; }
+
+    .pill {
+      display: inline-block;
+      border-radius: 9999px;
+      padding: 2px 10px;
+      font-size: .75rem;
+      font-weight: 700;
+    }
+    .pill-blue   { background: #dbeafe; color: #1e40af; }
+    .pill-green  { background: #dcfce7; color: #166534; }
+    .pill-yellow { background: #fef9c3; color: #854d0e; }
+    .pill-emerald{ background: #d1fae5; color: #065f46; }
+    .pill-purple { background: #ede9fe; color: #5b21b6; }
+
+    /* ── Access section ── */
+    .access-box {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+    .access-box h3 { font-weight: 700; color: #1e40af; margin-bottom: 8px; }
+    .btn-link {
+      display: inline-block;
+      background: #2563eb;
+      color: #fff;
+      font-weight: 700;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-size: .9rem;
+      margin: 10px 0;
+      transition: background .2s;
+    }
+    .btn-link:hover { background: #1d4ed8; text-decoration: none; }
+
+    /* ── Details / collapsible ── */
+    details {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    }
+    details summary {
+      padding: 16px 20px;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 14px;
+      transition: background .15s;
+      list-style: none;
+    }
+    details summary::-webkit-details-marker { display: none; }
+    details summary::before { content: '▶ '; font-size: .75em; color: #94a3b8; }
+    details[open] summary::before { content: '▼ '; }
+    details summary:hover { background: #f8fafc; }
+    .details-body { padding: 4px 20px 20px; }
+    .details-body ul { padding-left: 20px; }
+    .details-body li { margin-bottom: 4px; }
+
+    /* ── Code block ── */
+    pre.code-block {
+      background: #0f172a;
+      color: #e2e8f0;
+      border-radius: 12px;
+      padding: 20px;
+      font-size: .78rem;
+      line-height: 1.7;
+      overflow-x: auto;
+      margin: 0;
+    }
+    pre.code-block .c { color: #64748b; }
+    pre.code-block .g { color: #4ade80; }
+
+    /* ── Detail cards ── */
+    .detail-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .detail-card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    }
+    .detail-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+    .detail-card ul { list-style: none; font-size: .85rem; color: #475569; }
+    .detail-card li::before { content: '• '; color: #94a3b8; }
+    .detail-card li { margin-bottom: 4px; }
+
+    /* ── Commit convention tags ── */
+    .commits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .commit-tag {
+      display: flex; align-items: center; gap: 8px;
+      border-radius: 8px; padding: 8px 12px; font-size: .82rem;
+    }
+    .commit-tag code { font-size: .82rem; font-weight: 700; }
+    .ct-green   { background: #f0fdf4; border: 1px solid #bbf7d0; }
+    .ct-green   code { color: #15803d; background: none; }
+    .ct-red     { background: #fff1f2; border: 1px solid #fecdd3; }
+    .ct-red     code { color: #b91c1c; background: none; }
+    .ct-blue    { background: #eff6ff; border: 1px solid #bfdbfe; }
+    .ct-blue    code { color: #1d4ed8; background: none; }
+    .ct-purple  { background: #faf5ff; border: 1px solid #e9d5ff; }
+    .ct-purple  code { color: #7c3aed; background: none; }
+    .ct-yellow  { background: #fefce8; border: 1px solid #fef08a; }
+    .ct-yellow  code { color: #a16207; background: none; }
+    .ct-orange  { background: #fff7ed; border: 1px solid #fed7aa; }
+    .ct-orange  code { color: #c2410c; background: none; }
+    .ct-gray    { background: #f8fafc; border: 1px solid #e2e8f0; }
+    .ct-gray    code { color: #334155; background: none; }
+
+    /* ── Bottom 3-col grid ── */
+    .bottom-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+      text-align: center;
+    }
+    .bottom-card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 24px 16px;
+      box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    }
+    .bottom-card .icon { font-size: 2rem; margin-bottom: 8px; }
+    .bottom-card h3 { font-weight: 700; font-size: .95rem; margin-bottom: 6px; }
+    .bottom-card ul { list-style: none; font-size: .82rem; color: #64748b; }
+    .bottom-card li { margin-bottom: 3px; }
+
+    /* ── Footer CTA ── */
+    footer { text-align: center; padding-top: 16px; }
+    .btn-cta {
+      display: inline-block;
+      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      color: #fff;
+      font-weight: 900;
+      font-size: 1.15rem;
+      padding: 16px 40px;
+      border-radius: 9999px;
+      box-shadow: 0 6px 20px rgba(37,99,235,.4);
+      transition: opacity .2s;
+      margin-bottom: 16px;
+    }
+    .btn-cta:hover { opacity: .9; text-decoration: none; }
+    .back-top { font-size: .8rem; color: #94a3b8; }
+    .back-top:hover { color: #2563eb; }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      h1.title { font-size: 1.75rem; }
+      .cards-grid, .detail-cards, .commits-grid, .bottom-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+<div id="top" class="container">
+
+  <!-- ════════ HEADER ════════ -->
+  <header class="header">
+    <div class="badges">
+      <span class="badge badge-black">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M11.572 0c-.176 0-.31.001-.358.007a19.76 19.76 0 01-.364.033C7.443.346 4.25 2.185 2.228 5.012a11.875 11.875 0 00-2.119 5.243c-.096.659-.108.854-.108 1.747s.012 1.089.108 1.748c.652 4.506 3.86 8.292 8.209 9.695.779.25 1.6.422 2.534.525.363.04 1.935.04 2.299 0 1.611-.178 2.977-.577 4.323-1.264.207-.106.247-.134.219-.158-.02-.013-.9-1.193-1.955-2.62l-1.919-2.592-2.404-3.558a338.739 338.739 0 00-2.422-3.556c-.009-.002-.018 1.579-.023 3.51-.007 3.38-.01 3.515-.052 3.595a.426.426 0 01-.206.214c-.075.037-.14.044-.495.044H7.81l-.108-.068a.438.438 0 01-.157-.171l-.05-.106.006-4.703.007-4.705.072-.092a.645.645 0 01.174-.143c.096-.047.134-.051.54-.051.478 0 .558.018.682.154.035.038 1.337 1.999 2.895 4.361a10760.433 10760.433 0 004.735 7.17l1.9 2.879.096-.063a12.317 12.317 0 002.466-2.163 11.944 11.944 0 002.824-6.134c.096-.66.108-.854.108-1.748 0-.893-.012-1.088-.108-1.747C23.573 4.189 20.356.405 15.999.05 15.29-.006 11.773-.03 11.572 0z"/></svg>
+        Next.js 14
+      </span>
+      <span class="badge badge-blue">TypeScript 5.0</span>
+      <span class="badge badge-sky">Tailwind 3.0</span>
+      <span class="badge badge-orange">Groq AI</span>
+      <span class="badge badge-green">License MIT</span>
+    </div>
+
+    <h1 class="title">✨ Clareia — Plataforma Educacional</h1>
+    <p class="subtitle"><strong>Aprenda matemática, português, história, geografia e inglês com aulas em vídeo, quizzes e um tutor de IA inteligente.</strong></p>
+    <p class="tagline">Gratuito para estudantes brasileiros do 6º ao 9º ano.</p>
+
+    <a href="https://clareia-eight.vercel.app" class="btn-primary">🌐 ACESSE A PLATAFORMA</a>
+
+    <div class="header-links">
+      <a href="https://github.com/pedhen12/clareia/issues">🐛 Reportar Bug</a>
+      <span style="color:#cbd5e1">•</span>
+      <a href="https://github.com/pedhen12/clareia/issues">💡 Solicitar Feature</a>
+    </div>
+  </header>
+
+  <hr />
+
+  <!-- ════════ COMO USAR ════════ -->
+  <section>
+    <h2 class="section-title">🎯 Como Usar a Plataforma</h2>
+    <ol class="steps">
+      <li class="step"><span class="step-num">1</span><span><strong>Acesse:</strong> <a href="https://clareia-eight.vercel.app">https://clareia-eight.vercel.app</a></span></li>
+      <li class="step"><span class="step-num">2</span><span><strong>Escolha sua matéria:</strong> Matemática, Português, História, Geografia ou Inglês</span></li>
+      <li class="step"><span class="step-num">3</span><span><strong>Selecione sua série:</strong> 6º, 7º, 8º ou 9º ano</span></li>
+      <li class="step"><span class="step-num">4</span><span><strong>Assista às aulas em vídeo</strong> e faça os quizzes para ganhar pontos</span></li>
+      <li class="step"><span class="step-num">5</span><span><strong>Use o Tutor de IA</strong> para tirar suas dúvidas (10 perguntas grátis por dia)</span></li>
+      <li class="step"><span class="step-num">6</span><span><strong>Acompanhe seu progresso</strong> no perfil e no ranking</span></li>
+    </ol>
+    <div class="info-box">✅ É 100% gratuito! Não precisa criar conta, basta acessar e começar a estudar! 📚✨</div>
+  </section>
+
+  <hr />
+
+  <!-- ════════ SOBRE O PROJETO ════════ -->
+  <section>
+    <h2 class="section-title">📚 Sobre o Projeto</h2>
+    <p style="color:#475569; margin-bottom:24px;">
+      Clareia é uma plataforma educacional interativa projetada especialmente para estudantes brasileiros do ensino fundamental II (6º ao 9º ano). Combinamos vídeo-aulas de alta qualidade com tecnologia de ponta para criar uma experiência de aprendizado envolvente e eficaz.
+    </p>
+
+    <h3 class="sub-title">✨ Principais Funcionalidades</h3>
+    <div class="cards-grid">
+      <div class="card"><span class="card-icon">🎬</span><div><div class="card-title">80+ aulas em vídeo</div><div class="card-desc">Organizadas por matéria e série</div></div></div>
+      <div class="card"><span class="card-icon">🤖</span><div><div class="card-title">Tutor de IA</div><div class="card-desc">Powered by Groq (llama-3.3-70b) — dúvidas instantâneas</div></div></div>
+      <div class="card"><span class="card-icon">📝</span><div><div class="card-title">Quizzes interativos</div><div class="card-desc">Feedback em tempo real</div></div></div>
+      <div class="card"><span class="card-icon">🏆</span><div><div class="card-title">Sistema de gamificação</div><div class="card-desc">Pontos e ranking de estudantes</div></div></div>
+      <div class="card"><span class="card-icon">🔍</span><div><div class="card-title">Busca global</div><div class="card-desc">Por aulas e temas</div></div></div>
+      <div class="card"><span class="card-icon">👤</span><div><div class="card-title">Perfil do estudante</div><div class="card-desc">Progresso detalhado por matéria</div></div></div>
+      <div class="card"><span class="card-icon">📅</span><div><div class="card-title">Calendário de estudos</div><div class="card-desc">Streak de dias consecutivos</div></div></div>
+      <div class="card"><span class="card-icon">⏱️</span><div><div class="card-title">Timer Pomodoro</div><div class="card-desc">25 min estudo + 5 min descanso</div></div></div>
+      <div class="card"><span class="card-icon">🎯</span><div><div class="card-title">Conquistas e notificações</div><div class="card-desc">Motivacionais e personalizadas</div></div></div>
+      <div class="card"><span class="card-icon">📱</span><div><div class="card-title">Totalmente responsivo</div><div class="card-desc">Mobile, tablet e desktop</div></div></div>
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- ════════ TECNOLOGIAS ════════ -->
+  <section>
+    <h2 class="section-title">🛠️ Tecnologias</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Tecnologia</th><th>Uso</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Next.js 14</strong></td><td>Framework React com App Router</td></tr>
+          <tr><td><strong>TypeScript</strong></td><td>Tipagem estática e melhor DX</td></tr>
+          <tr><td><strong>Tailwind CSS</strong></td><td>Estilização utility-first</td></tr>
+          <tr><td><strong>Groq API</strong></td><td>Tutor de IA com llama-3.3-70b</td></tr>
+          <tr><td><strong>localStorage</strong></td><td>Persistência de dados do usuário</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- ════════ ACESSO ════════ -->
+  <section>
+    <h2 class="section-title">🚀 Acesso à Plataforma</h2>
+    <div class="access-box">
+      <h3>🌐 Acesse Online (Recomendado)</h3>
+      <p style="color:#334155; margin-bottom:4px;">A plataforma está disponível gratuitamente em:</p>
+      <a href="https://clareia-eight.vercel.app" class="btn-link">👉 https://clareia-eight.vercel.app</a>
+      <p style="font-size:.85rem; color:#64748b; margin-top:8px;">Não é necessário instalação! Basta acessar o link e começar a estudar.</p>
+    </div>
+
+    <details>
+      <summary>💻 Desenvolvimento Local (Opcional) — clique para expandir</summary>
+      <div class="details-body">
+        <h4 style="font-weight:600; margin-bottom:8px; margin-top:8px;">Pré-requisitos</h4>
+        <ul style="font-size:.875rem; color:#475569;">
+          <li>Node.js 18+ instalado</li>
+          <li>npm ou yarn</li>
+          <li>Conta no Groq (gratuita) para obter API key</li>
+        </ul>
+        <h4 style="font-weight:600; margin:16px 0 8px;">Instalação</h4>
+        <pre class="code-block"><span class="c"># 1. Clone o repositório</span>
+<span class="g">git clone https://github.com/pedhen12/clareia.git</span>
+<span class="g">cd clareia</span>
+
+<span class="c"># 2. Instale as dependências</span>
+<span class="g">npm install</span>
+
+<span class="c"># 3. Configure as variáveis de ambiente</span>
+<span class="g">cp .env.example .env.local</span>
+
+<span class="c"># 4. Adicione sua GROQ_API_KEY no arquivo .env.local</span>
+<span class="c"># Obtenha gratuitamente em: https://console.groq.com</span>
+
+<span class="c"># 5. Rode o projeto em modo de desenvolvimento</span>
+<span class="g">npm run dev</span></pre>
+        <p style="font-size:.875rem; color:#475569; margin-top:12px;">O projeto estará disponível em <code>http://localhost:3000</code></p>
+      </div>
+    </details>
+  </section>
+
+  <hr />
+
+  <!-- ════════ ESTRUTURA ════════ -->
+  <section>
+    <h2 class="section-title">📁 Estrutura do Projeto</h2>
+    <pre class="code-block">clareia/
+├── app/                          <span class="c"># Páginas e rotas Next.js</span>
+│   ├── page.tsx                  <span class="c"># Home page</span>
+│   ├── subjects/                 <span class="c"># Matérias e aulas</span>
+│   │   └── [subject]/
+│   │       └── [grade]/
+│   │           └── [lesson]/
+│   │               ├── page.tsx  <span class="c"># Página da aula</span>
+│   │               └── quiz/     <span class="c"># Quiz da aula</span>
+│   ├── tutor/                    <span class="c"># Tutor de IA</span>
+│   ├── ranking/                  <span class="c"># Ranking de estudantes</span>
+│   ├── search/                   <span class="c"># Busca global</span>
+│   ├── perfil/                   <span class="c"># Perfil do estudante</span>
+│   └── api/
+│       └── assistant/            <span class="c"># API do Tutor de IA</span>
+├── components/                   <span class="c"># Componentes reutilizáveis</span>
+│   ├── Navbar.tsx                <span class="c"># Navegação</span>
+│   ├── AiTutor.tsx               <span class="c"># Chat do tutor</span>
+│   ├── PomodoroTimer.tsx         <span class="c"># Timer de estudos</span>
+│   ├── AchievementToast.tsx      <span class="c"># Notificações</span>
+│   └── ProgressBar.tsx           <span class="c"># Barra de progresso</span>
+├── lib/
+│   ├── data.ts                   <span class="c"># Dados das 80+ aulas</span>
+│   └── types.ts                  <span class="c"># Tipos TypeScript</span>
+└── public/                       <span class="c"># Arquivos estáticos</span></pre>
+  </section>
+
+  <hr />
+
+  <!-- ════════ MATÉRIAS ════════ -->
+  <section>
+    <h2 class="section-title">🎓 Matérias Disponíveis</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Matéria</th><th>Séries</th><th>Aulas</th><th>Canal do YouTube</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>📐 Matemática</strong></td><td>6º ao 9º ano</td><td><span class="pill pill-blue">24 aulas</span></td><td>Gis com Giz</td></tr>
+          <tr><td><strong>📖 Português</strong></td><td>6º ao 9º ano</td><td><span class="pill pill-green">18 aulas</span></td><td>Professor Noslen</td></tr>
+          <tr><td><strong>🏛️ História</strong></td><td>6º ao 9º ano</td><td><span class="pill pill-yellow">18 aulas</span></td><td>Se Liga Nerd</td></tr>
+          <tr><td><strong>🌍 Geografia</strong></td><td>6º ao 9º ano</td><td><span class="pill pill-emerald">18 aulas</span></td><td>Geobrasil</td></tr>
+          <tr><td><strong>🌐 Inglês</strong></td><td>6º ao 9º ano</td><td><span class="pill pill-purple">15 aulas</span></td><td>Mairo Vergara</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- ════════ FUNCIONALIDADES ════════ -->
+  <section>
+    <h2 class="section-title">💡 Funcionalidades em Detalhes</h2>
+    <div class="detail-cards">
+      <div class="detail-card">
+        <h3>🎬 Sistema de Aulas</h3>
+        <ul>
+          <li>Vídeos integrados do YouTube com fallback</li>
+          <li>Marcação de aulas como concluídas</li>
+          <li>Seção de aulas relacionadas</li>
+          <li>Progresso salvo automaticamente</li>
+        </ul>
+      </div>
+      <div class="detail-card">
+        <h3>🤖 Tutor de IA</h3>
+        <ul>
+          <li>Powered by Groq (llama-3.3-70b-versatile)</li>
+          <li>Respostas em tempo real</li>
+          <li>Contexto educacional brasileiro</li>
+          <li>Disponível 24/7</li>
+        </ul>
+      </div>
+      <div class="detail-card">
+        <h3>🏆 Gamificação</h3>
+        <ul>
+          <li>10 pontos por aula concluída</li>
+          <li>Sistema de conquistas (1, 5, 10, 25 aulas)</li>
+          <li>Streak de dias de estudo</li>
+          <li>Ranking global</li>
+        </ul>
+      </div>
+      <div class="detail-card">
+        <h3>📊 Progresso</h3>
+        <ul>
+          <li>Calendário visual de 30 dias</li>
+          <li>Progresso por matéria</li>
+          <li>Estatísticas detalhadas</li>
+          <li>Compartilhamento de progresso</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- ════════ CONTRIBUINDO ════════ -->
+  <section>
+    <h2 class="section-title">🤝 Contribuindo</h2>
+    <p style="color:#475569; margin-bottom:16px;">Contribuições são bem-vindas! Siga estes passos:</p>
+    <ol class="steps" style="margin-bottom:24px;">
+      <li class="step"><span class="step-num" style="background:#e2e8f0;color:#475569;">1</span><span>Fork o projeto</span></li>
+      <li class="step"><span class="step-num" style="background:#e2e8f0;color:#475569;">2</span><span>Crie uma branch para sua feature (<code>git checkout -b feature/MinhaFeature</code>)</span></li>
+      <li class="step"><span class="step-num" style="background:#e2e8f0;color:#475569;">3</span><span>Commit suas mudanças (<code>git commit -m 'feat: Adiciona MinhaFeature'</code>)</span></li>
+      <li class="step"><span class="step-num" style="background:#e2e8f0;color:#475569;">4</span><span>Push para a branch (<code>git push origin feature/MinhaFeature</code>)</span></li>
+      <li class="step"><span class="step-num" style="background:#e2e8f0;color:#475569;">5</span><span>Abra um Pull Request</span></li>
+    </ol>
+
+    <h3 class="sub-title" style="margin-bottom:4px;">Convenção de Commits</h3>
+    <p style="font-size:.875rem; color:#64748b; margin-bottom:0;">Seguimos o padrão <a href="https://www.conventionalcommits.org/">Conventional Commits</a>:</p>
+    <div class="commits-grid">
+      <div class="commit-tag ct-green"><code>feat:</code><span style="color:#475569;">nova funcionalidade</span></div>
+      <div class="commit-tag ct-red"><code>fix:</code><span style="color:#475569;">correção de bug</span></div>
+      <div class="commit-tag ct-blue"><code>docs:</code><span style="color:#475569;">documentação</span></div>
+      <div class="commit-tag ct-purple"><code>style:</code><span style="color:#475569;">formatação, ponto e vírgula, etc</span></div>
+      <div class="commit-tag ct-yellow"><code>refactor:</code><span style="color:#475569;">refatoração de código</span></div>
+      <div class="commit-tag ct-orange"><code>test:</code><span style="color:#475569;">adição de testes</span></div>
+      <div class="commit-tag ct-gray"><code>chore:</code><span style="color:#475569;">atualização de dependências, etc</span></div>
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- ════════ LICENSE / AUTOR / AGRADECIMENTOS ════════ -->
+  <section class="bottom-grid">
+    <div class="bottom-card">
+      <div class="icon">📄</div>
+      <h3>License</h3>
+      <p style="font-size:.85rem; color:#64748b;">Este projeto está sob a licença <strong style="color:#16a34a;">MIT</strong>.</p>
+    </div>
+    <div class="bottom-card">
+      <div class="icon">👨‍💻</div>
+      <h3>Autor</h3>
+      <p style="font-size:.85rem; color:#64748b;">
+        Feito com ❤️ para estudantes brasileiros por<br>
+        <a href="https://github.com/pedhen12" style="font-weight:700;">Pedro Henrique</a>
+      </p>
+    </div>
+    <div class="bottom-card">
+      <div class="icon">🙏</div>
+      <h3>Agradecimentos</h3>
+      <ul>
+        <li><a href="https://nextjs.org/">Next.js</a> — Framework React</li>
+        <li><a href="https://groq.com/">Groq</a> — API de IA</li>
+        <li><a href="https://tailwindcss.com/">Tailwind CSS</a> — Estilização</li>
+        <li>Canais educacionais do YouTube</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ════════ FOOTER CTA ════════ -->
+  <footer>
+    <hr style="margin-bottom:32px;" />
+    <a href="https://clareia-eight.vercel.app" class="btn-cta">🌟 COMECE A ESTUDAR AGORA 🌟</a>
+    <p><a href="#top" class="back-top">⬆ Voltar ao topo</a></p>
+  </footer>
+
+</div>
+</body>
+</html>
