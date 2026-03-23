@@ -12,9 +12,28 @@
 
 *Gratuito para estudantes brasileiros do 6º ao 9º ano.*
 
-[Demo](https://clareia-theta.vercel.app) • [Reportar Bug](https://github.com/pedhen12/clareia/issues) • [Solicitar Feature](https://github.com/pedhen12/clareia/issues)
+---
+
+### 🌐 **[ACESSE A PLATAFORMA](https://clareia-eight.vercel.app)** 🌐
+
+---
+
+[Reportar Bug](https://github.com/pedhen12/clareia/issues) • [Solicitar Feature](https://github.com/pedhen12/clareia/issues)
 
 </div>
+
+---
+
+## 🎯 Como Usar a Plataforma
+
+1. **Acesse:** [https://clareia-eight.vercel.app](https://clareia-eight.vercel.app)
+2. **Escolha sua matéria:** Matemática, Português, História, Geografia ou Inglês
+3. **Selecione sua série:** 6º, 7º, 8º ou 9º ano
+4. **Assista às aulas em vídeo** e faça os quizzes para ganhar pontos
+5. **Use o Tutor de IA** para tirar suas dúvidas (10 perguntas grátis por dia)
+6. **Acompanhe seu progresso** no perfil e no ranking
+
+**É 100% gratuito!** Não precisa criar conta, basta acessar e começar a estudar! 📚✨
 
 ---
 
@@ -75,15 +94,28 @@ Clareia é uma plataforma educacional interativa projetada especialmente para es
 
 ---
 
-## 🚀 Como Começar
+## 🚀 Acesso à Plataforma
 
-### Pré-requisitos
+### 🌐 Acesse Online (Recomendado)
+
+A plataforma está disponível gratuitamente em:
+
+**👉 [https://clareia-eight.vercel.app](https://clareia-eight.vercel.app)**
+
+Não é necessário instalação! Basta acessar o link e começar a estudar.
+
+### 💻 Desenvolvimento Local (Opcional)
+
+<details>
+<summary>Clique aqui se você é desenvolvedor e quer rodar o projeto localmente</summary>
+
+#### Pré-requisitos
 
 - Node.js 18+ instalado
 - npm ou yarn
 - Conta no Groq (gratuita) para obter API key
 
-### Instalação
+#### Instalação
 
 ```bash
 # 1. Clone o repositório
@@ -105,16 +137,14 @@ npm run dev
 
 O projeto estará disponível em `http://localhost:3000`
 
-### Build para Produção
+#### Build para Produção
 
 ```bash
 npm run build
 npm start
 ```
 
----
-
-## 🔐 Variáveis de Ambiente
+#### Variáveis de Ambiente
 
 Crie um arquivo `.env.local` na raiz do projeto:
 
@@ -123,7 +153,7 @@ Crie um arquivo `.env.local` na raiz do projeto:
 GROQ_API_KEY=sua_chave_aqui
 ```
 
-> **Nota:** O Tutor de IA só funcionará com uma API key válida do Groq. O restante da plataforma funciona normalmente sem ela.
+</details>
 
 ---
 
@@ -235,7 +265,7 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 
 ## 👨‍💻 Autor
 
-Feito com ❤️ para estudantes brasileiros
+Feito com ❤️ para estudantes brasileiros por [Pedro Henrique](https://github.com/pedhen12)
 
 ---
 
@@ -249,6 +279,8 @@ Feito com ❤️ para estudantes brasileiros
 ---
 
 <div align="center">
+
+### 🌟 **[COMECE A ESTUDAR AGORA](https://clareia-eight.vercel.app)** 🌟
 
 **[⬆ Voltar ao topo](#-clareia--plataforma-educacional)**
 
