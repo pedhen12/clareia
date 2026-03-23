@@ -37,6 +37,21 @@ export function AiTutor() {
     e.preventDefault();
     if (!input.trim() || loading) return;
 
+    // Check daily limit
+    const today = new Date().toDateString();
+    const stored = JSON.parse(localStorage.getItem("tutor_usage") || "{}");
+    if (stored.date === today && stored.count >= 10) {
+      setMessages(prev => [...prev, {
+        role: "assistant",
+        content: "Você atingiu o limite de 10 perguntas por dia. Volte amanhã para continuar aprendendo! 📚"
+      }]);
+      return;
+    }
+    localStorage.setItem("tutor_usage", JSON.stringify({
+      date: today,
+      count: (stored.date === today ? stored.count : 0) + 1
+    }));
+
     const userMessage: Message = { role: "user", content: input };
     setLastUserMessage(input);
     setMessages((prev) => [...prev, userMessage]);

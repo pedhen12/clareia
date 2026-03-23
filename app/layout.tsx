@@ -1,10 +1,33 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
-  title: "Clareia - Plataforma Educacional",
-  description: "Aprenda matemática, português, história, geografia e inglês",
+  title: "Clareia — Plataforma Educacional Gratuita",
+  description: "Aprenda matemática, português, história, geografia e inglês com aulas em vídeo, quizzes e um tutor de IA. Gratuito para estudantes brasileiros do 6º ao 9º ano.",
+  keywords: "educação, matemática, português, história, geografia, inglês, ensino fundamental, aulas online, quiz, tutor IA",
+  openGraph: {
+    title: "Clareia — Plataforma Educacional Gratuita",
+    description: "Aprenda com aulas em vídeo, quizzes e tutor de IA. Gratuito para estudantes do 6º ao 9º ano.",
+    url: "https://clareia.vercel.app",
+    siteName: "Clareia",
+    locale: "pt_BR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Clareia — Plataforma Educacional",
+    description: "Aprenda com aulas em vídeo, quizzes e tutor de IA. Gratuito!",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  manifest: "/manifest.json",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#3b82f6",
 };
 
 export default function RootLayout({
@@ -16,6 +39,11 @@ export default function RootLayout({
     <html lang="pt-BR">
       <head>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#3b82f6" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-title" content="Clareia" />
       </head>
       <body className="bg-slate-950 text-white antialiased">
         <Navbar />
