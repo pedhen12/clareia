@@ -90,7 +90,7 @@ Sempre use placeholders ao invés de valores reais:
 
 ```bash
 # ❌ ERRADO - Nunca exponha chaves reais
-GROQ_API_KEY=gsk_sua_chave_real_aqui
+GROQ_API_KEY=sua_chave_aqui_exemplo
 
 # ✅ CORRETO - Use placeholders em documentação
 GROQ_API_KEY=sua_chave_groq_aqui
