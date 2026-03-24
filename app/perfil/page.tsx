@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { data } from "@/lib/data";
+import { useProfile } from "@/hooks/useProfile";
+import { useCompletedLessons } from "@/hooks/useCompletedLessons";
 
 const subjectInfo = {
   matematica: { name: "Matemática", icon: "📐" },
@@ -13,39 +15,25 @@ const subjectInfo = {
 };
 
 export default function PerfilPage() {
-  const [studentName, setStudentName] = useState("");
-  const [studentGrade, setStudentGrade] = useState("");
-  const [completedLessons, setCompletedLessons] = useState<string[]>([]);
-  const [studyDays, setStudyDays] = useState<string[]>([]);
-  const [points, setPoints] = useState(0);
+  const { profile, updateProfile } = useProfile();
+  const { completedLessons, studyDays } = useCompletedLessons();
   const [isEditing, setIsEditing] = useState(false);
   const [tempName, setTempName] = useState("");
   const [tempGrade, setTempGrade] = useState("");
   const [showCopied, setShowCopied] = useState(false);
 
   useEffect(() => {
-    const profile = JSON.parse(localStorage.getItem("student_profile") || "{}");
-    const progress = JSON.parse(localStorage.getItem("user_progress") || "{}");
-    
-    setStudentName(profile.name || "Estudante");
-    setStudentGrade(profile.grade || "6º ano");
-    setTempName(profile.name || "");
-    setTempGrade(profile.grade || "6º ano");
-    setCompletedLessons(progress.completedLessons || []);
-    setStudyDays(progress.studyDays || []);
-    setPoints(progress.points || 0);
-  }, []);
+    setTempName(profile?.name || "");
+    setTempGrade(profile?.grade || "6º ano");
+  }, [profile]);
 
-  const handleSaveProfile = () => {
-    const profile = { name: tempName, grade: tempGrade };
-    localStorage.setItem("student_profile", JSON.stringify(profile));
-    setStudentName(tempName || "Estudante");
-    setStudentGrade(tempGrade);
+  const handleSaveProfile = async () => {
+    await updateProfile({ name: tempName, grade: tempGrade });
     setIsEditing(false);
   };
 
   const handleShareProgress = async () => {
-    const text = `🎓 Estou estudando no Clareia! Já completei ${completedLessons.length} aulas e tenho ${points} pontos! Acesse: clareia-theta.vercel.app`;
+    const text = `🎓 Estou estudando no Clareia! Já completei ${completedLessons.length} aulas e tenho ${profile?.points || 0} pontos! Acesse: clareia-theta.vercel.app`;
     
     try {
       await navigator.clipboard.writeText(text);
@@ -202,11 +190,11 @@ export default function PerfilPage() {
             <div>
               <div className="mb-4">
                 <p className="text-sm text-slate-400">Nome</p>
-                <p className="text-lg text-white font-bold">{studentName}</p>
+                <p className="text-lg text-white font-bold">{profile?.name || "Estudante"}</p>
               </div>
               <div className="mb-4">
                 <p className="text-sm text-slate-400">Série</p>
-                <p className="text-lg text-white font-bold">{studentGrade}</p>
+                <p className="text-lg text-white font-bold">{profile?.grade || "6º ano"}</p>
               </div>
               <button
                 onClick={() => setIsEditing(true)}
@@ -227,7 +215,7 @@ export default function PerfilPage() {
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-slate-400">⭐ Pontos</span>
-                <span className="text-2xl font-bold text-yellow-400">{points}</span>
+                <span className="text-2xl font-bold text-yellow-400">{profile?.points || 0}</span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-slate-400">🔥 Sequência</span>

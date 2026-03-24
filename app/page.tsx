@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ProgressBar } from "@/components/ProgressBar";
+import { useProfile } from "@/hooks/useProfile";
+import { useCompletedLessons } from "@/hooks/useCompletedLessons";
 
 const subjectInfo = {
   matematica: {
@@ -38,19 +40,12 @@ const subjectInfo = {
 };
 
 export default function Home() {
-  const [studentName, setStudentName] = useState("");
-  const [completedLessons, setCompletedLessons] = useState(0);
-  const [points, setPoints] = useState(0);
+  const { profile } = useProfile();
+  const { completedLessons } = useCompletedLessons();
   const [lastLesson, setLastLesson] = useState("");
   const [lastLessonTitle, setLastLessonTitle] = useState("");
 
   useEffect(() => {
-    const profile = JSON.parse(localStorage.getItem("student_profile") || "{}");
-    const progress = JSON.parse(localStorage.getItem("user_progress") || "{}");
-    
-    setStudentName(profile.name || "");
-    setCompletedLessons(progress.completedLessons?.length || 0);
-    setPoints(progress.points || 0);
     setLastLesson(localStorage.getItem("last_lesson") || "");
     setLastLessonTitle(localStorage.getItem("last_lesson_title") || "");
   }, []);
@@ -112,20 +107,20 @@ export default function Home() {
         <ProgressBar />
 
         {/* Personalized Greeting */}
-        {studentName && (
+        {profile?.name && (
           <div className="bg-gradient-to-r from-blue-900/50 to-purple-900/50 border border-blue-700/50 rounded-lg p-6 mb-8 mt-8">
             <h2 className="text-2xl font-bold text-white mb-2">
-              Olá, {studentName}! 👋
+              Olá, {profile.name}! 👋
             </h2>
             <p className="text-slate-300 mb-4">Continue estudando e alcance seus objetivos!</p>
             <div className="flex flex-wrap gap-4 items-center">
               <div className="bg-slate-800/50 px-4 py-2 rounded-lg">
                 <span className="text-slate-400 text-sm">Aulas concluídas: </span>
-                <span className="text-white font-bold">{completedLessons}</span>
+                <span className="text-white font-bold">{completedLessons.length}</span>
               </div>
               <div className="bg-slate-800/50 px-4 py-2 rounded-lg">
                 <span className="text-slate-400 text-sm">Pontos: </span>
-                <span className="text-yellow-400 font-bold">{points}</span>
+                <span className="text-yellow-400 font-bold">{profile.points || 0}</span>
               </div>
             </div>
           </div>

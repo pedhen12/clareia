@@ -7,37 +7,51 @@ import { useAuth } from './useAuth';
 export function useCompletedLessons() {
   const { user, isAuthenticated } = useAuth();
   const [completedLessons, setCompletedLessons] = useState<string[]>([]);
+  const [studyDays, setStudyDays] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Load completed lessons
+  // Load completed lessons and study days
   useEffect(() => {
     if (!isAuthenticated || !user) {
       // Fallback to localStorage
       const progress = JSON.parse(localStorage.getItem("user_progress") || "{}");
       setCompletedLessons(progress.completedLessons || []);
+      setStudyDays(progress.studyDays || []);
       setLoading(false);
       return;
     }
 
-    async function loadCompletedLessons() {
+    async function loadData() {
       try {
-        const { data, error } = await supabase
+        // Load completed lessons
+        const { data: lessonsData, error: lessonsError } = await supabase
           .from('completed_lessons')
           .select('lesson_id')
           .eq('user_id', user!.id);
 
-        if (error) throw error;
+        if (lessonsError) throw lessonsError;
 
-        const lessonIds = data?.map(item => item.lesson_id) || [];
+        const lessonIds = lessonsData?.map(item => item.lesson_id) || [];
         setCompletedLessons(lessonIds);
+
+        // Load study days
+        const { data: daysData, error: daysError } = await supabase
+          .from('study_days')
+          .select('study_date')
+          .eq('user_id', user!.id);
+
+        if (daysError) throw daysError;
+
+        const days = daysData?.map(item => item.study_date) || [];
+        setStudyDays(days);
       } catch (err) {
-        console.error('Error loading completed lessons:', err);
+        console.error('Error loading data:', err);
       } finally {
         setLoading(false);
       }
     }
 
-    loadCompletedLessons();
+    loadData();
   }, [user, isAuthenticated]);
 
   // Mark lesson as completed
@@ -112,6 +126,7 @@ export function useCompletedLessons() {
 
   return {
     completedLessons,
+    studyDays,
     loading,
     completeLesson,
     isLessonCompleted,
