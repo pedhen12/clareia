@@ -1,12 +1,16 @@
 "use client";
 
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { createClient } from '@supabase/supabase-js';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import Image from 'next/image';
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+);
 
 export default function AuthButton() {
-  const supabase = createClientComponentClient();
-  const router = useRouter();
   const [loading, setLoading] = useState(false);
 
   const handleSignIn = async () => {
@@ -31,11 +35,6 @@ export default function AuthButton() {
     } finally {
       setLoading(false);
     }
-  };
-
-  const handleSignOut = async () => {
-    await supabase.auth.signOut();
-    router.refresh();
   };
 
   return (
@@ -75,7 +74,6 @@ interface UserMenuProps {
 }
 
 export function UserMenu({ user }: UserMenuProps) {
-  const supabase = createClientComponentClient();
   const router = useRouter();
   const [showMenu, setShowMenu] = useState(false);
 
@@ -92,7 +90,7 @@ export function UserMenu({ user }: UserMenuProps) {
         className="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 px-3 py-2 rounded-lg transition-colors"
       >
         {user.avatar_url ? (
-          <img src={user.avatar_url} alt={user.name} className="w-8 h-8 rounded-full" />
+          <Image src={user.avatar_url} alt={user.name || 'User'} width={32} height={32} className="w-8 h-8 rounded-full" />
         ) : (
           <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
             {user.name?.charAt(0) || user.email?.charAt(0) || '?'}
