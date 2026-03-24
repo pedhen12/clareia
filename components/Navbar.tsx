@@ -3,10 +3,13 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
+import { useAuth } from '@/hooks/useAuth';
+import { UserMenu } from '@/components/AuthButton';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const { user, isAuthenticated, loading } = useAuth();
 
   const isActive = (href: string) => {
     if (href === '/') return pathname === '/';
@@ -43,9 +46,23 @@ export default function Navbar() {
           <Link href="/ranking" className={getLinkClasses("/ranking")}>
             Ranking
           </Link>
-          <Link href="/perfil" className={getLinkClasses("/perfil")}>
-            👤 Perfil
-          </Link>
+          
+          {/* Auth-based menu */}
+          {!loading && (
+            <>
+              {isAuthenticated && user ? (
+                <UserMenu user={{
+                  email: user.email,
+                  name: user.user_metadata?.name || user.email?.split('@')[0],
+                  avatar_url: user.user_metadata?.avatar_url
+                }} />
+              ) : (
+                <Link href="/login" className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition-colors">
+                  Entrar
+                </Link>
+              )}
+            </>
+          )}
         </div>
 
         {/* Mobile Menu Button */}
@@ -134,18 +151,32 @@ export default function Navbar() {
               <span className="text-2xl">🏆</span>
               <span className="text-sm font-medium">Ranking</span>
             </Link>
-            <Link
-              href="/perfil"
-              className={`flex flex-col items-center gap-2 p-4 rounded-lg transition-colors ${
-                isActive("/perfil")
-                  ? "bg-blue-600 text-white"
-                  : "bg-slate-800 text-slate-300 hover:bg-slate-700"
-              }`}
-              onClick={() => setIsOpen(false)}
-            >
-              <span className="text-2xl">👤</span>
-              <span className="text-sm font-medium">Perfil</span>
-            </Link>
+            
+            {!loading && (
+              isAuthenticated ? (
+                <Link
+                  href="/perfil"
+                  className={`flex flex-col items-center gap-2 p-4 rounded-lg transition-colors ${
+                    isActive("/perfil")
+                      ? "bg-blue-600 text-white"
+                      : "bg-slate-800 text-slate-300 hover:bg-slate-700"
+                  }`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  <span className="text-2xl">👤</span>
+                  <span className="text-sm font-medium">Perfil</span>
+                </Link>
+              ) : (
+                <Link
+                  href="/login"
+                  className="flex flex-col items-center gap-2 p-4 rounded-lg transition-colors bg-blue-600 text-white hover:bg-blue-700"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <span className="text-2xl">🔐</span>
+                  <span className="text-sm font-medium">Entrar</span>
+                </Link>
+              )
+            )}
           </div>
         </div>
       )}
