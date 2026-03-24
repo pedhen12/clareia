@@ -127,6 +127,18 @@ export default function RootLayout({
                   <p className="text-slate-400 text-sm mb-4">
                     Clareia é uma plataforma educacional desenvolvida para tornar o aprendizado mais interativo e divertido.
                   </p>
+                  <ul className="space-y-2 text-sm text-slate-400">
+                    <li>
+                      <a href="/termos" className="hover:text-blue-400 transition-colors">
+                        Termos de Uso
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/privacidade" className="hover:text-blue-400 transition-colors">
+                        Política de Privacidade
+                      </a>
+                    </li>
+                  </ul>
                 </div>
               </div>
 

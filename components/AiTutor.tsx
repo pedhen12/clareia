@@ -20,6 +20,7 @@ export function AiTutor() {
   const [lastUserMessage, setLastUserMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [apiConfigured, setApiConfigured] = useState(true);
+  const [rateLimit, setRateLimit] = useState({ remaining: 10, limit: 10, reset: "" });
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const messagesContainerRef = useRef<HTMLDivElement>(null);
 
@@ -37,21 +38,6 @@ export function AiTutor() {
     e.preventDefault();
     if (!input.trim() || loading) return;
 
-    // Check daily limit
-    const today = new Date().toDateString();
-    const stored = JSON.parse(localStorage.getItem("tutor_usage") || "{}");
-    if (stored.date === today && stored.count >= 10) {
-      setMessages(prev => [...prev, {
-        role: "assistant",
-        content: "Você atingiu o limite de 10 perguntas por dia. Volte amanhã para continuar aprendendo! 📚"
-      }]);
-      return;
-    }
-    localStorage.setItem("tutor_usage", JSON.stringify({
-      date: today,
-      count: (stored.date === today ? stored.count : 0) + 1
-    }));
-
     const userMessage: Message = { role: "user", content: input };
     setLastUserMessage(input);
     setMessages((prev) => [...prev, userMessage]);
@@ -67,6 +53,34 @@ export function AiTutor() {
         }),
       });
 
+      // Update rate limit info from headers
+      const rateLimitRemaining = response.headers.get('X-RateLimit-Remaining');
+      const rateLimitLimit = response.headers.get('X-RateLimit-Limit');
+      const rateLimitReset = response.headers.get('X-RateLimit-Reset');
+      
+      if (rateLimitRemaining && rateLimitLimit && rateLimitReset) {
+        setRateLimit({
+          remaining: parseInt(rateLimitRemaining),
+          limit: parseInt(rateLimitLimit),
+          reset: rateLimitReset,
+        });
+      }
+
+      if (response.status === 429) {
+        const errorData = await response.json();
+        const resetDate = new Date(errorData.resetAt);
+        const resetTime = resetDate.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+        
+        setMessages((prev) => [
+          ...prev,
+          {
+            role: "assistant",
+            content: `Você atingiu o limite de ${rateLimit.limit} perguntas por hora. Tente novamente às ${resetTime}. 📚`,
+          },
+        ]);
+        return;
+      }
+
       if (response.status === 503) {
         setApiConfigured(false);
         setMessages((prev) => [
@@ -81,7 +95,8 @@ export function AiTutor() {
       }
 
       if (!response.ok) {
-        throw new Error("Failed to get response");
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Failed to get response");
       }
 
       const data = await response.json();
@@ -93,7 +108,7 @@ export function AiTutor() {
         {
           role: "assistant",
           content:
-            "Ops! O tutor está indisponível. Tente novamente em alguns segundos.",
+            error instanceof Error ? error.message : "Ops! O tutor está indisponível. Tente novamente em alguns segundos.",
         },
       ]);
     } finally {
@@ -135,23 +150,40 @@ export function AiTutor() {
 
       {/* Input */}
       {apiConfigured ? (
-        <form onSubmit={handleSubmit} className="flex gap-2">
-          <input
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Faça uma pergunta..."
-            className="flex-1 bg-slate-700 border border-slate-600 rounded-lg px-4 py-2 text-white placeholder-slate-400 focus:outline-none focus:border-blue-500"
-            disabled={loading}
-          />
-          <button
-            type="submit"
-            disabled={loading || !input.trim()}
-            className="bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold px-4 py-2 rounded-lg transition-colors"
-          >
-            Enviar
-          </button>
-        </form>
+        <>
+          {/* Rate limit indicator */}
+          {rateLimit.remaining < rateLimit.limit && (
+            <div className="mb-2 text-xs text-slate-400 text-right">
+              {rateLimit.remaining > 0 ? (
+                <span>
+                  {rateLimit.remaining} de {rateLimit.limit} perguntas restantes nesta hora
+                </span>
+              ) : (
+                <span className="text-yellow-400">
+                  Limite atingido. Aguarde para fazer mais perguntas.
+                </span>
+              )}
+            </div>
+          )}
+          
+          <form onSubmit={handleSubmit} className="flex gap-2">
+            <input
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="Faça uma pergunta..."
+              className="flex-1 bg-slate-700 border border-slate-600 rounded-lg px-4 py-2 text-white placeholder-slate-400 focus:outline-none focus:border-blue-500"
+              disabled={loading}
+            />
+            <button
+              type="submit"
+              disabled={loading || !input.trim()}
+              className="bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold px-4 py-2 rounded-lg transition-colors"
+            >
+              Enviar
+            </button>
+          </form>
+        </>
       ) : (
         <div className="bg-yellow-900/30 border border-yellow-700 rounded-lg p-3 text-yellow-400 text-sm">
           O assistente de IA não está disponível. Configure a chave API Groq
