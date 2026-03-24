@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { data } from "@/lib/data";
 import { useState } from "react";
+import { useQuizAttempts } from "@/hooks/useQuizAttempts";
 
 const subjectInfo = {
   matematica: { name: "Matemática", icon: "📐" },
@@ -26,6 +27,7 @@ export default function QuizPage() {
   const lessonId = params.lesson as string;
   const info = subjectInfo[subject as keyof typeof subjectInfo];
 
+  const { saveQuizAttempt } = useQuizAttempts();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<number[]>([]);
   const [showResults, setShowResults] = useState(false);
@@ -72,7 +74,7 @@ export default function QuizPage() {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     let correctCount = 0;
     quizzes.forEach((quiz, index) => {
       if (selectedAnswers[index] === quiz.correctAnswer) {
@@ -83,15 +85,8 @@ export default function QuizPage() {
     setScore(percentage);
     setShowResults(true);
 
-    // Save to localStorage
-    const progress = JSON.parse(localStorage.getItem("user_progress") || "{}");
-    if (!progress.completedQuizzes) progress.completedQuizzes = [];
-    if (!progress.completedQuizzes.includes(lessonId)) {
-      progress.completedQuizzes.push(lessonId);
-      const points = percentage >= 70 ? 100 : percentage >= 50 ? 50 : 0;
-      progress.points = (progress.points || 0) + points;
-      localStorage.setItem("user_progress", JSON.stringify(progress));
-    }
+    // Save quiz attempt to Supabase
+    await saveQuizAttempt(lessonId, correctCount, quizzes.length);
   };
 
   if (quizzes.length === 0) {

@@ -6,6 +6,7 @@ import { data } from "@/lib/data";
 import { useEffect, useState } from "react";
 import PomodoroTimer from "@/components/PomodoroTimer";
 import AchievementToast from "@/components/AchievementToast";
+import { useCompletedLessons } from "@/hooks/useCompletedLessons";
 
 const subjectInfo = {
   matematica: { name: "Matemática", icon: "📐" },
@@ -22,7 +23,7 @@ export default function LessonPage() {
   const lessonId = params.lesson as string;
   const info = subjectInfo[subject as keyof typeof subjectInfo];
 
-  const [isCompleted, setIsCompleted] = useState(false);
+  const { completedLessons, completeLesson, isLessonCompleted } = useCompletedLessons();
   const [videoError, setVideoError] = useState(false);
   const [showAchievement, setShowAchievement] = useState(false);
   const [achievementMessage, setAchievementMessage] = useState("");
@@ -33,11 +34,7 @@ export default function LessonPage() {
   const currentIndex = lessons.findIndex((l) => l.id === lessonId);
   const relatedLessons = lessons.slice(currentIndex + 1, currentIndex + 4);
 
-  useEffect(() => {
-    // Check if lesson is completed
-    const progress = JSON.parse(localStorage.getItem("user_progress") || "{}");
-    setIsCompleted(progress.completedLessons?.includes(lessonId) || false);
-  }, [lessonId]);
+  const isCompleted = isLessonCompleted(lessonId);
 
   useEffect(() => {
     // Save last visited lesson
@@ -47,28 +44,12 @@ export default function LessonPage() {
     }
   }, [subject, grade, lessonId, lesson]);
 
-  const handleLessonComplete = () => {
-    const progress = JSON.parse(localStorage.getItem("user_progress") || "{}");
-    if (!progress.completedLessons) progress.completedLessons = [];
-    if (!progress.completedLessons.includes(lessonId)) {
-      progress.completedLessons.push(lessonId);
-      
-      // Track study day for streak
-      const today = new Date().toISOString().split('T')[0];
-      if (!progress.studyDays) progress.studyDays = [];
-      if (!progress.studyDays.includes(today)) {
-        progress.studyDays.push(today);
-      }
-      
-      // Add points
-      if (!progress.points) progress.points = 0;
-      progress.points += 10;
-      
-      localStorage.setItem("user_progress", JSON.stringify(progress));
-      setIsCompleted(true);
-      
+  const handleLessonComplete = async () => {
+    const result = await completeLesson(lessonId);
+    
+    if (result.success && !result.alreadyCompleted) {
       // Check for achievements
-      const completedCount = progress.completedLessons.length;
+      const completedCount = completedLessons.length + 1; // +1 because state hasn't updated yet
       if (completedCount === 1) {
         setAchievementMessage("Primeira aula concluída! 🎓");
         setShowAchievement(true);
