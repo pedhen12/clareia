@@ -134,9 +134,9 @@ export const data: SubjectGrade[] = [
       {
         id: "port-6-2",
         title: "Verbos",
-        description: "Aprenda sobre verbos",
-        videoId: "0p6Qsye4bTA",
-        duration: 11,
+        description: "Aprenda sobre verbos com Eduardo Gafa",
+        videoId: "PDB-6uA2OE8",
+        duration: 15,
       },
       {
         id: "port-6-3",
@@ -377,8 +377,8 @@ export const data: SubjectGrade[] = [
         id: "eng-6-3",
         title: "Family Members",
         description: "Membros da família em inglês",
-        videoId: "0DD7UVY3aOA",
-        duration: 9,
+        videoId: "m6eF1af6LqA",
+        duration: 12,
       },
       {
         id: "eng-6-4",
@@ -523,9 +523,9 @@ export const data: SubjectGrade[] = [
       {
         id: "port-7-1",
         title: "Verbos - Tempos Verbais",
-        description: "Presente, passado e futuro - conjugação de verbos",
-        videoId: "0p6Qsye4bTA",
-        duration: 14,
+        description: "Presente, passado e futuro - conjugação de verbos com Eduardo Gafa",
+        videoId: "Yhhvu3DqnPY",
+        duration: 16,
       },
       {
         id: "port-7-2",
@@ -1290,8 +1290,8 @@ export const data: SubjectGrade[] = [
         id: "eng-7-3",
         title: "Phrasal Verbs",
         description: "Common phrasal verbs and their meanings",
-        videoId: "0DD7UVY3aOA",
-        duration: 10,
+        videoId: "HzCVOyP6wg0",
+        duration: 14,
       },
     ],
     quizzes: [
@@ -1353,8 +1353,8 @@ export const data: SubjectGrade[] = [
         id: "eng-8-3",
         title: "Passive Voice",
         description: "Formation and use of passive voice",
-        videoId: "0DD7UVY3aOA",
-        duration: 12,
+        videoId: "8bKJj2BFe94",
+        duration: 15,
       },
     ],
     quizzes: [
@@ -1416,8 +1416,8 @@ export const data: SubjectGrade[] = [
         id: "eng-9-3",
         title: "Listening Comprehension",
         description: "Strategies for improving listening skills",
-        videoId: "0DD7UVY3aOA",
-        duration: 12,
+        videoId: "m6eF1af6LqA",
+        duration: 13,
       },
     ],
     quizzes: [

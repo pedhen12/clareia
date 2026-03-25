@@ -104,15 +104,16 @@ export default function LessonPage() {
           <div className="bg-slate-800 border border-slate-700 rounded-lg overflow-hidden mb-6">
             <div className="aspect-video bg-black">
               {videoError ? (
-                <div className="w-full h-full flex items-center justify-center flex-col gap-4 p-6 text-center">
-                  <p className="text-slate-400">Vídeo temporariamente indisponível. Tente assistir diretamente no YouTube.</p>
+                <div className="aspect-video bg-slate-900 flex flex-col items-center justify-center gap-4">
+                  <div className="text-5xl">📺</div>
+                  <p className="text-white font-bold">Vídeo indisponível no player</p>
                   <a 
                     href={`https://youtube.com/watch?v=${lesson.videoId}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-3 rounded-lg transition-colors"
+                    className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition-colors"
                   >
-                    Abrir no YouTube →
+                    Assistir no YouTube →
                   </a>
                 </div>
               ) : (
@@ -128,14 +129,14 @@ export default function LessonPage() {
                 ></iframe>
               )}
             </div>
-            <div className="mt-2 text-center py-2">
+            <div className="text-center mt-2">
               <a 
                 href={`https://youtube.com/watch?v=${lesson.videoId}`} 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-slate-500 text-xs hover:text-blue-400 transition-colors"
               >
-                Abrir no YouTube →
+                📺 Abrir no YouTube →
               </a>
             </div>
           </div>
