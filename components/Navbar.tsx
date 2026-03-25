@@ -72,6 +72,9 @@ export default function Navbar() {
           <Link href="/anotacoes" className={getLinkClasses("/anotacoes")}>
             📝 Anotações
           </Link>
+          <Link href="/upload-pdf" className={getLinkClasses("/upload-pdf")}>
+            📚 Upload PDF
+          </Link>
           <Link href="/tutor" className={getLinkClasses("/tutor")}>
             Tutor de IA
           </Link>
