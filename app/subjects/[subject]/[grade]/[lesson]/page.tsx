@@ -28,6 +28,8 @@ export default function LessonPage() {
   const [showAchievement, setShowAchievement] = useState(false);
   const [achievementMessage, setAchievementMessage] = useState("");
   const [isFavorite, setIsFavorite] = useState(false);
+  const [note, setNote] = useState("");
+  const [notesSaved, setNotesSaved] = useState(false);
 
   const subjectData = data.find((d) => d.subject === subject && d.grade === grade);
   const lesson = subjectData?.lessons.find((l) => l.id === lessonId);
@@ -59,6 +61,17 @@ export default function LessonPage() {
     // Check if lesson is favorited
     const favIds = JSON.parse(localStorage.getItem('favorite_lessons') || '[]');
     setIsFavorite(favIds.includes(lessonId));
+    
+    // Load existing note
+    const savedNote = localStorage.getItem(`note_${lessonId}`);
+    if (savedNote) {
+      try {
+        const noteData = JSON.parse(savedNote);
+        setNote(noteData.content || '');
+      } catch (e) {
+        console.error('Error loading note:', e);
+      }
+    }
   }, [subject, grade, lessonId, lesson]);
 
   const toggleFavorite = () => {
@@ -74,13 +87,62 @@ export default function LessonPage() {
     localStorage.setItem('favorite_lessons', JSON.stringify(updated));
   };
 
+  const saveNote = () => {
+    if (!lesson) return;
+    
+    const noteData = {
+      lessonId,
+      lessonTitle: lesson.title,
+      subject,
+      grade,
+      content: note,
+      timestamp: Date.now(),
+    };
+    
+    localStorage.setItem(`note_${lessonId}`, JSON.stringify(noteData));
+    setNotesSaved(true);
+    setTimeout(() => setNotesSaved(false), 2000);
+  };
+
   const handleLessonComplete = async () => {
     const result = await completeLesson(lessonId);
     
     if (result.success && !result.alreadyCompleted) {
       // Check for achievements
-      const completedCount = completedLessons.length + 1; // +1 because state hasn't updated yet
-      if (completedCount === 1) {
+      const completedCount = completedLessons.length + 1;
+      
+      // Import and check achievements
+      const { checkNewAchievements } = await import('@/lib/achievements');
+      const profile = JSON.parse(localStorage.getItem('user_profile') || '{}');
+      const studyDays = JSON.parse(localStorage.getItem('study_days') || '[]');
+      
+      // Calculate streak
+      let streak = 0;
+      if (studyDays.length > 0) {
+        const sortedDays = [...studyDays].sort().reverse();
+        for (let i = 0; i < sortedDays.length; i++) {
+          const expectedDate = new Date();
+          expectedDate.setDate(expectedDate.getDate() - i);
+          const expectedDateStr = expectedDate.toISOString().split('T')[0];
+          if (sortedDays[i] === expectedDateStr) {
+            streak++;
+          } else {
+            break;
+          }
+        }
+      }
+      
+      const newAchievements = checkNewAchievements({
+        completedLessons: completedCount,
+        streak,
+        quizzesTaken: 0,
+        points: profile.points || 0,
+      });
+      
+      if (newAchievements.length > 0) {
+        setAchievementMessage(`🏆 Nova conquista: ${newAchievements[0].title}!`);
+        setShowAchievement(true);
+      } else if (completedCount === 1) {
         setAchievementMessage("Primeira aula concluída! 🎓");
         setShowAchievement(true);
       } else if (completedCount === 5) {
@@ -88,12 +150,6 @@ export default function LessonPage() {
         setShowAchievement(true);
       } else if (completedCount === 10) {
         setAchievementMessage("10 aulas concluídas! Você está arrasando! 🔥");
-        setShowAchievement(true);
-      } else if (completedCount === 25) {
-        setAchievementMessage("25 aulas! Você é um mestre! 👑");
-        setShowAchievement(true);
-      } else if (completedCount % 10 === 0) {
-        setAchievementMessage(`${completedCount} aulas concluídas! Incrível! 🎉`);
         setShowAchievement(true);
       }
     }
@@ -214,6 +270,36 @@ export default function LessonPage() {
             >
               Ir para Quiz →
             </Link>
+          </div>
+
+          {/* Notes Section */}
+          <div className="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-xl font-bold text-white">✍️ Anotações</h2>
+              {notesSaved && (
+                <span className="text-green-400 text-sm">Salvo!</span>
+              )}
+            </div>
+            <textarea
+              value={note}
+              onChange={(e) => setNote(e.target.value)}
+              placeholder="Anote os pontos importantes desta aula..."
+              className="w-full bg-slate-900/50 border border-slate-600 rounded-lg p-4 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all min-h-[120px] resize-y"
+            />
+            <div className="flex gap-3 mt-3">
+              <button
+                onClick={saveNote}
+                className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-lg transition-colors"
+              >
+                Salvar Anotação
+              </button>
+              <Link
+                href="/anotacoes"
+                className="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white font-medium rounded-lg transition-colors"
+              >
+                Ver Todas
+              </Link>
+            </div>
           </div>
         </div>
 

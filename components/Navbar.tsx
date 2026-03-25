@@ -60,6 +60,12 @@ export default function Navbar() {
           <Link href="/favoritas" className={getLinkClasses("/favoritas")}>
             ❤️ Favoritas
           </Link>
+          <Link href="/conquistas" className={getLinkClasses("/conquistas")}>
+            🏆 Conquistas
+          </Link>
+          <Link href="/anotacoes" className={getLinkClasses("/anotacoes")}>
+            📝 Anotações
+          </Link>
           <Link href="/tutor" className={getLinkClasses("/tutor")}>
             Tutor de IA
           </Link>
@@ -167,6 +173,18 @@ export default function Navbar() {
             >
               <span className="text-2xl">❤️</span>
               <span className="text-sm font-medium">Favoritas</span>
+            </Link>
+            <Link
+              href="/conquistas"
+              className={`flex flex-col items-center gap-2 p-4 rounded-lg transition-colors ${
+                isActive("/conquistas")
+                  ? "bg-blue-600 text-white"
+                  : "bg-slate-800 text-slate-300 hover:bg-slate-700"
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              <span className="text-2xl">🏆</span>
+              <span className="text-sm font-medium">Conquistas</span>
             </Link>
             <Link
               href="/tutor"
