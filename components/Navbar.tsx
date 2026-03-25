@@ -53,7 +53,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-6">
           <Link href="/" className={getLinkClasses("/")}>
             Home
           </Link>
@@ -63,30 +63,21 @@ export default function Navbar() {
           <Link href="/search" className={getLinkClasses("/search")}>
             🔍 Buscar
           </Link>
-          <Link href="/favoritas" className={getLinkClasses("/favoritas")}>
-            ❤️ Favoritas
-          </Link>
-          <Link href="/conquistas" className={getLinkClasses("/conquistas")}>
-            🏆 Conquistas
-          </Link>
-          <Link href="/anotacoes" className={getLinkClasses("/anotacoes")}>
-            📝 Anotações
+          <Link href="/tutor" className={getLinkClasses("/tutor")}>
+            🤖 IA
           </Link>
           <Link href="/upload-pdf" className={getLinkClasses("/upload-pdf")}>
-            📚 Upload PDF
+            📚 PDF
           </Link>
-          <Link href="/tutor" className={getLinkClasses("/tutor")}>
-            Tutor de IA
-          </Link>
-          <Link href="/ranking" className={getLinkClasses("/ranking")}>
-            Ranking
+          <Link href="/perfil" className={getLinkClasses("/perfil")}>
+            👤 Perfil
           </Link>
           
           {/* Theme Toggle */}
           {mounted && (
             <button 
               onClick={toggleTheme}
-              className="p-2 rounded-lg text-slate-400 hover:text-white transition-colors"
+              className="p-2 rounded-lg text-slate-400 hover:text-white transition-colors text-xl"
               title={theme === 'dark' ? 'Modo claro' : 'Modo escuro'}
             >
               {theme === 'dark' ? '☀️' : '🌙'}
@@ -174,30 +165,6 @@ export default function Navbar() {
               <span className="text-sm font-medium">Buscar</span>
             </Link>
             <Link
-              href="/favoritas"
-              className={`flex flex-col items-center gap-2 p-4 rounded-lg transition-colors ${
-                isActive("/favoritas")
-                  ? "bg-blue-600 text-white"
-                  : "bg-slate-800 text-slate-300 hover:bg-slate-700"
-              }`}
-              onClick={() => setIsOpen(false)}
-            >
-              <span className="text-2xl">❤️</span>
-              <span className="text-sm font-medium">Favoritas</span>
-            </Link>
-            <Link
-              href="/conquistas"
-              className={`flex flex-col items-center gap-2 p-4 rounded-lg transition-colors ${
-                isActive("/conquistas")
-                  ? "bg-blue-600 text-white"
-                  : "bg-slate-800 text-slate-300 hover:bg-slate-700"
-              }`}
-              onClick={() => setIsOpen(false)}
-            >
-              <span className="text-2xl">🏆</span>
-              <span className="text-sm font-medium">Conquistas</span>
-            </Link>
-            <Link
               href="/tutor"
               className={`flex flex-col items-center gap-2 p-4 rounded-lg transition-colors ${
                 isActive("/tutor")
@@ -207,45 +174,42 @@ export default function Navbar() {
               onClick={() => setIsOpen(false)}
             >
               <span className="text-2xl">🤖</span>
-              <span className="text-sm font-medium">Tutor IA</span>
+              <span className="text-sm font-medium">IA</span>
             </Link>
             <Link
-              href="/ranking"
+              href="/upload-pdf"
               className={`flex flex-col items-center gap-2 p-4 rounded-lg transition-colors ${
-                isActive("/ranking")
+                isActive("/upload-pdf")
                   ? "bg-blue-600 text-white"
                   : "bg-slate-800 text-slate-300 hover:bg-slate-700"
               }`}
               onClick={() => setIsOpen(false)}
             >
-              <span className="text-2xl">🏆</span>
-              <span className="text-sm font-medium">Ranking</span>
+              <span className="text-2xl">📄</span>
+              <span className="text-sm font-medium">PDF</span>
+            </Link>
+            <Link
+              href="/perfil"
+              className={`flex flex-col items-center gap-2 p-4 rounded-lg transition-colors ${
+                isActive("/perfil")
+                  ? "bg-blue-600 text-white"
+                  : "bg-slate-800 text-slate-300 hover:bg-slate-700"
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              <span className="text-2xl">👤</span>
+              <span className="text-sm font-medium">Perfil</span>
             </Link>
             
-            {!loading && (
-              isAuthenticated ? (
-                <Link
-                  href="/perfil"
-                  className={`flex flex-col items-center gap-2 p-4 rounded-lg transition-colors ${
-                    isActive("/perfil")
-                      ? "bg-blue-600 text-white"
-                      : "bg-slate-800 text-slate-300 hover:bg-slate-700"
-                  }`}
-                  onClick={() => setIsOpen(false)}
-                >
-                  <span className="text-2xl">👤</span>
-                  <span className="text-sm font-medium">Perfil</span>
-                </Link>
-              ) : (
-                <Link
-                  href="/login"
-                  className="flex flex-col items-center gap-2 p-4 rounded-lg transition-colors bg-blue-600 text-white hover:bg-blue-700"
-                  onClick={() => setIsOpen(false)}
-                >
-                  <span className="text-2xl">🔐</span>
-                  <span className="text-sm font-medium">Entrar</span>
-                </Link>
-              )
+            {!loading && !isAuthenticated && (
+              <Link
+                href="/login"
+                className="flex flex-col items-center gap-2 p-4 rounded-lg transition-colors bg-blue-600 text-white hover:bg-blue-700"
+                onClick={() => setIsOpen(false)}
+              >
+                <span className="text-2xl">🔐</span>
+                <span className="text-sm font-medium">Entrar</span>
+              </Link>
             )}
           </div>
         </div>
