@@ -9,23 +9,29 @@ import { UserMenu } from '@/components/AuthButton';
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [theme, setTheme] = useState('dark');
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
   const { user, isAuthenticated, loading } = useAuth();
 
   // Load theme on mount
   useEffect(() => {
+    setMounted(true);
     if (typeof window !== 'undefined') {
       const savedTheme = localStorage.getItem('theme') || 'dark';
       setTheme(savedTheme);
-      document.documentElement.className = savedTheme;
+      document.documentElement.classList.remove('light', 'dark');
+      document.documentElement.classList.add(savedTheme);
     }
   }, []);
 
   const toggleTheme = () => {
+    if (typeof window === 'undefined') return;
+    
     const newTheme = theme === 'dark' ? 'light' : 'dark';
     setTheme(newTheme);
     localStorage.setItem('theme', newTheme);
-    document.documentElement.className = newTheme;
+    document.documentElement.classList.remove('light', 'dark');
+    document.documentElement.classList.add(newTheme);
   };
 
   const isActive = (href: string) => {
@@ -74,13 +80,15 @@ export default function Navbar() {
           </Link>
           
           {/* Theme Toggle */}
-          <button 
-            onClick={toggleTheme}
-            className="p-2 rounded-lg text-slate-400 hover:text-white transition-colors"
-            title={theme === 'dark' ? 'Modo claro' : 'Modo escuro'}
-          >
-            {theme === 'dark' ? '☀️' : '🌙'}
-          </button>
+          {mounted && (
+            <button 
+              onClick={toggleTheme}
+              className="p-2 rounded-lg text-slate-400 hover:text-white transition-colors"
+              title={theme === 'dark' ? 'Modo claro' : 'Modo escuro'}
+            >
+              {theme === 'dark' ? '☀️' : '🌙'}
+            </button>
+          )}
           
           {/* Auth-based menu */}
           {!loading && (
