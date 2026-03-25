@@ -113,9 +113,33 @@ export default function Home() {
       <div className="max-w-7xl mx-auto px-4 py-12">
         <ProgressBar />
 
+        {/* Concursos CTA - Novo */}
+        <Link href="/concursos" className="block mb-8 mt-8">
+          <div className="bg-gradient-to-r from-yellow-600 via-purple-600 to-green-600 hover:from-yellow-700 hover:via-purple-700 hover:to-green-700 rounded-xl p-8 transition-all duration-300 shadow-2xl hover:shadow-3xl border border-yellow-500/50">
+            <div className="flex flex-col md:flex-row items-center gap-6">
+              <div className="text-7xl">🎓</div>
+              <div className="flex-1 text-center md:text-left">
+                <h3 className="text-3xl font-bold text-white mb-2">
+                  Preparação para Concursos & Vestibulares
+                </h3>
+                <p className="text-white/90 mb-4">
+                  Estude para ENEM, vestibulares e concursos públicos com videoaulas, questões e simulados
+                </p>
+                <div className="flex flex-wrap gap-2 justify-center md:justify-start">
+                  <span className="bg-white/20 px-3 py-1 rounded-full text-sm text-white">📺 Videoaulas</span>
+                  <span className="bg-white/20 px-3 py-1 rounded-full text-sm text-white">📝 Questões</span>
+                  <span className="bg-white/20 px-3 py-1 rounded-full text-sm text-white">⏱️ Simulados</span>
+                  <span className="bg-white/20 px-3 py-1 rounded-full text-sm text-white">📄 Materiais</span>
+                </div>
+              </div>
+              <div className="text-white font-bold text-xl">→</div>
+            </div>
+          </div>
+        </Link>
+
         {/* Personalized Greeting */}
         {profile?.name && (
-          <div className="bg-gradient-to-r from-blue-900/50 to-purple-900/50 border border-blue-700/50 rounded-lg p-6 mb-8 mt-8">
+          <div className="bg-gradient-to-r from-blue-900/50 to-purple-900/50 border border-blue-700/50 rounded-lg p-6 mb-8">
             <h2 className="text-2xl font-bold text-white mb-2">
               Olá, {profile.name}! 👋
             </h2>

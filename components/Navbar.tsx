@@ -60,14 +60,14 @@ export default function Navbar() {
           <Link href="/subjects" className={getLinkClasses("/subjects")}>
             Matérias
           </Link>
+          <Link href="/concursos" className={getLinkClasses("/concursos")}>
+            🎓 Concursos
+          </Link>
           <Link href="/search" className={getLinkClasses("/search")}>
             🔍 Buscar
           </Link>
           <Link href="/tutor" className={getLinkClasses("/tutor")}>
             🤖 IA
-          </Link>
-          <Link href="/upload-pdf" className={getLinkClasses("/upload-pdf")}>
-            📚 PDF
           </Link>
           <Link href="/perfil" className={getLinkClasses("/perfil")}>
             👤 Perfil
@@ -151,6 +151,18 @@ export default function Navbar() {
             >
               <span className="text-2xl">📚</span>
               <span className="text-sm font-medium">Matérias</span>
+            </Link>
+            <Link
+              href="/concursos"
+              className={`flex flex-col items-center gap-2 p-4 rounded-lg transition-colors ${
+                isActive("/concursos")
+                  ? "bg-blue-600 text-white"
+                  : "bg-slate-800 text-slate-300 hover:bg-slate-700"
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              <span className="text-2xl">🎓</span>
+              <span className="text-sm font-medium">Concursos</span>
             </Link>
             <Link
               href="/search"
