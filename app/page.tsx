@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { ProgressBar } from "@/components/ProgressBar";
 import { useProfile } from "@/hooks/useProfile";
 import { useCompletedLessons } from "@/hooks/useCompletedLessons";
@@ -40,15 +41,21 @@ const subjectInfo = {
 };
 
 export default function Home() {
+  const router = useRouter();
   const { profile } = useProfile();
   const { completedLessons } = useCompletedLessons();
   const [lastLesson, setLastLesson] = useState("");
   const [lastLessonTitle, setLastLessonTitle] = useState("");
 
   useEffect(() => {
+    const userProfile = localStorage.getItem("user_profile");
+    if (!userProfile) {
+      router.push("/onboarding");
+      return;
+    }
     setLastLesson(localStorage.getItem("last_lesson") || "");
     setLastLessonTitle(localStorage.getItem("last_lesson_title") || "");
-  }, []);
+  }, [router]);
 
   const subjects = [
     "matematica",

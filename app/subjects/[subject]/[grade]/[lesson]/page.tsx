@@ -27,6 +27,7 @@ export default function LessonPage() {
   const [videoError, setVideoError] = useState(false);
   const [showAchievement, setShowAchievement] = useState(false);
   const [achievementMessage, setAchievementMessage] = useState("");
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const subjectData = data.find((d) => d.subject === subject && d.grade === grade);
   const lesson = subjectData?.lessons.find((l) => l.id === lessonId);
@@ -41,8 +42,37 @@ export default function LessonPage() {
     if (lesson) {
       localStorage.setItem('last_lesson', `/subjects/${subject}/${grade}/${lessonId}`);
       localStorage.setItem('last_lesson_title', lesson.title);
+      
+      // Add to watch history
+      const history = JSON.parse(localStorage.getItem('watch_history') || '[]');
+      const newEntry = { 
+        lessonId, 
+        subject, 
+        grade, 
+        title: lesson.title, 
+        timestamp: Date.now() 
+      };
+      const updated = [newEntry, ...history.filter((h: { lessonId: string }) => h.lessonId !== lessonId)].slice(0, 10);
+      localStorage.setItem('watch_history', JSON.stringify(updated));
     }
+
+    // Check if lesson is favorited
+    const favIds = JSON.parse(localStorage.getItem('favorite_lessons') || '[]');
+    setIsFavorite(favIds.includes(lessonId));
   }, [subject, grade, lessonId, lesson]);
+
+  const toggleFavorite = () => {
+    const favIds = JSON.parse(localStorage.getItem('favorite_lessons') || '[]');
+    let updated;
+    if (favIds.includes(lessonId)) {
+      updated = favIds.filter((id: string) => id !== lessonId);
+      setIsFavorite(false);
+    } else {
+      updated = [...favIds, lessonId];
+      setIsFavorite(true);
+    }
+    localStorage.setItem('favorite_lessons', JSON.stringify(updated));
+  };
 
   const handleLessonComplete = async () => {
     const result = await completeLesson(lessonId);
@@ -92,10 +122,23 @@ export default function LessonPage() {
         >
           ← Voltar
         </Link>
-        <h1 className="text-4xl font-bold text-white mb-2">
-          {info?.icon} {lesson.title}
-        </h1>
-        <p className="text-slate-400">{lesson.description}</p>
+        <div className="flex items-start justify-between gap-4">
+          <div className="flex-1">
+            <h1 className="text-4xl font-bold text-white mb-2">
+              {info?.icon} {lesson.title}
+            </h1>
+            <p className="text-slate-400">{lesson.description}</p>
+          </div>
+          <button 
+            onClick={toggleFavorite}
+            className={`text-3xl transition-all transform hover:scale-110 ${
+              isFavorite ? 'text-red-500' : 'text-slate-500 hover:text-red-400'
+            }`}
+            title={isFavorite ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}
+          >
+            {isFavorite ? '❤️' : '🤍'}
+          </button>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

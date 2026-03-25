@@ -21,10 +21,15 @@ export default function PerfilPage() {
   const [tempName, setTempName] = useState("");
   const [tempGrade, setTempGrade] = useState("");
   const [showCopied, setShowCopied] = useState(false);
+  const [watchHistory, setWatchHistory] = useState<{ lessonId: string; subject: string; grade: string; title: string; timestamp: number }[]>([]);
 
   useEffect(() => {
     setTempName(profile?.name || "");
     setTempGrade(profile?.grade || "6º ano");
+    
+    // Load watch history
+    const history = JSON.parse(localStorage.getItem('watch_history') || '[]');
+    setWatchHistory(history.slice(0, 5));
   }, [profile]);
 
   const handleSaveProfile = async () => {
@@ -109,6 +114,30 @@ export default function PerfilPage() {
       };
     });
   };
+
+  const getLast7DaysProgress = () => {
+    const days = [];
+    const today = new Date();
+    
+    for (let i = 6; i >= 0; i--) {
+      const date = new Date(today);
+      date.setDate(date.getDate() - i);
+      const dateStr = date.toISOString().split('T')[0];
+      
+      // Count lessons completed on this day (would need timestamps, using presence for now)
+      const count = studyDays.filter(d => d === dateStr).length || (studyDays.includes(dateStr) ? 1 : 0);
+      
+      days.push({
+        label: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'][date.getDay()],
+        count,
+      });
+    }
+    
+    return days;
+  };
+
+  const last7Days = getLast7DaysProgress();
+  const maxCount = Math.max(...last7Days.map(d => d.count), 1);
 
   const calendarDays = generateCalendarDays();
   const streak = calculateStreak();
@@ -249,6 +278,53 @@ export default function PerfilPage() {
             </div>
           </div>
         </div>
+
+        {/* Weekly Progress Chart */}
+        <div className="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-8">
+          <h2 className="text-xl font-bold text-white mb-4">📈 Progresso Semanal</h2>
+          <div className="flex items-end gap-2 h-32">
+            {last7Days.map((day, i) => (
+              <div key={i} className="flex-1 flex flex-col items-center gap-2">
+                <div 
+                  className="w-full bg-blue-600 rounded-t transition-all hover:bg-blue-500" 
+                  style={{
+                    height: `${(day.count / maxCount) * 100}%`, 
+                    minHeight: day.count > 0 ? '12px' : '4px',
+                    opacity: day.count > 0 ? 1 : 0.3
+                  }}
+                  title={`${day.count} aula${day.count !== 1 ? 's' : ''}`}
+                />
+                <span className="text-xs text-slate-400 font-medium">{day.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Watch History */}
+        {watchHistory.length > 0 && (
+          <div className="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-8">
+            <h2 className="text-xl font-bold text-white mb-4">🕐 Histórico Recente</h2>
+            <div className="space-y-3">
+              {watchHistory.map((item, idx) => (
+                <Link
+                  key={idx}
+                  href={`/subjects/${item.subject}/${item.grade}/${item.lessonId}`}
+                  className="block bg-slate-700/50 border border-slate-600 rounded-lg p-4 hover:border-blue-500 transition-colors"
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex-1">
+                      <p className="font-bold text-white">{item.title}</p>
+                      <p className="text-xs text-slate-400 mt-1 capitalize">
+                        {item.subject} • {item.grade}º ano
+                      </p>
+                    </div>
+                    <div className="text-blue-400">→</div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Subject Progress Bars */}
         <div className="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-8">

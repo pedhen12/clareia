@@ -8,8 +8,25 @@ import { UserMenu } from '@/components/AuthButton';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [theme, setTheme] = useState('dark');
   const pathname = usePathname();
   const { user, isAuthenticated, loading } = useAuth();
+
+  // Load theme on mount
+  useState(() => {
+    if (typeof window !== 'undefined') {
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      setTheme(savedTheme);
+      document.documentElement.className = savedTheme;
+    }
+  });
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+    document.documentElement.className = newTheme;
+  };
 
   const isActive = (href: string) => {
     if (href === '/') return pathname === '/';
@@ -40,12 +57,24 @@ export default function Navbar() {
           <Link href="/search" className={getLinkClasses("/search")}>
             🔍 Buscar
           </Link>
+          <Link href="/favoritas" className={getLinkClasses("/favoritas")}>
+            ❤️ Favoritas
+          </Link>
           <Link href="/tutor" className={getLinkClasses("/tutor")}>
             Tutor de IA
           </Link>
           <Link href="/ranking" className={getLinkClasses("/ranking")}>
             Ranking
           </Link>
+          
+          {/* Theme Toggle */}
+          <button 
+            onClick={toggleTheme}
+            className="p-2 rounded-lg text-slate-400 hover:text-white transition-colors"
+            title={theme === 'dark' ? 'Modo claro' : 'Modo escuro'}
+          >
+            {theme === 'dark' ? '☀️' : '🌙'}
+          </button>
           
           {/* Auth-based menu */}
           {!loading && (
@@ -126,6 +155,18 @@ export default function Navbar() {
             >
               <span className="text-2xl">🔍</span>
               <span className="text-sm font-medium">Buscar</span>
+            </Link>
+            <Link
+              href="/favoritas"
+              className={`flex flex-col items-center gap-2 p-4 rounded-lg transition-colors ${
+                isActive("/favoritas")
+                  ? "bg-blue-600 text-white"
+                  : "bg-slate-800 text-slate-300 hover:bg-slate-700"
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              <span className="text-2xl">❤️</span>
+              <span className="text-sm font-medium">Favoritas</span>
             </Link>
             <Link
               href="/tutor"
