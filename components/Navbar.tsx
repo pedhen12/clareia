@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '@/hooks/useAuth';
 import { UserMenu } from '@/components/AuthButton';
@@ -13,13 +13,13 @@ export default function Navbar() {
   const { user, isAuthenticated, loading } = useAuth();
 
   // Load theme on mount
-  useState(() => {
+  useEffect(() => {
     if (typeof window !== 'undefined') {
       const savedTheme = localStorage.getItem('theme') || 'dark';
       setTheme(savedTheme);
       document.documentElement.className = savedTheme;
     }
-  });
+  }, []);
 
   const toggleTheme = () => {
     const newTheme = theme === 'dark' ? 'light' : 'dark';

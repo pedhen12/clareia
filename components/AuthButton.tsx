@@ -4,6 +4,7 @@ import { createClient } from '@supabase/supabase-js';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -102,9 +103,13 @@ export function UserMenu({ user }: UserMenuProps) {
       {showMenu && (
         <div className="absolute right-0 mt-2 w-48 bg-slate-800 rounded-lg shadow-xl border border-slate-700 z-50">
           <div className="p-2">
-            <a href="/perfil" className="block px-3 py-2 hover:bg-slate-700 rounded text-white text-sm">
+            <Link 
+              href="/perfil" 
+              className="block px-3 py-2 hover:bg-slate-700 rounded text-white text-sm"
+              onClick={() => setShowMenu(false)}
+            >
               👤 Meu Perfil
-            </a>
+            </Link>
             <button
               onClick={handleSignOut}
               className="w-full text-left px-3 py-2 hover:bg-slate-700 rounded text-red-400 text-sm"
