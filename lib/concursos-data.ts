@@ -103,7 +103,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Análise Sintática",
     tipo: "videoaula",
     descricao: "Como fazer análise sintática para vestibulares",
-    videoId: "QCJ_G6_jAus", // Professor Noslen - VERIFICADO
+    videoId: "QCJ_G6_jAus",
     duracao: 15,
   },
   {
@@ -113,7 +113,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Concordância Verbal e Nominal",
     tipo: "videoaula",
     descricao: "Regras de concordância para vestibular",
-    videoId: "FzSsVDKgaXY", // Professor Noslen - VERIFICADO
+    videoId: "FzSsVDKgaXY",
     duracao: 12,
   },
   {
@@ -123,7 +123,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Regência Verbal",
     tipo: "videoaula",
     descricao: "Principais regências verbais",
-    videoId: "qk7_8CqUVgE", // Professor Noslen - VERIFICADO
+    videoId: "qk7_8CqUVgE",
     duracao: 14,
   },
   
@@ -135,7 +135,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Função Quadrática",
     tipo: "videoaula",
     descricao: "Parábolas e resolução de equações do 2º grau",
-    videoId: "NPUPQ8VaZ8E", // Professor Ferretto - VERIFICADO
+    videoId: "NPUPQ8VaZ8E",
     duracao: 20,
   },
   {
@@ -145,7 +145,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Trigonometria",
     tipo: "videoaula",
     descricao: "Seno, cosseno e tangente",
-    videoId: "v-YLXKoGMbA", // Matemática Rio - VERIFICADO
+    videoId: "J91pp9WL77s",
     duracao: 18,
   },
   {
@@ -155,7 +155,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Regra de Três",
     tipo: "videoaula",
     descricao: "Simples e composta",
-    videoId: "J91pp9WL77s", // Professor Ferretto - VERIFICADO
+    videoId: "-3z9VTnWZ4Q",
     duracao: 16,
   },
   
@@ -168,7 +168,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Redação ENEM - Estrutura",
     tipo: "videoaula",
     descricao: "Como estruturar uma redação nota 1000",
-    videoId: "cWSCZlVJX2Y", // Me Salva - VERIFICADO
+    videoId: "1vEtlxjv7fk",
     duracao: 20,
   },
   {
@@ -178,7 +178,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Argumentação na Redação",
     tipo: "videoaula",
     descricao: "Como criar bons argumentos",
-    videoId: "d5WMTN76S1k", // Me Salva - VERIFICADO
+    videoId: "A-uzDgAIO5k",
     duracao: 18,
   },
   {
@@ -188,7 +188,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Proposta de Intervenção",
     tipo: "videoaula",
     descricao: "Como fazer uma proposta nota 1000",
-    videoId: "ccyKzXoyjnM", // Me Salva - VERIFICADO
+    videoId: "DM9uOh3kbzE",
     duracao: 16,
   },
   
@@ -200,7 +200,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Porcentagem",
     tipo: "videoaula",
     descricao: "Cálculos de porcentagem para o ENEM",
-    videoId: "J91pp9WL77s", // Professor Ferretto - VERIFICADO
+    videoId: "-q-nHpRHeOw",
     duracao: 14,
   },
   {
@@ -210,7 +210,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Geometria Básica",
     tipo: "videoaula",
     descricao: "Áreas e perímetros",
-    videoId: "GgAo7EqFX9Y", // Matemática Rio - VERIFICADO
+    videoId: "1SDx6I8G114",
     duracao: 16,
   },
   {
@@ -220,7 +220,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Equações do 1º Grau",
     tipo: "videoaula",
     descricao: "Resolução de equações lineares",
-    videoId: "Voaseu31krA", // Matemática Rio - VERIFICADO
+    videoId: "6gpZKL3fvEA",
     duracao: 12,
   },
   
@@ -233,7 +233,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Análise Sintática",
     tipo: "videoaula",
     descricao: "Termos essenciais e integrantes",
-    videoId: "QCJ_G6_jAus", // Professor Noslen - VERIFICADO
+    videoId: "fRBCpBQIO5A",
     duracao: 15,
   },
   {
@@ -243,7 +243,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Concordância Verbal",
     tipo: "videoaula",
     descricao: "Regras de concordância",
-    videoId: "FzSsVDKgaXY", // Professor Noslen - VERIFICADO
+    videoId: "MJOCBHvE52g",
     duracao: 14,
   },
   {
@@ -253,7 +253,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Regência Verbal",
     tipo: "videoaula",
     descricao: "Principais regências",
-    videoId: "qk7_8CqUVgE", // Professor Noslen - VERIFICADO
+    videoId: "QYP0G1sBOz8",
     duracao: 16,
   },
   
@@ -265,7 +265,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Lógica Matemática",
     tipo: "videoaula",
     descricao: "Proposições e conectivos lógicos",
-    videoId: "NPUPQ8VaZ8E", // Professor Ferretto - VERIFICADO
+    videoId: "bQUbFCnXA-I",
     duracao: 18,
   },
   {
@@ -275,7 +275,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Sequências Lógicas",
     tipo: "videoaula",
     descricao: "Padrões numéricos e figuras",
-    videoId: "GgAo7EqFX9Y", // Matemática Rio - VERIFICADO
+    videoId: "HK2H-SVycIA",
     duracao: 16,
   },
   {
@@ -285,7 +285,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Raciocínio Quantitativo",
     tipo: "videoaula",
     descricao: "Problemas matemáticos",
-    videoId: "Voaseu31krA", // Matemática Rio - VERIFICADO
+    videoId: "PHdMo7be_uo",
     duracao: 14,
   },
   
@@ -297,7 +297,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Windows e Office",
     tipo: "videoaula",
     descricao: "Conceitos básicos de informática",
-    videoId: "v-YLXKoGMbA", // Matemática Rio - VERIFICADO
+    videoId: "cWSCZlVJX2Y",
     duracao: 20,
   },
   {
@@ -307,7 +307,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Internet e Redes",
     tipo: "videoaula",
     descricao: "Protocolos e navegação",
-    videoId: "J91pp9WL77s", // Professor Ferretto - VERIFICADO
+    videoId: "d5WMTN76S1k",
     duracao: 18,
   },
   {
@@ -317,7 +317,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Segurança da Informação",
     tipo: "videoaula",
     descricao: "Vírus, malware e proteção",
-    videoId: "cWSCZlVJX2Y", // Me Salva - VERIFICADO
+    videoId: "ccyKzXoyjnM",
     duracao: 16,
   },
   
@@ -329,7 +329,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Princípios da Administração",
     tipo: "videoaula",
     descricao: "LIMPE e outros princípios",
-    videoId: "d5WMTN76S1k", // Me Salva - VERIFICADO
+    videoId: "3vjl1cEo07I",
     duracao: 18,
   },
   {
@@ -339,7 +339,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Poderes Administrativos",
     tipo: "videoaula",
     descricao: "Vinculado, discricionário, hierárquico",
-    videoId: "ccyKzXoyjnM", // Me Salva - VERIFICADO
+    videoId: "79cYGI9Aw-w",
     duracao: 20,
   },
   {
@@ -349,7 +349,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Atos Administrativos",
     tipo: "videoaula",
     descricao: "Conceito e classificação",
-    videoId: "NPUPQ8VaZ8E", // Professor Ferretto - VERIFICADO
+    videoId: "95ARVlEFVWU",
     duracao: 22,
   },
   
@@ -361,7 +361,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Direitos Fundamentais",
     tipo: "videoaula",
     descricao: "Artigo 5º da CF/88",
-    videoId: "GgAo7EqFX9Y", // Matemática Rio - VERIFICADO
+    videoId: "BpBvJzQrAs0",
     duracao: 24,
   },
   {
@@ -371,7 +371,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Organização do Estado",
     tipo: "videoaula",
     descricao: "União, Estados e Municípios",
-    videoId: "Voaseu31krA", // Matemática Rio - VERIFICADO
+    videoId: "JnAwvdD63Xg",
     duracao: 20,
   },
   {
@@ -381,7 +381,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Poderes da União",
     tipo: "videoaula",
     descricao: "Legislativo, Executivo e Judiciário",
-    videoId: "v-YLXKoGMbA", // Matemática Rio - VERIFICADO
+    videoId: "O1rKEY22YQA",
     duracao: 26,
   },
   
@@ -394,7 +394,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Interpretação de Texto",
     tipo: "videoaula",
     descricao: "Técnicas de interpretação",
-    videoId: "QCJ_G6_jAus", // Professor Noslen - VERIFICADO
+    videoId: "tI_JWUNn4Uo",
     duracao: 15,
   },
   {
@@ -404,7 +404,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Ortografia e Acentuação",
     tipo: "videoaula",
     descricao: "Regras de acentuação",
-    videoId: "FzSsVDKgaXY", // Professor Noslen - VERIFICADO
+    videoId: "QCJ_G6_jAus",
     duracao: 14,
   },
   {
@@ -414,7 +414,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Pontuação",
     tipo: "videoaula",
     descricao: "Uso correto de vírgula e pontos",
-    videoId: "qk7_8CqUVgE", // Professor Noslen - VERIFICADO
+    videoId: "FzSsVDKgaXY",
     duracao: 12,
   },
   
@@ -426,7 +426,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Regra de Três",
     tipo: "videoaula",
     descricao: "Simples e composta",
-    videoId: "J91pp9WL77s", // Professor Ferretto - VERIFICADO
+    videoId: "RyvPjAsMLwk",
     duracao: 14,
   },
   {
@@ -436,7 +436,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Equações do 1º Grau",
     tipo: "videoaula",
     descricao: "Resolução de equações lineares",
-    videoId: "Voaseu31krA", // Matemática Rio - VERIFICADO
+    videoId: "Voaseu31krA",
     duracao: 12,
   },
   {
@@ -446,7 +446,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Porcentagem",
     tipo: "videoaula",
     descricao: "Cálculo e aplicações",
-    videoId: "NPUPQ8VaZ8E", // Professor Ferretto - VERIFICADO
+    videoId: "GgAo7EqFX9Y",
     duracao: 13,
   },
   
@@ -458,7 +458,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Sequências Lógicas",
     tipo: "videoaula",
     descricao: "Padrões numéricos e de figuras",
-    videoId: "GgAo7EqFX9Y", // Matemática Rio - VERIFICADO
+    videoId: "v-YLXKoGMbA",
     duracao: 14,
   },
   {
@@ -468,7 +468,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Raciocínio Verbal",
     tipo: "videoaula",
     descricao: "Analogias e séries verbais",
-    videoId: "v-YLXKoGMbA", // Matemática Rio - VERIFICADO
+    videoId: "2py586t06GM",
     duracao: 12,
   },
   {
@@ -478,7 +478,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Problemas Matemáticos",
     tipo: "videoaula",
     descricao: "Resolução de problemas lógicos",
-    videoId: "cWSCZlVJX2Y", // Me Salva - VERIFICADO
+    videoId: "fkGQ_0Ji2_o",
     duracao: 16,
   },
   
@@ -490,7 +490,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Legislação Básica",
     tipo: "videoaula",
     descricao: "Estatuto dos servidores",
-    videoId: "d5WMTN76S1k", // Me Salva - VERIFICADO
+    videoId: "wnnJSJG1LSk",
     duracao: 20,
   },
   {
@@ -500,7 +500,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Direitos Humanos",
     tipo: "videoaula",
     descricao: "Princípios fundamentais",
-    videoId: "ccyKzXoyjnM", // Me Salva - VERIFICADO
+    videoId: "cWSCZlVJX2Y",
     duracao: 18,
   },
   {
@@ -510,7 +510,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Ética no Serviço Público",
     tipo: "videoaula",
     descricao: "Código de ética",
-    videoId: "J91pp9WL77s", // Professor Ferretto - VERIFICADO
+    videoId: "d5WMTN76S1k",
     duracao: 16,
   },
   
@@ -523,7 +523,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Classes Gramaticais",
     tipo: "videoaula",
     descricao: "Substantivo, adjetivo, verbo",
-    videoId: "QCJ_G6_jAus", // Professor Noslen - VERIFICADO
+    videoId: "qk7_8CqUVgE",
     duracao: 16,
   },
   {
@@ -533,7 +533,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Verbos - Tempos e Modos",
     tipo: "videoaula",
     descricao: "Conjugação verbal",
-    videoId: "FzSsVDKgaXY", // Professor Noslen - VERIFICADO
+    videoId: "1vEtlxjv7fk",
     duracao: 14,
   },
   {
@@ -543,7 +543,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Pronomes",
     tipo: "videoaula",
     descricao: "Tipos e uso correto",
-    videoId: "qk7_8CqUVgE", // Professor Noslen - VERIFICADO
+    videoId: "A-uzDgAIO5k",
     duracao: 12,
   },
   
@@ -555,7 +555,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Operações Básicas",
     tipo: "videoaula",
     descricao: "Adição, subtração, multiplicação",
-    videoId: "NPUPQ8VaZ8E", // Professor Ferretto - VERIFICADO
+    videoId: "hGkdq9xX5-4",
     duracao: 14,
   },
   {
@@ -565,7 +565,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Frações",
     tipo: "videoaula",
     descricao: "Operações com frações",
-    videoId: "GgAo7EqFX9Y", // Matemática Rio - VERIFICADO
+    videoId: "m7h7v81NBMg",
     duracao: 12,
   },
   {
@@ -575,7 +575,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Números Decimais",
     tipo: "videoaula",
     descricao: "Operações e conversões",
-    videoId: "Voaseu31krA", // Matemática Rio - VERIFICADO
+    videoId: "n-FiEYAMo3M",
     duracao: 10,
   },
   
@@ -587,7 +587,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Atualidades do Brasil",
     tipo: "videoaula",
     descricao: "Política e economia brasileira",
-    videoId: "v-YLXKoGMbA", // Matemática Rio - VERIFICADO
+    videoId: "ccyKzXoyjnM",
     duracao: 18,
   },
   {
@@ -597,7 +597,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Geografia do Brasil",
     tipo: "videoaula",
     descricao: "Regiões e características",
-    videoId: "J91pp9WL77s", // Professor Ferretto - VERIFICADO
+    videoId: "3vjl1cEo07I",
     duracao: 16,
   },
   {
@@ -607,7 +607,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "História do Brasil",
     tipo: "videoaula",
     descricao: "Principais fatos históricos",
-    videoId: "cWSCZlVJX2Y", // Me Salva - VERIFICADO
+    videoId: "79cYGI9Aw-w",
     duracao: 20,
   },
   
@@ -619,7 +619,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Legislação Municipal",
     tipo: "videoaula",
     descricao: "Lei Orgânica do Município",
-    videoId: "d5WMTN76S1k", // Me Salva - VERIFICADO
+    videoId: "95ARVlEFVWU",
     duracao: 20,
   },
   {
@@ -629,7 +629,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Administração Pública",
     tipo: "videoaula",
     descricao: "Estrutura e funcionamento",
-    videoId: "ccyKzXoyjnM", // Me Salva - VERIFICADO
+    videoId: "BpBvJzQrAs0",
     duracao: 18,
   },
   {
@@ -639,7 +639,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Saúde Pública - SUS",
     tipo: "videoaula",
     descricao: "Princípios e diretrizes",
-    videoId: "QCJ_G6_jAus", // Professor Noslen - VERIFICADO
+    videoId: "JnAwvdD63Xg",
     duracao: 22,
   },
   
@@ -652,7 +652,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Direitos Fundamentais",
     tipo: "videoaula",
     descricao: "CF/88 - Artigo 5º",
-    videoId: "FzSsVDKgaXY", // Professor Noslen - VERIFICADO
+    videoId: "O1rKEY22YQA",
     duracao: 24,
   },
   {
@@ -662,7 +662,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Organização do Estado",
     tipo: "videoaula",
     descricao: "União, Estados e Municípios",
-    videoId: "qk7_8CqUVgE", // Professor Noslen - VERIFICADO
+    videoId: "wnnJSJG1LSk",
     duracao: 22,
   },
   {
@@ -672,7 +672,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Poder Legislativo",
     tipo: "videoaula",
     descricao: "Estrutura do Congresso",
-    videoId: "NPUPQ8VaZ8E", // Professor Ferretto - VERIFICADO
+    videoId: "cWSCZlVJX2Y",
     duracao: 20,
   },
   
@@ -684,7 +684,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Princípios da Administração",
     tipo: "videoaula",
     descricao: "LIMPE e outros princípios",
-    videoId: "GgAo7EqFX9Y", // Matemática Rio - VERIFICADO
+    videoId: "d5WMTN76S1k",
     duracao: 20,
   },
   {
@@ -694,7 +694,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Atos Administrativos",
     tipo: "videoaula",
     descricao: "Conceito e atributos",
-    videoId: "Voaseu31krA", // Matemática Rio - VERIFICADO
+    videoId: "ccyKzXoyjnM",
     duracao: 22,
   },
   {
@@ -704,7 +704,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Licitações",
     tipo: "videoaula",
     descricao: "Modalidades de licitação",
-    videoId: "v-YLXKoGMbA", // Matemática Rio - VERIFICADO
+    videoId: "3vjl1cEo07I",
     duracao: 26,
   },
   
@@ -716,7 +716,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Crase",
     tipo: "videoaula",
     descricao: "Regras de uso da crase",
-    videoId: "QCJ_G6_jAus", // Professor Noslen - VERIFICADO
+    videoId: "DM9uOh3kbzE",
     duracao: 14,
   },
   {
@@ -726,7 +726,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Colocação Pronominal",
     tipo: "videoaula",
     descricao: "Próclise, mesóclise e ênclise",
-    videoId: "FzSsVDKgaXY", // Professor Noslen - VERIFICADO
+    videoId: "fRBCpBQIO5A",
     duracao: 16,
   },
   {
@@ -736,7 +736,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Vozes Verbais",
     tipo: "videoaula",
     descricao: "Ativa, passiva e reflexiva",
-    videoId: "qk7_8CqUVgE", // Professor Noslen - VERIFICADO
+    videoId: "MJOCBHvE52g",
     duracao: 14,
   },
   
@@ -748,7 +748,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Lógica de Argumentação",
     tipo: "videoaula",
     descricao: "Silogismos e validade",
-    videoId: "J91pp9WL77s", // Professor Ferretto - VERIFICADO
+    videoId: "pkirFTGTZos",
     duracao: 18,
   },
   {
@@ -758,7 +758,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Diagramas Lógicos",
     tipo: "videoaula",
     descricao: "Diagramas de Venn e Euler",
-    videoId: "cWSCZlVJX2Y", // Me Salva - VERIFICADO
+    videoId: "UqOzIFDrm8Y",
     duracao: 16,
   },
   {
@@ -768,7 +768,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Probabilidade",
     tipo: "videoaula",
     descricao: "Cálculo de probabilidades",
-    videoId: "d5WMTN76S1k", // Me Salva - VERIFICADO
+    videoId: "NPUPQ8VaZ8E",
     duracao: 18,
   },
   
@@ -780,7 +780,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Redes de Computadores",
     tipo: "videoaula",
     descricao: "LAN, WAN, TCP/IP",
-    videoId: "ccyKzXoyjnM", // Me Salva - VERIFICADO
+    videoId: "79cYGI9Aw-w",
     duracao: 20,
   },
   {
@@ -790,7 +790,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Internet e Email",
     tipo: "videoaula",
     descricao: "Navegadores e protocolos",
-    videoId: "NPUPQ8VaZ8E", // Professor Ferretto - VERIFICADO
+    videoId: "95ARVlEFVWU",
     duracao: 18,
   },
   {
@@ -800,7 +800,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Pacote Office",
     tipo: "videoaula",
     descricao: "Word, Excel e PowerPoint",
-    videoId: "GgAo7EqFX9Y", // Matemática Rio - VERIFICADO
+    videoId: "BpBvJzQrAs0",
     duracao: 22,
   },
   
@@ -813,7 +813,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Geometria Plana",
     tipo: "videoaula",
     descricao: "Áreas e perímetros",
-    videoId: "NPUPQ8VaZ8E", // Professor Ferretto - VERIFICADO
+    videoId: "J91pp9WL77s",
     duracao: 20,
   },
   {
@@ -823,7 +823,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Conjuntos Numéricos",
     tipo: "videoaula",
     descricao: "Naturais, inteiros, racionais",
-    videoId: "Voaseu31krA", // Matemática Rio - VERIFICADO
+    videoId: "-3z9VTnWZ4Q",
     duracao: 16,
   },
   {
@@ -833,7 +833,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Funções",
     tipo: "videoaula",
     descricao: "Função afim e quadrática",
-    videoId: "GgAo7EqFX9Y", // Matemática Rio - VERIFICADO
+    videoId: "-q-nHpRHeOw",
     duracao: 18,
   },
   
@@ -845,7 +845,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Cinemática - MRU e MRUV",
     tipo: "videoaula",
     descricao: "Movimento retilíneo",
-    videoId: "cWSCZlVJX2Y", // Me Salva - VERIFICADO
+    videoId: "1SDx6I8G114",
     duracao: 18,
   },
   {
@@ -855,7 +855,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Leis de Newton",
     tipo: "videoaula",
     descricao: "As três leis do movimento",
-    videoId: "d5WMTN76S1k", // Me Salva - VERIFICADO
+    videoId: "6gpZKL3fvEA",
     duracao: 16,
   },
   {
@@ -865,7 +865,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Trabalho e Energia",
     tipo: "videoaula",
     descricao: "Energia cinética e potencial",
-    videoId: "ccyKzXoyjnM", // Me Salva - VERIFICADO
+    videoId: "bQUbFCnXA-I",
     duracao: 18,
   },
   
@@ -877,7 +877,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Orações Subordinadas",
     tipo: "videoaula",
     descricao: "Substantivas, adjetivas, adverbiais",
-    videoId: "QCJ_G6_jAus", // Professor Noslen - VERIFICADO
+    videoId: "QYP0G1sBOz8",
     duracao: 18,
   },
   {
@@ -887,7 +887,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Coesão e Coerência",
     tipo: "videoaula",
     descricao: "Elementos de ligação textual",
-    videoId: "FzSsVDKgaXY", // Professor Noslen - VERIFICADO
+    videoId: "tI_JWUNn4Uo",
     duracao: 14,
   },
   {
@@ -897,7 +897,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Compreensão Textual",
     tipo: "videoaula",
     descricao: "Estratégias de leitura",
-    videoId: "qk7_8CqUVgE", // Professor Noslen - VERIFICADO
+    videoId: "QCJ_G6_jAus",
     duracao: 16,
   },
   
@@ -909,7 +909,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Química Geral",
     tipo: "videoaula",
     descricao: "Átomos e moléculas",
-    videoId: "J91pp9WL77s", // Professor Ferretto - VERIFICADO
+    videoId: "HK2H-SVycIA",
     duracao: 18,
   },
   {
@@ -919,7 +919,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Funções Inorgânicas",
     tipo: "videoaula",
     descricao: "Ácidos, bases, sais",
-    videoId: "v-YLXKoGMbA", // Matemática Rio - VERIFICADO
+    videoId: "PHdMo7be_uo",
     duracao: 20,
   },
   {
@@ -929,7 +929,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Estequiometria",
     tipo: "videoaula",
     descricao: "Cálculos químicos",
-    videoId: "Voaseu31krA", // Matemática Rio - VERIFICADO
+    videoId: "RyvPjAsMLwk",
     duracao: 22,
   },
   
@@ -941,7 +941,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "English Grammar",
     tipo: "videoaula",
     descricao: "Tempos verbais básicos",
-    videoId: "cWSCZlVJX2Y", // Me Salva - VERIFICADO
+    videoId: "JnAwvdD63Xg",
     duracao: 16,
   },
   {
@@ -951,7 +951,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Reading Comprehension",
     tipo: "videoaula",
     descricao: "Técnicas de leitura",
-    videoId: "d5WMTN76S1k", // Me Salva - VERIFICADO
+    videoId: "O1rKEY22YQA",
     duracao: 18,
   },
   {
@@ -961,7 +961,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Vocabulary",
     tipo: "videoaula",
     descricao: "Vocabulário essencial",
-    videoId: "ccyKzXoyjnM", // Me Salva - VERIFICADO
+    videoId: "wnnJSJG1LSk",
     duracao: 14,
   },
   
@@ -973,7 +973,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "História do Brasil",
     tipo: "videoaula",
     descricao: "Do colonial à república",
-    videoId: "GgAo7EqFX9Y", // Matemática Rio - VERIFICADO
+    videoId: "cWSCZlVJX2Y",
     duracao: 20,
   },
   {
@@ -983,7 +983,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Segunda Guerra Mundial",
     tipo: "videoaula",
     descricao: "Causas e consequências",
-    videoId: "NPUPQ8VaZ8E", // Professor Ferretto - VERIFICADO
+    videoId: "d5WMTN76S1k",
     duracao: 22,
   },
   {
@@ -993,7 +993,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Guerra Fria",
     tipo: "videoaula",
     descricao: "Bipolarização mundial",
-    videoId: "J91pp9WL77s", // Professor Ferretto - VERIFICADO
+    videoId: "ccyKzXoyjnM",
     duracao: 18,
   },
   
@@ -1005,7 +1005,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Cartografia",
     tipo: "videoaula",
     descricao: "Mapas e coordenadas",
-    videoId: "QCJ_G6_jAus", // Professor Noslen - VERIFICADO
+    videoId: "3vjl1cEo07I",
     duracao: 16,
   },
   {
@@ -1015,7 +1015,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Geopolítica",
     tipo: "videoaula",
     descricao: "Relações internacionais",
-    videoId: "FzSsVDKgaXY", // Professor Noslen - VERIFICADO
+    videoId: "79cYGI9Aw-w",
     duracao: 18,
   },
   {
@@ -1025,7 +1025,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Geografia do Brasil",
     tipo: "videoaula",
     descricao: "Aspectos físicos e regionais",
-    videoId: "qk7_8CqUVgE", // Professor Noslen - VERIFICADO
+    videoId: "95ARVlEFVWU",
     duracao: 20,
   },
   
@@ -1038,7 +1038,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Cinemática Escalar",
     tipo: "videoaula",
     descricao: "MRU e MRUV",
-    videoId: "cWSCZlVJX2Y", // Me Salva - VERIFICADO
+    videoId: "Voaseu31krA",
     duracao: 18,
   },
   {
@@ -1048,7 +1048,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Dinâmica - Leis de Newton",
     tipo: "videoaula",
     descricao: "As três leis do movimento",
-    videoId: "d5WMTN76S1k", // Me Salva - VERIFICADO
+    videoId: "GgAo7EqFX9Y",
     duracao: 16,
   },
   {
@@ -1058,7 +1058,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Óptica Geométrica",
     tipo: "videoaula",
     descricao: "Reflexão e refração",
-    videoId: "ccyKzXoyjnM", // Me Salva - VERIFICADO
+    videoId: "v-YLXKoGMbA",
     duracao: 20,
   },
   
@@ -1070,7 +1070,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Tabela Periódica",
     tipo: "videoaula",
     descricao: "Propriedades periódicas",
-    videoId: "v-YLXKoGMbA", // Matemática Rio - VERIFICADO
+    videoId: "2py586t06GM",
     duracao: 16,
   },
   {
@@ -1080,7 +1080,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Ligações Químicas",
     tipo: "videoaula",
     descricao: "Iônica, covalente, metálica",
-    videoId: "Voaseu31krA", // Matemática Rio - VERIFICADO
+    videoId: "fkGQ_0Ji2_o",
     duracao: 18,
   },
   {
@@ -1090,7 +1090,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Estequiometria",
     tipo: "videoaula",
     descricao: "Cálculos químicos",
-    videoId: "GgAo7EqFX9Y", // Matemática Rio - VERIFICADO
+    videoId: "hGkdq9xX5-4",
     duracao: 22,
   },
   
@@ -1102,7 +1102,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Citologia",
     tipo: "videoaula",
     descricao: "Estrutura celular",
-    videoId: "NPUPQ8VaZ8E", // Professor Ferretto - VERIFICADO
+    videoId: "BpBvJzQrAs0",
     duracao: 20,
   },
   {
@@ -1112,7 +1112,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Genética - Leis de Mendel",
     tipo: "videoaula",
     descricao: "Primeira e segunda lei",
-    videoId: "J91pp9WL77s", // Professor Ferretto - VERIFICADO
+    videoId: "JnAwvdD63Xg",
     duracao: 18,
   },
   {
@@ -1122,7 +1122,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Ecologia",
     tipo: "videoaula",
     descricao: "Relações ecológicas",
-    videoId: "cWSCZlVJX2Y", // Me Salva - VERIFICADO
+    videoId: "O1rKEY22YQA",
     duracao: 16,
   },
   
@@ -1134,7 +1134,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Brasil Colonial",
     tipo: "videoaula",
     descricao: "Colonização portuguesa",
-    videoId: "d5WMTN76S1k", // Me Salva - VERIFICADO
+    videoId: "wnnJSJG1LSk",
     duracao: 20,
   },
   {
@@ -1144,7 +1144,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Revolução Francesa",
     tipo: "videoaula",
     descricao: "Causas e consequências",
-    videoId: "ccyKzXoyjnM", // Me Salva - VERIFICADO
+    videoId: "cWSCZlVJX2Y",
     duracao: 18,
   },
   {
@@ -1154,7 +1154,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Segunda Guerra Mundial",
     tipo: "videoaula",
     descricao: "Desenvolvimento e consequências",
-    videoId: "QCJ_G6_jAus", // Professor Noslen - VERIFICADO
+    videoId: "d5WMTN76S1k",
     duracao: 25,
   },
   
@@ -1166,7 +1166,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Geologia e Relevo",
     tipo: "videoaula",
     descricao: "Estrutura da Terra",
-    videoId: "FzSsVDKgaXY", // Professor Noslen - VERIFICADO
+    videoId: "ccyKzXoyjnM",
     duracao: 16,
   },
   {
@@ -1176,7 +1176,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Clima e Vegetação",
     tipo: "videoaula",
     descricao: "Climas do Brasil",
-    videoId: "qk7_8CqUVgE", // Professor Noslen - VERIFICADO
+    videoId: "3vjl1cEo07I",
     duracao: 18,
   },
   {
@@ -1186,7 +1186,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Urbanização",
     tipo: "videoaula",
     descricao: "Processo urbano brasileiro",
-    videoId: "v-YLXKoGMbA", // Matemática Rio - VERIFICADO
+    videoId: "79cYGI9Aw-w",
     duracao: 20,
   },
   
@@ -1198,7 +1198,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Reading Comprehension",
     tipo: "videoaula",
     descricao: "Técnicas de leitura",
-    videoId: "Voaseu31krA", // Matemática Rio - VERIFICADO
+    videoId: "95ARVlEFVWU",
     duracao: 15,
   },
   {
@@ -1208,7 +1208,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Grammar - Verb Tenses",
     tipo: "videoaula",
     descricao: "Tempos verbais",
-    videoId: "GgAo7EqFX9Y", // Matemática Rio - VERIFICADO
+    videoId: "BpBvJzQrAs0",
     duracao: 18,
   },
   {
@@ -1218,7 +1218,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Vocabulário FUVEST",
     tipo: "videoaula",
     descricao: "Palavras mais cobradas",
-    videoId: "NPUPQ8VaZ8E", // Professor Ferretto - VERIFICADO
+    videoId: "JnAwvdD63Xg",
     duracao: 12,
   },
   
@@ -1230,7 +1230,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Brasil Colônia",
     tipo: "videoaula",
     descricao: "Período colonial",
-    videoId: "J91pp9WL77s", // Professor Ferretto - VERIFICADO
+    videoId: "O1rKEY22YQA",
     duracao: 18,
   },
   {
@@ -1240,7 +1240,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Revolução Industrial",
     tipo: "videoaula",
     descricao: "Primeira e segunda revolução",
-    videoId: "v-YLXKoGMbA", // Matemática Rio - VERIFICADO
+    videoId: "wnnJSJG1LSk",
     duracao: 16,
   },
   {
@@ -1250,7 +1250,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Geopolítica Mundial",
     tipo: "videoaula",
     descricao: "Conflitos internacionais",
-    videoId: "Voaseu31krA", // Matemática Rio - VERIFICADO
+    videoId: "cWSCZlVJX2Y",
     duracao: 18,
   },
   
@@ -1261,7 +1261,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Ecologia",
     tipo: "videoaula",
     descricao: "Cadeias alimentares",
-    videoId: "cWSCZlVJX2Y", // Me Salva - VERIFICADO
+    videoId: "d5WMTN76S1k",
     duracao: 15,
   },
   {
@@ -1271,7 +1271,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Química Orgânica",
     tipo: "videoaula",
     descricao: "Funções orgânicas",
-    videoId: "d5WMTN76S1k", // Me Salva - VERIFICADO
+    videoId: "ccyKzXoyjnM",
     duracao: 20,
   },
   {
@@ -1281,7 +1281,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Eletricidade",
     tipo: "videoaula",
     descricao: "Corrente e resistência",
-    videoId: "ccyKzXoyjnM", // Me Salva - VERIFICADO
+    videoId: "3vjl1cEo07I",
     duracao: 17,
   },
   
@@ -1292,7 +1292,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Funções da Linguagem",
     tipo: "videoaula",
     descricao: "Seis funções comunicativas",
-    videoId: "QCJ_G6_jAus", // Professor Noslen - VERIFICADO
+    videoId: "79cYGI9Aw-w",
     duracao: 14,
   },
   {
@@ -1302,7 +1302,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Gêneros Textuais",
     tipo: "videoaula",
     descricao: "Carta, artigo, crônica",
-    videoId: "FzSsVDKgaXY", // Professor Noslen - VERIFICADO
+    videoId: "95ARVlEFVWU",
     duracao: 12,
   },
   {
@@ -1312,7 +1312,7 @@ export const concursosData: MaterialConcurso[] = [
     titulo: "Interpretação de Imagens",
     tipo: "videoaula",
     descricao: "Charges e infográficos",
-    videoId: "qk7_8CqUVgE", // Professor Noslen - VERIFICADO
+    videoId: "BpBvJzQrAs0",
     duracao: 10,
   },
 ];
