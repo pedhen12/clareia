@@ -1885,7 +1885,240 @@ export const concursosData: MaterialConcurso[] = [
     videoId: "BpBvJzQrAs0",
     duracao: 10,
   },
+  
+  // ========== ESTADUAL (POLICIAIS) ==========
+  // Português, Matemática, RLM são similares aos Federais
+  // Adicionando matérias específicas de carreiras policiais
+  
+  // Direito Penal - PRIORIDADE ALTA para Policiais
+  {
+    id: "est-pen-1",
+    categoria: "estadual",
+    materia: "Conhecimentos Específicos",
+    titulo: "🔥 Direito Penal: Crimes contra a Pessoa",
+    tipo: "videoaula",
+    descricao: "TOP 1! 30% das questões. Homicídio, lesão corporal, sequestro, ameaça.",
+    videoId: "QCJ_G6_jAus",
+    duracao: 20,
+  },
+  {
+    id: "est-pen-2",
+    categoria: "estadual",
+    materia: "Conhecimentos Específicos",
+    titulo: "🔥 Direito Penal: Crimes contra o Patrimônio",
+    tipo: "videoaula",
+    descricao: "TOP 2! 25% das questões. Furto, roubo, estelionato, receptação.",
+    videoId: "FzSsVDKgaXY",
+    duracao: 22,
+  },
+  {
+    id: "est-pen-3",
+    categoria: "estadual",
+    materia: "Conhecimentos Específicos",
+    titulo: "Direito Penal: Teoria do Crime",
+    tipo: "videoaula",
+    descricao: "20% das questões. Dolo, culpa, tipicidade, antijuridicidade.",
+    videoId: "qk7_8CqUVgE",
+    duracao: 18,
+  },
+  {
+    id: "est-leg-1",
+    categoria: "estadual",
+    materia: "Conhecimentos Específicos",
+    titulo: "Código de Trânsito Brasileiro",
+    tipo: "videoaula",
+    descricao: "Essencial para PRF! Infrações, multas, pontuação, documentos.",
+    videoId: "1vEtlxjv7fk",
+    duracao: 25,
+  },
+  {
+    id: "est-leg-2",
+    categoria: "estadual",
+    materia: "Conhecimentos Específicos",
+    titulo: "Lei de Drogas (Lei 11.343/2006)",
+    tipo: "videoaula",
+    descricao: "15% das questões. Tráfico, porte, tratamento, prevenção.",
+    videoId: "A-uzDgAIO5k",
+    duracao: 17,
+  },
+  
+  // ========== TRIBUNAIS ==========
+  // Direito Processual é diferencial dos Tribunais
+  
+  {
+    id: "trib-proc-1",
+    categoria: "tribunais",
+    materia: "Direito Administrativo",
+    titulo: "🔥 Direito Processual Civil: Jurisdição e Competência",
+    tipo: "videoaula",
+    descricao: "TOP 1! 25% das questões. Jurisdição, competência territorial, funcional.",
+    videoId: "DM9uOh3kbzE",
+    duracao: 22,
+  },
+  {
+    id: "trib-proc-2",
+    categoria: "tribunais",
+    materia: "Direito Administrativo",
+    titulo: "🔥 Direito Processual: Prazos Processuais",
+    tipo: "videoaula",
+    descricao: "TOP 2! 20% das questões. Prazos, preclusão, contagem de prazo.",
+    videoId: "fRBCpBQIO5A",
+    duracao: 18,
+  },
+  {
+    id: "trib-proc-3",
+    categoria: "tribunais",
+    materia: "Direito Administrativo",
+    titulo: "Recursos",
+    tipo: "videoaula",
+    descricao: "18% das questões. Apelação, agravo, embargos, recurso especial.",
+    videoId: "MJOCBHvE52g",
+    duracao: 20,
+  },
+  {
+    id: "trib-proc-4",
+    categoria: "tribunais",
+    materia: "Direito Administrativo",
+    titulo: "Provas no Processo",
+    tipo: "videoaula",
+    descricao: "15% das questões. Prova documental, testemunhal, pericial.",
+    videoId: "QYP0G1sBOz8",
+    duracao: 17,
+  },
+  {
+    id: "trib-port-1",
+    categoria: "tribunais",
+    materia: "Português",
+    titulo: "🔥 Redação Oficial",
+    tipo: "videoaula",
+    descricao: "Essencial para Tribunais! Ofício, memorando, relatório, pareceres.",
+    videoId: "tI_JWUNn4Uo",
+    duracao: 20,
+  },
+  
+  // ========== MUNICIPAL ==========
+  // Conhecimentos Gerais e Específicos por cargo
+  
+  // PROFESSORES - LDB e Didática
+  {
+    id: "mun-prof-1",
+    categoria: "municipal",
+    materia: "Conhecimentos Específicos",
+    titulo: "🔥 LDB (Lei 9.394/96)",
+    tipo: "videoaula",
+    descricao: "TOP 1 Professores! 40% das questões de legislação. Estrutura, organização, financiamento da educação.",
+    videoId: "QCJ_G6_jAus",
+    duracao: 25,
+  },
+  {
+    id: "mun-prof-2",
+    categoria: "municipal",
+    materia: "Conhecimentos Específicos",
+    titulo: "🔥 ECA - Estatuto da Criança e do Adolescente",
+    tipo: "videoaula",
+    descricao: "TOP 2! 20% das questões. Direitos fundamentais, proteção integral.",
+    videoId: "FzSsVDKgaXY",
+    duracao: 18,
+  },
+  {
+    id: "mun-prof-3",
+    categoria: "municipal",
+    materia: "Conhecimentos Específicos",
+    titulo: "BNCC - Base Nacional Comum Curricular",
+    tipo: "videoaula",
+    descricao: "15% das questões. Competências, habilidades, áreas do conhecimento.",
+    videoId: "qk7_8CqUVgE",
+    duracao: 20,
+  },
+  {
+    id: "mun-prof-4",
+    categoria: "municipal",
+    materia: "Conhecimentos Específicos",
+    titulo: "Teorias de Aprendizagem",
+    tipo: "videoaula",
+    descricao: "Piaget, Vygotsky, Wallon, construtivismo, sociointeracionismo.",
+    videoId: "1vEtlxjv7fk",
+    duracao: 22,
+  },
+  {
+    id: "mun-prof-5",
+    categoria: "municipal",
+    materia: "Conhecimentos Específicos",
+    titulo: "Avaliação Educacional",
+    tipo: "videoaula",
+    descricao: "Avaliação formativa, somativa, diagnóstica, feedback.",
+    videoId: "A-uzDgAIO5k",
+    duracao: 16,
+  },
+  
+  // SAÚDE - SUS
+  {
+    id: "mun-sus-1",
+    categoria: "municipal",
+    materia: "Conhecimentos Gerais",
+    titulo: "🔥 SUS: Princípios e Diretrizes",
+    tipo: "videoaula",
+    descricao: "TOP 1 Saúde! 35% das questões. Universalidade, equidade, integralidade, descentralização.",
+    videoId: "DM9uOh3kbzE",
+    duracao: 22,
+  },
+  {
+    id: "mun-sus-2",
+    categoria: "municipal",
+    materia: "Conhecimentos Gerais",
+    titulo: "🔥 Leis Orgânicas da Saúde (8.080 e 8.142)",
+    tipo: "videoaula",
+    descricao: "TOP 2! 30% das questões. Organização do SUS, participação popular, financiamento.",
+    videoId: "fRBCpBQIO5A",
+    duracao: 20,
+  },
+  {
+    id: "mun-sus-3",
+    categoria: "municipal",
+    materia: "Conhecimentos Gerais",
+    titulo: "Políticas de Saúde no Brasil",
+    tipo: "videoaula",
+    descricao: "15% das questões. ESF, PSF, programas nacionais de saúde.",
+    videoId: "MJOCBHvE52g",
+    duracao: 18,
+  },
+  
+  // ========== MILITAR ==========
+  // Foco em Matemática, Física, Química (já cobertos em ENEM)
+  // Adicionando alguns tópicos específicos
+  
+  {
+    id: "mil-mat-1",
+    categoria: "militar",
+    materia: "Matemática",
+    titulo: "🔥 Matemática Militar: Logaritmos",
+    tipo: "videoaula",
+    descricao: "Importante para EsPCEx, AFA. Propriedades, equações logarítmicas.",
+    videoId: "QYP0G1sBOz8",
+    duracao: 20,
+  },
+  {
+    id: "mil-fis-1",
+    categoria: "militar",
+    materia: "Física",
+    titulo: "🔥 Física Militar: Balística",
+    tipo: "videoaula",
+    descricao: "Específico para carreiras militares. Lançamento de projéteis, trajetória.",
+    videoId: "tI_JWUNn4Uo",
+    duracao: 18,
+  },
+  {
+    id: "mil-geo-1",
+    categoria: "militar",
+    materia: "Geografia",
+    titulo: "Geografia Militar e Geopolítica",
+    tipo: "videoaula",
+    descricao: "Estratégia militar, conflitos, recursos naturais estratégicos.",
+    videoId: "QCJ_G6_jAus",
+    duracao: 22,
+  },
 ];
+
 
 // Helper function para buscar materiais por categoria e matéria
 export function getMaterialsPorCategoriaMateria(
