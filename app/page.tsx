@@ -137,6 +137,27 @@ export default function Home() {
           </div>
         </Link>
 
+        {/* Chat CTA - Novo */}
+        <Link href="/chat" className="block mb-8">
+          <div className="bg-gradient-to-r from-purple-600 via-blue-600 to-pink-600 hover:from-purple-700 hover:via-blue-700 hover:to-pink-700 rounded-xl p-6 transition-all duration-300 shadow-xl hover:shadow-2xl border border-purple-500/50">
+            <div className="flex items-center gap-6">
+              <div className="text-6xl">💬</div>
+              <div className="flex-1">
+                <h3 className="text-2xl font-bold text-white mb-1">
+                  Chat da Comunidade
+                </h3>
+                <p className="text-white/90">
+                  Conecte-se com outros estudantes, tire dúvidas e compartilhe materiais em tempo real!
+                </p>
+              </div>
+              <div className="flex items-center gap-2 bg-white/20 px-3 py-1 rounded-full">
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                <span className="text-sm text-white font-semibold">Online</span>
+              </div>
+            </div>
+          </div>
+        </Link>
+
         {/* Personalized Greeting */}
         {profile?.name && (
           <div className="bg-gradient-to-r from-blue-900/50 to-purple-900/50 border border-blue-700/50 rounded-lg p-6 mb-8">

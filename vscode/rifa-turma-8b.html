@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rifa Turma 8B</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    :root {
+      --bg: #f8fbff;
+      --bg-soft: #eaf6ff;
+      --card: #ffffff;
+      --text: #1b263b;
+      --muted: #5e6b80;
+      --primary: #0a84ff;
+      --primary-strong: #006ce0;
+      --accent: #ff7a18;
+      --sold: #c7ccd4;
+      --sold-text: #667085;
+      --ok: #14b36d;
+      --shadow: 0 10px 30px rgba(12, 40, 84, 0.12);
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-sm: 10px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Nunito", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(10, 132, 255, 0.12), transparent 35%),
+        radial-gradient(circle at 90% 25%, rgba(255, 122, 24, 0.15), transparent 30%),
+        radial-gradient(circle at 50% 100%, rgba(20, 179, 109, 0.12), transparent 35%),
+        var(--bg);
+      min-height: 100vh;
+    }
+
+    .container {
+      width: min(1100px, 94%);
+      margin: 24px auto 40px;
+      display: grid;
+      gap: 18px;
+      animation: fadeUp 0.55s ease;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #ffffff, #eaf6ff);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding: 22px;
+      border: 1px solid rgba(10, 132, 255, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -45px;
+      top: -45px;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 122, 24, 0.25), rgba(255, 122, 24, 0));
+      pointer-events: none;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Baloo 2", cursive;
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      line-height: 1;
+      color: #003f88;
+      letter-spacing: 0.4px;
+    }
+
+    .subtitle {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 1.03rem;
+      max-width: 760px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(130px, 1fr));
+      gap: 12px;
+    }
+
+    .stat-card {
+      background: var(--card);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(27, 38, 59, 0.08);
+    }
+
+    .stat-label {
+      display: block;
+      color: var(--muted);
+      font-size: 0.86rem;
+      margin-bottom: 5px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    .stat-value {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #072a57;
+    }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1.55fr 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(27, 38, 59, 0.08);
+      padding: 18px;
+    }
+
+    .card h2 {
+      margin: 0 0 12px;
+      font-size: 1.12rem;
+      color: #0b366d;
+    }
+
+    .legend {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: #f4f8ff;
+      border: 1px solid #dbe8ff;
+      font-weight: 700;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 1px solid #c4d3ea;
+      display: inline-block;
+    }
+
+    .dot.available { background: #ffffff; }
+    .dot.selected { background: var(--primary); border-color: var(--primary); }
+    .dot.sold { background: var(--sold); border-color: var(--sold); }
+
+    .number-grid {
+      display: grid;
+      grid-template-columns: repeat(10, minmax(40px, 1fr));
+      gap: 8px;
+    }
+
+    .num-btn {
+      border: 1px solid #d8e5f8;
+      background: #ffffff;
+      color: #12355b;
+      border-radius: 9px;
+      height: 38px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 0.12s ease, background 0.2s ease, border-color 0.2s ease;
+      font-size: 0.88rem;
+    }
+
+    .num-btn:hover {
+      transform: translateY(-1px);
+      border-color: #9ec5ff;
+    }
+
+    .num-btn.selected {
+      background: linear-gradient(180deg, #3da2ff, var(--primary));
+      border-color: var(--primary-strong);
+      color: #ffffff;
+      box-shadow: 0 6px 14px rgba(10, 132, 255, 0.28);
+    }
+
+    .num-btn.sold,
+    .num-btn:disabled {
+      background: #d2d6dd;
+      border-color: #c1c7d1;
+      color: var(--sold-text);
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .selection-box {
+      background: linear-gradient(180deg, #f6fbff, #f0f7ff);
+      border: 1px solid #d8e8ff;
+      border-radius: var(--radius-md);
+      padding: 12px;
+      margin-bottom: 12px;
+    }
+
+    .selected-list {
+      min-height: 42px;
+      font-size: 0.95rem;
+      color: #1b3f6b;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .selected-pill {
+      background: #d8ebff;
+      border: 1px solid #b9d8ff;
+      color: #0a4f9a;
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-weight: 800;
+      font-size: 0.84rem;
+    }
+
+    .empty-note {
+      color: #6b7a8f;
+      font-weight: 600;
+    }
+
+    .total {
+      margin-top: 8px;
+      font-size: 1.07rem;
+      font-weight: 800;
+      color: #0b366d;
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    label {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #2b4b74;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 100%;
+      border: 1px solid #cfdced;
+      border-radius: 11px;
+      padding: 10px 12px;
+      font-size: 0.98rem;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      background: #ffffff;
+      color: #12355b;
+    }
+
+    input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(10, 132, 255, 0.15);
+    }
+
+    .pix-wrap {
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      padding: 12px;
+      border-radius: var(--radius-md);
+      background: #fff8ef;
+      border: 1px solid #ffdcb8;
+    }
+
+    .pix-key {
+      word-break: break-word;
+      background: #ffffff;
+      border: 1px dashed #ffc991;
+      border-radius: 10px;
+      padding: 10px;
+      font-size: 0.92rem;
+      color: #7a3a06;
+      font-weight: 700;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 11px;
+      font-weight: 800;
+      cursor: pointer;
+      padding: 10px 14px;
+      font-size: 0.95rem;
+      transition: transform 0.12s ease, filter 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.02);
+    }
+
+    .btn.primary {
+      background: linear-gradient(180deg, #26b464, #149855);
+      color: #ffffff;
+      width: 100%;
+      padding: 12px;
+      margin-top: 12px;
+      font-size: 1rem;
+    }
+
+    .btn.secondary {
+      background: linear-gradient(180deg, #ffa144, var(--accent));
+      color: #ffffff;
+    }
+
+    .btn.ghost {
+      background: #ffffff;
+      color: #0a4f9a;
+      border: 1px solid #b9d8ff;
+    }
+
+    .pix-total {
+      font-weight: 800;
+      color: #7a3a06;
+      font-size: 0.98rem;
+    }
+
+    .qr-box {
+      display: grid;
+      justify-items: center;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    #qrcode {
+      width: 190px;
+      min-height: 190px;
+      background: #ffffff;
+      border-radius: 12px;
+      border: 1px solid #ffd3a6;
+      display: grid;
+      place-items: center;
+      padding: 10px;
+    }
+
+    .message {
+      min-height: 20px;
+      margin-top: 10px;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .message.error { color: #c72b2b; }
+    .message.ok { color: var(--ok); }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 30, 59, 0.55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+      z-index: 999;
+    }
+
+    .modal.show {
+      display: flex;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .modal-card {
+      width: min(460px, 100%);
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(10, 132, 255, 0.18);
+      text-align: center;
+    }
+
+    .modal-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.45rem;
+      color: #0a4f9a;
+    }
+
+    .modal-card p {
+      margin: 4px 0;
+      color: #4d6078;
+    }
+
+    .footer-note {
+      text-align: center;
+      color: #5e6b80;
+      font-size: 0.88rem;
+      margin-top: 2px;
+    }
+
+    @media (max-width: 980px) {
+      .main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .container {
+        width: 95%;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, minmax(120px, 1fr));
+      }
+
+      .number-grid {
+        grid-template-columns: repeat(5, minmax(46px, 1fr));
+      }
+
+      .num-btn {
+        height: 42px;
+      }
+
+      .hero {
+        padding: 18px;
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        transform: translateY(12px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <section class="hero">
+      <h1 id="prizeTitle">Rifa Turma 8B</h1>
+      <p class="subtitle">Escolha seus numeros da sorte, preencha seus dados e finalize sua participacao com PIX.</p>
+    </section>
+
+    <section class="stats" aria-label="Estatisticas da rifa">
+      <div class="stat-card">
+        <span class="stat-label">Total de numeros</span>
+        <strong class="stat-value" id="statTotal">100</strong>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Disponiveis</span>
+        <strong class="stat-value" id="statAvailable">0</strong>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Vendidos</span>
+        <strong class="stat-value" id="statSold">0</strong>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Preco por numero</span>
+        <strong class="stat-value" id="statPrice">R$ 0,00</strong>
+      </div>
+    </section>
+
+    <section class="main-grid">
+      <article class="card">
+        <h2>Escolha seus numeros (01 a 100)</h2>
+        <div class="legend">
+          <span class="legend-item"><i class="dot available"></i>Disponivel</span>
+          <span class="legend-item"><i class="dot selected"></i>Selecionado</span>
+          <span class="legend-item"><i class="dot sold"></i>Vendido</span>
+        </div>
+        <div class="number-grid" id="numberGrid" aria-label="Grade com 100 numeros"></div>
+      </article>
+
+      <article class="card">
+        <h2>Sua participacao</h2>
+
+        <div class="selection-box">
+          <div id="selectedList" class="selected-list">
+            <span class="empty-note">Nenhum numero selecionado.</span>
+          </div>
+          <div class="total" id="totalValue">Total: R$ 0,00</div>
+        </div>
+
+        <form id="participationForm" novalidate>
+          <div class="form-grid">
+            <div>
+              <label for="name">Nome completo *</label>
+              <input id="name" type="text" placeholder="Digite seu nome completo" required />
+            </div>
+            <div>
+              <label for="phone">Telefone / WhatsApp *</label>
+              <input id="phone" type="tel" placeholder="(00) 00000-0000" required />
+            </div>
+            <div>
+              <label for="email">E-mail (opcional)</label>
+              <input id="email" type="email" placeholder="voce@exemplo.com" />
+            </div>
+          </div>
+
+          <section class="pix-wrap" aria-label="Pagamento via PIX">
+            <strong>Pagamento via PIX</strong>
+            <div class="pix-key" id="pixKeyView"></div>
+            <div class="pix-total" id="pixTotal">Valor do PIX: R$ 0,00</div>
+            <div class="btn-row">
+              <button type="button" class="btn secondary" id="copyPixBtn">Copiar chave PIX</button>
+              <button type="button" class="btn ghost" id="refreshQrBtn">Atualizar QR</button>
+            </div>
+            <div class="qr-box">
+              <div id="qrcode" aria-label="QR Code PIX"></div>
+              <small>Escaneie o QR Code para pagar.</small>
+            </div>
+          </section>
+
+          <button type="submit" class="btn primary">Confirmar Participacao</button>
+          <div id="formMessage" class="message" role="status" aria-live="polite"></div>
+        </form>
+      </article>
+    </section>
+
+    <p class="footer-note">Turma 8B - Obrigado por apoiar nossa rifa.</p>
+  </div>
+
+  <div class="modal" id="successModal" aria-hidden="true">
+    <div class="modal-card">
+      <h3>Participacao confirmada!</h3>
+      <p>Seus numeros foram reservados com sucesso.</p>
+      <p id="modalSummary"></p>
+      <div class="btn-row" style="justify-content:center; margin-top: 12px;">
+        <button class="btn secondary" id="goWhatsappBtn" type="button">Ir para o WhatsApp</button>
+        <button class="btn ghost" id="closeModalBtn" type="button">Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const CONFIG = {
+      prizeName: "Cesta Especial da Turma 8B",
+      pricePerNumber: 10,
+      pixKey: "pix-turma8b@exemplo.com",
+      whatsappNumber: "5511999999999",
+      soldNumbers: [3, 7, 12, 19, 25, 38, 44, 57, 63, 80]
+    };
+
+    const TOTAL_NUMBERS = 100;
+    const soldSet = new Set(CONFIG.soldNumbers);
+    const selectedSet = new Set();
+
+    const numberGrid = document.getElementById("numberGrid");
+    const selectedList = document.getElementById("selectedList");
+    const totalValue = document.getElementById("totalValue");
+    const pixTotal = document.getElementById("pixTotal");
+    const pixKeyView = document.getElementById("pixKeyView");
+    const formMessage = document.getElementById("formMessage");
+    const participationForm = document.getElementById("participationForm");
+    const prizeTitle = document.getElementById("prizeTitle");
+
+    const statTotal = document.getElementById("statTotal");
+    const statAvailable = document.getElementById("statAvailable");
+    const statSold = document.getElementById("statSold");
+    const statPrice = document.getElementById("statPrice");
+
+    const copyPixBtn = document.getElementById("copyPixBtn");
+    const refreshQrBtn = document.getElementById("refreshQrBtn");
+    const qrcodeBox = document.getElementById("qrcode");
+
+    const successModal = document.getElementById("successModal");
+    const modalSummary = document.getElementById("modalSummary");
+    const closeModalBtn = document.getElementById("closeModalBtn");
+    const goWhatsappBtn = document.getElementById("goWhatsappBtn");
+
+    let lastWhatsAppUrl = "";
+
+    function formatCurrency(value) {
+      return value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+    }
+
+    function formatNumber(n) {
+      return n.toString().padStart(2, "0");
+    }
+
+    function getSelectedSorted() {
+      return Array.from(selectedSet).sort((a, b) => a - b);
+    }
+
+    function getTotalAmount() {
+      return getSelectedSorted().length * CONFIG.pricePerNumber;
+    }
+
+    function buildPixPayload() {
+      const amount = getTotalAmount().toFixed(2);
+      const numbers = getSelectedSorted().map(formatNumber).join(", ") || "nenhum";
+      return [
+        "Pagamento Rifa Turma 8B",
+        "Premio: " + CONFIG.prizeName,
+        "Chave PIX: " + CONFIG.pixKey,
+        "Numeros: " + numbers,
+        "Valor: R$ " + amount
+      ].join(" | ");
+    }
+
+    function drawQRCode() {
+      qrcodeBox.innerHTML = "";
+      new QRCode(qrcodeBox, {
+        text: buildPixPayload(),
+        width: 170,
+        height: 170,
+        colorDark: "#1b263b",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.M
+      });
+    }
+
+    function updateStats() {
+      statTotal.textContent = TOTAL_NUMBERS.toString();
+      statSold.textContent = soldSet.size.toString();
+      statAvailable.textContent = (TOTAL_NUMBERS - soldSet.size).toString();
+      statPrice.textContent = formatCurrency(CONFIG.pricePerNumber);
+    }
+
+    function updateSelectionPanel() {
+      const selected = getSelectedSorted();
+
+      if (selected.length === 0) {
+        selectedList.innerHTML = '<span class="empty-note">Nenhum numero selecionado.</span>';
+      } else {
+        selectedList.innerHTML = selected
+          .map((n) => '<span class="selected-pill">' + formatNumber(n) + "</span>")
+          .join("");
+      }
+
+      const totalText = "Total: " + formatCurrency(getTotalAmount());
+      totalValue.textContent = totalText;
+      pixTotal.textContent = "Valor do PIX: " + formatCurrency(getTotalAmount());
+      drawQRCode();
+    }
+
+    function renderGrid() {
+      numberGrid.innerHTML = "";
+
+      for (let i = 1; i <= TOTAL_NUMBERS; i++) {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "num-btn";
+        button.dataset.number = i.toString();
+        button.textContent = formatNumber(i);
+
+        if (soldSet.has(i)) {
+          button.classList.add("sold");
+          button.disabled = true;
+        } else if (selectedSet.has(i)) {
+          button.classList.add("selected");
+        }
+
+        button.addEventListener("click", () => {
+          if (soldSet.has(i)) return;
+
+          if (selectedSet.has(i)) {
+            selectedSet.delete(i);
+            button.classList.remove("selected");
+          } else {
+            selectedSet.add(i);
+            button.classList.add("selected");
+          }
+
+          setMessage("");
+          updateSelectionPanel();
+        });
+
+        numberGrid.appendChild(button);
+      }
+    }
+
+    function setMessage(message, type = "") {
+      formMessage.textContent = message;
+      formMessage.className = "message";
+      if (type) formMessage.classList.add(type);
+    }
+
+    function validateForm(name, phone) {
+      if (selectedSet.size === 0) {
+        setMessage("Selecione pelo menos um numero para participar.", "error");
+        return false;
+      }
+
+      if (name.trim().length < 3) {
+        setMessage("Informe o nome completo (minimo 3 caracteres).", "error");
+        return false;
+      }
+
+      const onlyDigits = phone.replace(/\D/g, "");
+      if (onlyDigits.length < 10) {
+        setMessage("Informe um telefone/WhatsApp valido.", "error");
+        return false;
+      }
+
+      return true;
+    }
+
+    async function copyPixKey() {
+      try {
+        await navigator.clipboard.writeText(CONFIG.pixKey);
+        setMessage("Chave PIX copiada com sucesso.", "ok");
+      } catch (error) {
+        // Fallback para navegadores sem permissao de clipboard
+        const tempInput = document.createElement("input");
+        tempInput.value = CONFIG.pixKey;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand("copy");
+        document.body.removeChild(tempInput);
+        setMessage("Chave PIX copiada.", "ok");
+      }
+    }
+
+    function buildWhatsAppUrl(name, email) {
+      const selected = getSelectedSorted().map(formatNumber).join(", ");
+      const total = formatCurrency(getTotalAmount());
+      const maybeEmail = email ? "\nE-mail: " + email : "";
+
+      const text =
+        "Ola! Quero confirmar minha participacao na rifa da Turma 8B." +
+        "\nNome: " + name +
+        "\nNumeros: " + selected +
+        "\nValor total: " + total +
+        maybeEmail +
+        "\nJa realizei o pagamento via PIX.";
+
+      return "https://wa.me/" + CONFIG.whatsappNumber + "?text=" + encodeURIComponent(text);
+    }
+
+    function openSuccessModal(summary) {
+      modalSummary.textContent = summary;
+      successModal.classList.add("show");
+      successModal.setAttribute("aria-hidden", "false");
+    }
+
+    function closeSuccessModal() {
+      successModal.classList.remove("show");
+      successModal.setAttribute("aria-hidden", "true");
+    }
+
+    function confirmParticipation(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const phone = document.getElementById("phone").value;
+      const email = document.getElementById("email").value.trim();
+
+      if (!validateForm(name, phone)) {
+        return;
+      }
+
+      const selected = getSelectedSorted();
+      selected.forEach((n) => soldSet.add(n));
+      selectedSet.clear();
+
+      const total = formatCurrency(selected.length * CONFIG.pricePerNumber);
+      const summary = "Numeros vendidos: " + selected.map(formatNumber).join(", ") + " | Total: " + total;
+
+      lastWhatsAppUrl = buildWhatsAppUrl(name.trim(), email);
+
+      setMessage("Participacao confirmada! Redirecionando para o WhatsApp...", "ok");
+
+      renderGrid();
+      updateStats();
+      updateSelectionPanel();
+
+      participationForm.reset();
+      openSuccessModal(summary);
+
+      setTimeout(() => {
+        window.open(lastWhatsAppUrl, "_blank");
+      }, 900);
+    }
+
+    copyPixBtn.addEventListener("click", copyPixKey);
+    refreshQrBtn.addEventListener("click", drawQRCode);
+    participationForm.addEventListener("submit", confirmParticipation);
+    closeModalBtn.addEventListener("click", closeSuccessModal);
+    goWhatsappBtn.addEventListener("click", () => {
+      if (lastWhatsAppUrl) {
+        window.open(lastWhatsAppUrl, "_blank");
+      }
+    });
+
+    successModal.addEventListener("click", (event) => {
+      if (event.target === successModal) closeSuccessModal();
+    });
+
+    function init() {
+      prizeTitle.textContent = "Rifa Turma 8B - " + CONFIG.prizeName;
+      pixKeyView.textContent = CONFIG.pixKey;
+      renderGrid();
+      updateStats();
+      updateSelectionPanel();
+      setMessage("");
+    }
+
+    init();
+  </script>
+</body>
+</html>

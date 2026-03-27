@@ -138,3 +138,43 @@ LEFT JOIN completed_lessons cl ON p.id = cl.user_id
 LEFT JOIN study_days sd ON p.id = sd.user_id
 GROUP BY p.id, p.name, p.grade, p.points
 ORDER BY p.points DESC;
+
+-- ============================
+-- CHAT SYSTEM
+-- ============================
+
+-- Tabela de mensagens do chat
+CREATE TABLE IF NOT EXISTS chat_messages (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  user_name TEXT NOT NULL,
+  message TEXT NOT NULL,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
+  likes INTEGER DEFAULT 0
+);
+
+-- Índice para ordenar por data
+CREATE INDEX IF NOT EXISTS idx_chat_messages_created_at 
+ON chat_messages(created_at DESC);
+
+-- Habilitar realtime
+ALTER PUBLICATION supabase_realtime ADD TABLE chat_messages;
+
+-- RLS Policies
+ALTER TABLE chat_messages ENABLE ROW LEVEL SECURITY;
+
+-- Todos podem ler mensagens
+CREATE POLICY "Anyone can read messages"
+ON chat_messages FOR SELECT
+USING (true);
+
+-- Usuários autenticados podem inserir
+CREATE POLICY "Authenticated users can insert messages"
+ON chat_messages FOR INSERT
+WITH CHECK (auth.role() = 'authenticated' OR auth.role() = 'anon');
+
+-- Usuários podem deletar suas próprias mensagens
+CREATE POLICY "Users can delete their own messages"
+ON chat_messages FOR DELETE
+USING (auth.uid() = user_id);
+

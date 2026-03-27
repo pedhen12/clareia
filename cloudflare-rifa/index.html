@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rifa Turma 8B</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&family=Bungee:wght@400&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    :root {
+      --bg: #f6fbff;
+      --bg-soft: #eaf6ff;
+      --card: rgba(255, 255, 255, 0.9);
+      --text: #13263f;
+      --muted: #556a84;
+      --primary: #0a84ff;
+      --primary-strong: #006ce0;
+      --accent: #ff7a18;
+      --accent-soft: #ffefe1;
+      --sold: #c7ccd4;
+      --sold-text: #667085;
+      --ok: #14b36d;
+      --shadow: 0 18px 35px rgba(12, 40, 84, 0.14);
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --radius-sm: 10px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Nunito", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 8% 8%, rgba(10, 132, 255, 0.2), transparent 36%),
+        radial-gradient(circle at 92% 24%, rgba(255, 122, 24, 0.22), transparent 34%),
+        radial-gradient(circle at 50% 100%, rgba(20, 179, 109, 0.16), transparent 38%),
+        var(--bg);
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      border-radius: 50%;
+      z-index: -1;
+      filter: blur(3px);
+      pointer-events: none;
+    }
+
+    body::before {
+      width: 280px;
+      height: 280px;
+      right: -95px;
+      top: 22%;
+      background: radial-gradient(circle, rgba(10, 132, 255, 0.25), rgba(10, 132, 255, 0));
+    }
+
+    body::after {
+      width: 240px;
+      height: 240px;
+      left: -95px;
+      bottom: 10%;
+      background: radial-gradient(circle, rgba(255, 122, 24, 0.25), rgba(255, 122, 24, 0));
+    }
+
+    .container {
+      width: min(1100px, 94%);
+      margin: 28px auto 48px;
+      display: grid;
+      gap: 20px;
+      animation: fadeUp 0.65s ease;
+    }
+
+    .hero {
+      background: linear-gradient(125deg, #ffffff 12%, #eaf6ff 58%, #ffeede 100%);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding: 24px;
+      border: 1px solid rgba(10, 132, 255, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        -35deg,
+        rgba(255, 255, 255, 0.08) 0,
+        rgba(255, 255, 255, 0.08) 14px,
+        transparent 14px,
+        transparent 28px
+      );
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -45px;
+      top: -45px;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 122, 24, 0.25), rgba(255, 122, 24, 0));
+      pointer-events: none;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Bungee", cursive;
+      font-size: clamp(1.85rem, 3.9vw, 2.75rem);
+      line-height: 1.1;
+      color: #0b3f82;
+      letter-spacing: 0.8px;
+      text-shadow: 0 2px 0 rgba(255, 255, 255, 0.9);
+      max-width: 760px;
+    }
+
+    .subtitle {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 1.03rem;
+      max-width: 760px;
+      font-weight: 700;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(130px, 1fr));
+      gap: 12px;
+    }
+
+    .stat-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(247, 252, 255, 0.95));
+      border-radius: var(--radius-md);
+      padding: 14px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(27, 38, 59, 0.08);
+      backdrop-filter: blur(4px);
+    }
+
+    .stat-label {
+      display: block;
+      color: var(--muted);
+      font-size: 0.86rem;
+      margin-bottom: 5px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    .stat-value {
+      font-size: 1.28rem;
+      font-weight: 800;
+      color: #072a57;
+    }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1.55fr 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(27, 38, 59, 0.08);
+      padding: 18px;
+      backdrop-filter: blur(5px);
+    }
+
+    .card h2 {
+      margin: 0 0 12px;
+      font-size: 1.16rem;
+      color: #0b366d;
+      letter-spacing: 0.2px;
+    }
+
+    .legend {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 11px;
+      border-radius: 999px;
+      background: #f4f8ff;
+      border: 1px solid #dbe8ff;
+      font-weight: 700;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 1px solid #c4d3ea;
+      display: inline-block;
+    }
+
+    .dot.available { background: #ffffff; }
+    .dot.selected { background: var(--primary); border-color: var(--primary); }
+    .dot.sold { background: var(--sold); border-color: var(--sold); }
+
+    .number-grid {
+      display: grid;
+      grid-template-columns: repeat(10, minmax(40px, 1fr));
+      gap: 9px;
+    }
+
+    .num-btn {
+      border: 1px solid #d8e5f8;
+      background: linear-gradient(180deg, #ffffff, #f5f9ff);
+      color: #12355b;
+      border-radius: 9px;
+      height: 40px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 0.12s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      font-size: 0.88rem;
+    }
+
+    .num-btn:hover {
+      transform: translateY(-1px);
+      border-color: #9ec5ff;
+      box-shadow: 0 8px 14px rgba(10, 132, 255, 0.17);
+    }
+
+    .num-btn.selected {
+      background: linear-gradient(180deg, #54aeff, var(--primary));
+      border-color: var(--primary-strong);
+      color: #ffffff;
+      box-shadow: 0 9px 18px rgba(10, 132, 255, 0.3);
+    }
+
+    .num-btn.sold,
+    .num-btn:disabled {
+      background: #d2d6dd;
+      border-color: #c1c7d1;
+      color: var(--sold-text);
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .selection-box {
+      background: linear-gradient(180deg, #f8fcff, #eef6ff);
+      border: 1px solid #d8e8ff;
+      border-radius: var(--radius-md);
+      padding: 13px;
+      margin-bottom: 12px;
+    }
+
+    .selected-list {
+      min-height: 42px;
+      font-size: 0.95rem;
+      color: #1b3f6b;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .selected-pill {
+      background: linear-gradient(180deg, #deeeff, #cfe6ff);
+      border: 1px solid #b9d8ff;
+      color: #0a4f9a;
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-weight: 800;
+      font-size: 0.84rem;
+    }
+
+    .empty-note {
+      color: #6b7a8f;
+      font-weight: 600;
+    }
+
+    .total {
+      margin-top: 8px;
+      font-size: 1.07rem;
+      font-weight: 800;
+      color: #0b366d;
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    label {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #2b4b74;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 100%;
+      border: 1px solid #cfdced;
+      border-radius: 11px;
+      padding: 11px 12px;
+      font-size: 0.98rem;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      background: #fbfdff;
+      color: #12355b;
+    }
+
+    input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(10, 132, 255, 0.15);
+    }
+
+    .pix-wrap {
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      padding: 13px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(180deg, #fff9f2, #fff1e2);
+      border: 1px solid #ffdcb8;
+    }
+
+    .pix-key {
+      word-break: break-word;
+      background: #ffffff;
+      border: 1px dashed #ffc991;
+      border-radius: 10px;
+      padding: 11px;
+      font-size: 0.92rem;
+      color: #7a3a06;
+      font-weight: 700;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      padding: 10px 15px;
+      font-size: 0.95rem;
+      transition: transform 0.12s ease, filter 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.02);
+      box-shadow: 0 7px 14px rgba(19, 38, 63, 0.2);
+    }
+
+    .btn.primary {
+      background: linear-gradient(180deg, #2bc46f, #149855);
+      color: #ffffff;
+      width: 100%;
+      padding: 13px;
+      margin-top: 12px;
+      font-size: 1rem;
+    }
+
+    .btn.secondary {
+      background: linear-gradient(180deg, #ffad57, var(--accent));
+      color: #ffffff;
+    }
+
+    .btn.ghost {
+      background: #ffffff;
+      color: #0a4f9a;
+      border: 1px solid #b9d8ff;
+    }
+
+    .pix-total {
+      font-weight: 800;
+      color: #7a3a06;
+      font-size: 0.98rem;
+    }
+
+    .qr-box {
+      display: grid;
+      justify-items: center;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    #qrcode {
+      width: 190px;
+      min-height: 190px;
+      background: #ffffff;
+      border-radius: 14px;
+      border: 1px solid #ffd3a6;
+      display: grid;
+      place-items: center;
+      padding: 10px;
+      box-shadow: inset 0 0 0 1px rgba(255, 179, 102, 0.25);
+    }
+
+    .message {
+      min-height: 20px;
+      margin-top: 10px;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .message.error { color: #c72b2b; }
+    .message.ok { color: var(--ok); }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 30, 59, 0.55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+      z-index: 999;
+    }
+
+    .modal.show {
+      display: flex;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .modal-card {
+      width: min(460px, 100%);
+      background: linear-gradient(180deg, #ffffff, #f7fbff);
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(10, 132, 255, 0.18);
+      text-align: center;
+    }
+
+    .modal-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.45rem;
+      color: #0a4f9a;
+    }
+
+    .modal-card p {
+      margin: 4px 0;
+      color: #4d6078;
+    }
+
+    .footer-note {
+      text-align: center;
+      color: #5e6b80;
+      font-size: 0.88rem;
+      margin-top: 4px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 980px) {
+      .main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .container {
+        width: 95%;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, minmax(120px, 1fr));
+      }
+
+      .number-grid {
+        grid-template-columns: repeat(5, minmax(46px, 1fr));
+      }
+
+      .num-btn {
+        height: 44px;
+      }
+
+      .hero {
+        padding: 19px;
+      }
+
+      h1 {
+        letter-spacing: 0.4px;
+        font-size: clamp(1.65rem, 7.2vw, 2.05rem);
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        transform: translateY(12px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .tabs-header {
+      display: flex;
+      gap: 0;
+      border-bottom: 2px solid #dbe8ff;
+      margin-bottom: 18px;
+      overflow-x: auto;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+      font-weight: 800;
+      padding: 12px 20px;
+      cursor: pointer;
+      position: relative;
+      transition: color 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .tab-btn:hover {
+      color: var(--primary);
+    }
+
+    .tab-btn.active {
+      color: var(--primary);
+    }
+
+    .tab-btn.active::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--primary);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+      animation: fadeUp 0.3s ease;
+    }
+
+    .support-box {
+      background: linear-gradient(180deg, #f0f7ff, #e8f2ff);
+      border: 1px solid #d8e8ff;
+      border-radius: var(--radius-md);
+      padding: 20px;
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .support-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #0b366d;
+      margin-bottom: 12px;
+    }
+
+    .support-text {
+      color: var(--muted);
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+
+    .contact-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .contact-item {
+      background: #ffffff;
+      border: 1px solid #dbe8ff;
+      border-radius: var(--radius-md);
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .contact-label {
+      font-size: 0.85rem;
+      color: #556a84;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 12px;
+      background: linear-gradient(180deg, #25d366, #1b9850);
+      color: #ffffff;
+      border: 0;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 0.92rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.12s ease, filter 0.2s ease;
+    }
+
+    .contact-link:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+    }
+
+    .contact-link.instagram {
+      background: linear-gradient(180deg, #e74c3c, #c92a2a);
+    }
+
+    .contact-link.instagram:hover {
+      background: linear-gradient(180deg, #ec7063, #e74c3c);
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <section class="hero">
+      <h1 id="prizeTitle">Rifa Turma 8B</h1>
+      <p class="subtitle">Escolha seus numeros da sorte, preencha seus dados e finalize sua participacao com PIX.</p>
+    </section>
+
+    <section class="stats" aria-label="Estatisticas da rifa">
+      <div class="stat-card">
+        <span class="stat-label">Total de numeros</span>
+        <strong class="stat-value" id="statTotal">100</strong>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Disponiveis</span>
+        <strong class="stat-value" id="statAvailable">0</strong>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Vendidos</span>
+        <strong class="stat-value" id="statSold">0</strong>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Preco por numero</span>
+        <strong class="stat-value" id="statPrice">R$ 0,00</strong>
+      </div>
+    </section>
+
+    <div class="tabs-header">
+      <button class="tab-btn active" data-tab="online">Compre Online</button>
+      <button class="tab-btn" data-tab="reservar">Reservar Numeros</button>
+      <button class="tab-btn" data-tab="presencial">Compre Presencialmente</button>
+    </div>
+
+    <div class="tab-content active" id="tab-online">
+    <section class="main-grid">
+      <article class="card">
+        <h2>Escolha seus numeros (01 a 100)</h2>
+        <div class="legend">
+          <span class="legend-item"><i class="dot available"></i>Disponivel</span>
+          <span class="legend-item"><i class="dot selected"></i>Selecionado</span>
+          <span class="legend-item"><i class="dot sold"></i>Vendido</span>
+        </div>
+        <div class="number-grid" id="numberGrid" aria-label="Grade com 100 numeros"></div>
+      </article>
+
+      <article class="card">
+        <h2>Sua participacao</h2>
+
+        <div class="selection-box">
+          <div id="selectedList" class="selected-list">
+            <span class="empty-note">Nenhum numero selecionado.</span>
+          </div>
+          <div class="total" id="totalValue">Total: R$ 0,00</div>
+        </div>
+
+        <form id="participationForm" novalidate>
+          <div class="form-grid">
+            <div>
+              <label for="name">Nome completo *</label>
+              <input id="name" type="text" placeholder="Digite seu nome completo" required />
+            </div>
+            <div>
+              <label for="phone">Telefone / WhatsApp *</label>
+              <input id="phone" type="tel" placeholder="(00) 00000-0000" required />
+            </div>
+            <div>
+              <label for="email">E-mail (opcional)</label>
+              <input id="email" type="email" placeholder="voce@exemplo.com" />
+            </div>
+          </div>
+
+          <section class="pix-wrap" aria-label="Pagamento via PIX">
+            <strong>Pagamento via PIX</strong>
+            <div class="pix-key" id="pixKeyView"></div>
+            <div class="pix-total" id="pixTotal">Valor do PIX: R$ 0,00</div>
+            <div class="btn-row">
+              <button type="button" class="btn secondary" id="copyPixBtn">Copiar chave PIX</button>
+              <button type="button" class="btn ghost" id="refreshQrBtn">Atualizar QR</button>
+            </div>
+            <div class="qr-box">
+              <div id="qrcode" aria-label="QR Code PIX"></div>
+              <small>Escaneie o QR Code para pagar.</small>
+            </div>
+          </section>
+
+          <button type="submit" class="btn primary">Confirmar Participacao</button>
+          <div id="formMessage" class="message" role="status" aria-live="polite"></div>
+        </form>
+      </article>
+    </section>
+    </div>
+
+    <div class="tab-content" id="tab-reservar">
+      <div class="support-box">
+        <div class="support-title">Reservar Numeros</div>
+        <p class="support-text">Clique abaixo para conversar com nossa equipe e reservar seus números pelo WhatsApp.</p>
+        <div class="contact-row">
+          <div class="contact-item">
+            <span class="contact-label">Falar com Suporte</span>
+            <a href="" class="contact-link" id="whatsappReservaLink">
+              <span>💬 Reservar agora</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab-presencial">
+      <div class="support-box">
+        <div class="support-title">Entre em Contato para Compra Presencial</div>
+        <p class="support-text">Clique abaixo para falar com nossa equipe de suporte pelo WhatsApp ou nos acompanhe no Instagram.</p>
+        <div class="contact-row">
+          <div class="contact-item">
+            <span class="contact-label">WhatsApp</span>
+            <a href="" class="contact-link" id="whatsappLink">
+              <span>💬 Enviar mensagem</span>
+            </a>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Instagram</span>
+            <a href="" class="contact-link instagram" id="instagramLink" target="_blank">
+              <span>📸 @VenusTeatro</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="footer-note">Turma 8B - Obrigado por apoiar nossa rifa.</p>
+  </div>
+
+  <div class="modal" id="successModal" aria-hidden="true">
+    <div class="modal-card">
+      <h3>Participacao confirmada!</h3>
+      <p>Seus numeros foram reservados com sucesso.</p>
+      <p id="modalSummary"></p>
+      <div style="text-align: center; margin: 16px 0;">
+        <small style="display: block; margin-bottom: 10px; color: #556a84; font-weight: 700;">Escaneie para pagar com PIX:</small>
+        <div id="qrcodeModal" style="display: inline-block; width: 220px; height: 220px; background: #ffffff; border: 2px solid #dbe8ff; border-radius: 14px; padding: 10px;"></div>
+      </div>
+      <div class="btn-row" style="justify-content:center; margin-top: 12px;">
+        <button class="btn secondary" id="goWhatsappBtn" type="button">Ir para o WhatsApp</button>
+        <button class="btn ghost" id="closeModalBtn" type="button">Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const CONFIG = {
+      prizeName: "Cesta de Páscoa - Palco Elite",
+      pricePerNumber: 10,
+      pixKey: "teatro.valquiere8b@gmail.com",
+      whatsappNumber: "5511999999999",
+      soldNumbers: [2, 4, 5, 7, 10, 13, 14, 15, 16, 17, 19, 20, 21, 29, 30, 33, 48, 49, 50, 57, 60, 66, 67, 68, 70, 76, 88, 91, 97, 98, 100]
+    };
+
+    const TOTAL_NUMBERS = 100;
+    const soldSet = new Set(CONFIG.soldNumbers);
+    const selectedSet = new Set();
+
+    const numberGrid = document.getElementById("numberGrid");
+    const selectedList = document.getElementById("selectedList");
+    const totalValue = document.getElementById("totalValue");
+    const pixTotal = document.getElementById("pixTotal");
+    const pixKeyView = document.getElementById("pixKeyView");
+    const formMessage = document.getElementById("formMessage");
+    const participationForm = document.getElementById("participationForm");
+    const prizeTitle = document.getElementById("prizeTitle");
+
+    const statTotal = document.getElementById("statTotal");
+    const statAvailable = document.getElementById("statAvailable");
+    const statSold = document.getElementById("statSold");
+    const statPrice = document.getElementById("statPrice");
+
+    const copyPixBtn = document.getElementById("copyPixBtn");
+    const refreshQrBtn = document.getElementById("refreshQrBtn");
+    const qrcodeBox = document.getElementById("qrcode");
+
+    const successModal = document.getElementById("successModal");
+    const modalSummary = document.getElementById("modalSummary");
+    const closeModalBtn = document.getElementById("closeModalBtn");
+    const goWhatsappBtn = document.getElementById("goWhatsappBtn");
+
+    let lastWhatsAppUrl = "";
+
+    function formatCurrency(value) {
+      return value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+    }
+
+    function formatNumber(n) {
+      return n.toString().padStart(2, "0");
+    }
+
+    function getSelectedSorted() {
+      return Array.from(selectedSet).sort((a, b) => a - b);
+    }
+
+    function getTotalAmount() {
+      return getSelectedSorted().length * CONFIG.pricePerNumber;
+    }
+
+    function buildPixPayload() {
+      const amount = getTotalAmount().toFixed(2);
+      const numbers = getSelectedSorted().map(formatNumber).join(", ") || "nenhum";
+      return [
+        "Pagamento Rifa Turma 8B",
+        "Premio: " + CONFIG.prizeName,
+        "Chave PIX: " + CONFIG.pixKey,
+        "Numeros: " + numbers,
+        "Valor: R$ " + amount
+      ].join(" | ");
+    }
+
+    function drawQRCode() {
+      qrcodeBox.innerHTML = "";
+      new QRCode(qrcodeBox, {
+        text: CONFIG.pixKey,
+        width: 190,
+        height: 190,
+        colorDark: "#1b263b",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+      });
+    }
+
+    function updateStats() {
+      statTotal.textContent = TOTAL_NUMBERS.toString();
+      statSold.textContent = soldSet.size.toString();
+      statAvailable.textContent = (TOTAL_NUMBERS - soldSet.size).toString();
+      statPrice.textContent = formatCurrency(CONFIG.pricePerNumber);
+    }
+
+    function updateSelectionPanel() {
+      const selected = getSelectedSorted();
+
+      if (selected.length === 0) {
+        selectedList.innerHTML = '<span class="empty-note">Nenhum numero selecionado.</span>';
+      } else {
+        selectedList.innerHTML = selected
+          .map((n) => '<span class="selected-pill">' + formatNumber(n) + "</span>")
+          .join("");
+      }
+
+      const totalText = "Total: " + formatCurrency(getTotalAmount());
+      totalValue.textContent = totalText;
+      pixTotal.textContent = "Valor do PIX: " + formatCurrency(getTotalAmount());
+      drawQRCode();
+    }
+
+    function renderGrid() {
+      numberGrid.innerHTML = "";
+
+      for (let i = 1; i <= TOTAL_NUMBERS; i++) {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "num-btn";
+        button.dataset.number = i.toString();
+        button.textContent = formatNumber(i);
+
+        if (soldSet.has(i)) {
+          button.classList.add("sold");
+          button.disabled = true;
+        } else if (selectedSet.has(i)) {
+          button.classList.add("selected");
+        }
+
+        button.addEventListener("click", () => {
+          if (soldSet.has(i)) return;
+
+          if (selectedSet.has(i)) {
+            selectedSet.delete(i);
+            button.classList.remove("selected");
+          } else {
+            selectedSet.add(i);
+            button.classList.add("selected");
+          }
+
+          setMessage("");
+          updateSelectionPanel();
+        });
+
+        numberGrid.appendChild(button);
+      }
+    }
+
+    function setMessage(message, type = "") {
+      formMessage.textContent = message;
+      formMessage.className = "message";
+      if (type) formMessage.classList.add(type);
+    }
+
+    function validateForm(name, phone) {
+      if (selectedSet.size === 0) {
+        setMessage("Selecione pelo menos um numero para participar.", "error");
+        return false;
+      }
+
+      if (name.trim().length < 3) {
+        setMessage("Informe o nome completo (minimo 3 caracteres).", "error");
+        return false;
+      }
+
+      const onlyDigits = phone.replace(/\D/g, "");
+      if (onlyDigits.length < 10) {
+        setMessage("Informe um telefone/WhatsApp valido.", "error");
+        return false;
+      }
+
+      return true;
+    }
+
+    async function copyPixKey() {
+      try {
+        await navigator.clipboard.writeText(CONFIG.pixKey);
+        setMessage("Chave PIX copiada com sucesso.", "ok");
+      } catch (error) {
+        // Fallback para navegadores sem permissao de clipboard
+        const tempInput = document.createElement("input");
+        tempInput.value = CONFIG.pixKey;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand("copy");
+        document.body.removeChild(tempInput);
+        setMessage("Chave PIX copiada.", "ok");
+      }
+    }
+
+    function buildWhatsAppUrl(name, email) {
+      const selected = getSelectedSorted().map(formatNumber).join(", ");
+      const total = formatCurrency(getTotalAmount());
+      const maybeEmail = email ? "\nE-mail: " + email : "";
+
+      const text =
+        "Ola! Quero confirmar minha participacao na rifa da Turma 8B." +
+        "\nNome: " + name +
+        "\nNumeros: " + selected +
+        "\nValor total: " + total +
+        maybeEmail +
+        "\nJa realizei o pagamento via PIX.";
+
+      return "https://wa.me/" + CONFIG.whatsappNumber + "?text=" + encodeURIComponent(text);
+    }
+
+    // Lookup table para CRC16-CCITT-FFFF (algoritmo correto do Banco Central)
+    const CRC16_TABLE = [
+      0x0000, 0x1021, 0x2042, 0x3063, 0x4084, 0x50a5, 0x60c6, 0x70e7,
+      0x8108, 0x9129, 0xa14a, 0xb16b, 0xc18c, 0xd1ad, 0xe1ce, 0xf1ef,
+      0x1231, 0x0210, 0x3273, 0x2252, 0x52b5, 0x4294, 0x72f7, 0x62d6,
+      0x9339, 0x8318, 0xb37b, 0xa35a, 0xd3bd, 0xc39c, 0xf3ff, 0xe3de,
+      0x2462, 0x3443, 0x0420, 0x1401, 0x64e6, 0x74c7, 0x44a4, 0x5485,
+      0xa56a, 0xb54b, 0x8528, 0x9509, 0xe5ee, 0xf5cf, 0xc5ac, 0xd58d,
+      0x3653, 0x2672, 0x1611, 0x0630, 0x76d7, 0x66f6, 0x5695, 0x46b4,
+      0xb75b, 0xa77a, 0x9719, 0x8738, 0xf7df, 0xe7fe, 0xd79d, 0xc7bc,
+      0x48c4, 0x58e5, 0x6886, 0x78a7, 0x0840, 0x1861, 0x2802, 0x3823,
+      0xc9cc, 0xd9ed, 0xe98e, 0xf9af, 0x8948, 0x9969, 0xa90a, 0xb92b,
+      0x5af5, 0x4ad4, 0x7ab7, 0x6a96, 0x1a71, 0x0a50, 0x3a33, 0x2a12,
+      0xdbfd, 0xcbdc, 0xfbbf, 0xeb9e, 0x9b79, 0x8b58, 0xbb3b, 0xab1a,
+      0x6ca6, 0x7c87, 0x4ce4, 0x5cc5, 0x2c22, 0x3c03, 0x0c60, 0x1c41,
+      0xedae, 0xfd8f, 0xcdec, 0xddcd, 0xad2a, 0xbd0b, 0x8d68, 0x9d49,
+      0x7e97, 0x6eb6, 0x5ed5, 0x4ef4, 0x3e13, 0x2e32, 0x1e51, 0x0e70,
+      0xff9f, 0xefbe, 0xdfdd, 0xcffc, 0xbf1b, 0xaf3a, 0x9f59, 0x8f78,
+      0x9188, 0x81a9, 0xb1ca, 0xa1eb, 0xd10c, 0xc12d, 0xf14e, 0xe16f,
+      0x1080, 0x00a1, 0x30c2, 0x20e3, 0x5004, 0x4025, 0x7046, 0x6067,
+      0x83b9, 0x9398, 0xa3fb, 0xb3da, 0xc33d, 0xd31c, 0xe37f, 0xf35e,
+      0x02b1, 0x1290, 0x22f3, 0x32d2, 0x4235, 0x5214, 0x6277, 0x7256,
+      0xb5ea, 0xa5cb, 0x95a8, 0x8589, 0xf56e, 0xe54f, 0xd52c, 0xc50d,
+      0x34e2, 0x24c3, 0x14a0, 0x0481, 0x7466, 0x6447, 0x5424, 0x4405,
+      0xa7db, 0xb7fa, 0x8799, 0x97b8, 0xe75f, 0xf77e, 0xc71d, 0xd73c,
+      0x26d3, 0x36f2, 0x0691, 0x16b0, 0x6657, 0x7676, 0x4615, 0x5634,
+      0xd94c, 0xc96d, 0xf90e, 0xe92f, 0x99c8, 0x89e9, 0xb98a, 0xa9ab,
+      0x5844, 0x4865, 0x7806, 0x6827, 0x18c0, 0x08e1, 0x3882, 0x28a3,
+      0xcb7d, 0xdb5c, 0xeb3f, 0xfb1e, 0x8bf9, 0x9bd8, 0xabbb, 0xbb9a,
+      0x4a75, 0x5a54, 0x6a37, 0x7a16, 0x0af1, 0x1ad0, 0x2ab3, 0x3a92,
+      0xfd2e, 0xed0f, 0xdd6c, 0xcd4d, 0xbdaa, 0xad8b, 0x9de8, 0x8dc9,
+      0x7c26, 0x6c07, 0x5c64, 0x4c45, 0x3ca2, 0x2c83, 0x1ce0, 0x0cc1,
+      0xef1f, 0xff3e, 0xcf5d, 0xdf7c, 0xaf9b, 0xbfba, 0x8fd9, 0x9ff8,
+      0x6e17, 0x7e36, 0x4e55, 0x5e74, 0x2e93, 0x3eb2, 0x0ed1, 0x1ef0
+    ];
+
+    function crc16(data) {
+      let crc = 0xFFFF;
+      for (let i = 0; i < data.length; i++) {
+        const c = data.charCodeAt(i);
+        const j = (c ^ (crc >> 8)) & 0xFF;
+        crc = CRC16_TABLE[j] ^ ((crc << 8) & 0xFFFF);
+      }
+      return (crc ^ 0).toString(16).toUpperCase().padStart(4, '0');
+    }
+
+    function removeAccents(str) {
+      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    }
+
+    function pad(str, length) {
+      return String(str).padStart(length, '0');
+    }
+
+    function generatePixBrcode(pixKey, recipientName = "Teatro Valquiere", amount = 0) {
+      // Sanitizar inputs
+      let key = pixKey.trim().toLowerCase();
+      let name = removeAccents(recipientName).trim().substring(0, 25).toUpperCase();
+      let city = "SAO PAULO";
+      
+      // 00 - Payload Format Indicator
+      let payload = "00020126";
+      
+      // 26 - Merchant Account Information (PIX)
+      let pixData = "00" + pad("BR.GOV.BCB.PIX".length, 2) + "BR.GOV.BCB.PIX";
+      pixData += "01" + "0201"; // Key type = 01 (CPF, email, etc)
+      pixData += "02" + pad(key.length, 2) + key;
+      payload += "26" + pad(pixData.length, 2) + pixData;
+      
+      // 52 - Merchant Category Code
+      payload += "5204" + "0000";
+      
+      // 53 - Transaction Currency (986 = BRL)
+      payload += "5303986";
+      
+      // 54 - Transaction Amount (optional)
+      if (amount > 0) {
+        const amountStr = amount.toFixed(2);
+        payload += "54" + pad(amountStr.length, 2) + amountStr;
+      }
+      
+      // 58 - Country Code
+      payload += "5802BR";
+      
+      // 59 - Merchant Name
+      payload += "59" + pad(name.length, 2) + name;
+      
+      // 60 - Merchant City
+      payload += "60" + pad(city.length, 2) + city;
+      
+      // 62 - Additional Data Field Template
+      let additionalData = "05" + pad("***".length, 2) + "***";
+      additionalData += "50" + "0415" + "BR.GOV.BCB.BRCODE" + "01" + "031.0.0";
+      payload += "62" + pad(additionalData.length, 2) + additionalData;
+      
+      // 63 - CRC16 (IMPORTANTE: adicionar "6304" antes de calcular)
+      const payloadWithCrcTag = payload + "6304";
+      const crcValue = crc16(payloadWithCrcTag);
+      payload = payload + "6304" + crcValue;
+      
+      return payload;
+    }
+
+    function drawQRCodeInModal() {
+      const qrcodeModal = document.getElementById("qrcodeModal");
+      if (!qrcodeModal) return;
+      
+      qrcodeModal.innerHTML = "";
+      const pixBrcode = generatePixBrcode(CONFIG.pixKey, "Teatro Valquiere 8B");
+      
+      new QRCode(qrcodeModal, {
+        text: pixBrcode,
+        width: 200,
+        height: 200,
+        colorDark: "#1b263b",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+      });
+    }
+
+    function openSuccessModal(summary) {
+      modalSummary.textContent = summary;
+      successModal.classList.add("show");
+      successModal.setAttribute("aria-hidden", "false");
+      setTimeout(() => {
+        drawQRCodeInModal();
+      }, 100);
+    }
+
+    function closeSuccessModal() {
+      successModal.classList.remove("show");
+      successModal.setAttribute("aria-hidden", "true");
+    }
+
+    function confirmParticipation(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const phone = document.getElementById("phone").value;
+      const email = document.getElementById("email").value.trim();
+
+      if (!validateForm(name, phone)) {
+        return;
+      }
+
+      const selected = getSelectedSorted();
+      selected.forEach((n) => soldSet.add(n));
+      selectedSet.clear();
+
+      const total = formatCurrency(selected.length * CONFIG.pricePerNumber);
+      const summary = "Numeros vendidos: " + selected.map(formatNumber).join(", ") + " | Total: " + total;
+
+      lastWhatsAppUrl = buildWhatsAppUrl(name.trim(), email);
+
+      setMessage("Participacao confirmada! Redirecionando para o WhatsApp...", "ok");
+
+      renderGrid();
+      updateStats();
+      updateSelectionPanel();
+
+      participationForm.reset();
+      openSuccessModal(summary);
+
+      setTimeout(() => {
+        window.open(lastWhatsAppUrl, "_blank");
+      }, 900);
+    }
+
+    copyPixBtn.addEventListener("click", copyPixKey);
+    refreshQrBtn.addEventListener("click", drawQRCode);
+    participationForm.addEventListener("submit", confirmParticipation);
+    closeModalBtn.addEventListener("click", closeSuccessModal);
+    goWhatsappBtn.addEventListener("click", () => {
+      if (lastWhatsAppUrl) {
+        window.open(lastWhatsAppUrl, "_blank");
+      }
+    });
+
+    successModal.addEventListener("click", (event) => {
+      if (event.target === successModal) closeSuccessModal();
+    });
+
+    // Funcionalidade de abas
+    function switchTab(tabName) {
+      const tabs = document.querySelectorAll(".tab-content");
+      const buttons = document.querySelectorAll(".tab-btn");
+      
+      tabs.forEach(tab => tab.classList.remove("active"));
+      buttons.forEach(btn => btn.classList.remove("active"));
+      
+      document.getElementById("tab-" + tabName).classList.add("active");
+      document.querySelector(`[data-tab="${tabName}"]`).classList.add("active");
+    }
+
+    const tabButtons = document.querySelectorAll(".tab-btn");
+    tabButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        switchTab(btn.dataset.tab);
+      });
+    });
+
+    function init() {
+      prizeTitle.textContent = "Rifa Turma 8B - " + CONFIG.prizeName;
+      pixKeyView.textContent = CONFIG.pixKey;
+      renderGrid();
+      updateStats();
+      updateSelectionPanel();
+      setMessage("");
+      
+      // Configurar links de contato - COMPRA PRESENCIAL
+      const whatsappMsg = "Ola, qual dia e horario poderiamos marcar para a compra das rifas ?";
+      const whatsappLink = document.getElementById("whatsappLink");
+      whatsappLink.href = "https://wa.me/5521989877933?text=" + encodeURIComponent(whatsappMsg);
+      
+      // Configurar links de contato - RESERVA DE NUMEROS
+      const whatsappMsgReserva = "Ola, quero reservar alguns numeros, teria como ?";
+      const whatsappReservaLink = document.getElementById("whatsappReservaLink");
+      whatsappReservaLink.href = "https://wa.me/5521989877933?text=" + encodeURIComponent(whatsappMsgReserva);
+      
+      const instagramLink = document.getElementById("instagramLink");
+      instagramLink.href = "https://instagram.com/venusateatro";
+    }
+
+    init();
+  </script>
+</body>
+</html>

@@ -69,6 +69,9 @@ export default function Navbar() {
           <Link href="/tutor" className={getLinkClasses("/tutor")}>
             🤖 IA
           </Link>
+          <Link href="/chat" className={getLinkClasses("/chat")}>
+            💬 Chat
+          </Link>
           <Link href="/perfil" className={getLinkClasses("/perfil")}>
             👤 Perfil
           </Link>
@@ -187,6 +190,18 @@ export default function Navbar() {
             >
               <span className="text-2xl">🤖</span>
               <span className="text-sm font-medium">IA</span>
+            </Link>
+            <Link
+              href="/chat"
+              className={`flex flex-col items-center gap-2 p-4 rounded-lg transition-colors ${
+                isActive("/chat")
+                  ? "bg-blue-600 text-white"
+                  : "bg-slate-800 text-slate-300 hover:bg-slate-700"
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              <span className="text-2xl">💬</span>
+              <span className="text-sm font-medium">Chat</span>
             </Link>
             <Link
               href="/upload-pdf"

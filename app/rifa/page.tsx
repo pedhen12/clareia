@@ -60,8 +60,9 @@ export default function RifaPage() {
       const { sessionId } = await response.json();
       const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY!);
       
-      if (stripe) {
-        await stripe.redirectToCheckout({ sessionId });
+      if (stripe && sessionId) {
+        // Redirecionar para o Stripe Checkout
+        window.location.href = `https://checkout.stripe.com/pay/${sessionId}`;
       }
     } catch (error) {
       console.error('Erro no checkout:', error);
