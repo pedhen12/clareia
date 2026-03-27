@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "setup:chat": "node scripts/setup-chat-db.js",
+    "check:chat": "node scripts/check-chat-db.js"
   },
   "dependencies": {
     "@stripe/stripe-js": "^9.0.0",
