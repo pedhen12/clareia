@@ -1,7 +1,69 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import ChatRoom from "@/components/chat/ChatRoom";
-import { MessageCircle, Users, Sparkles } from "lucide-react";
+import { MessageCircle, Users, Sparkles, Lock } from "lucide-react";
+import { createClient } from "@/lib/supabase-client";
 
 export default function ChatPage() {
+  const router = useRouter();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const supabase = createClient();
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      setIsAuthenticated(!!session);
+      setIsLoading(false);
+    };
+
+    checkAuth();
+  }, [supabase]);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-pink-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Carregando...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-pink-50 flex items-center justify-center px-4">
+        <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 text-center">
+          <div className="bg-purple-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <Lock className="w-10 h-10 text-purple-600" />
+          </div>
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">
+            Acesso Restrito
+          </h2>
+          <p className="text-gray-600 mb-6">
+            O chat é exclusivo para estudantes cadastrados. Faça login para
+            conectar-se com a comunidade!
+          </p>
+          <button
+            onClick={() => router.push("/login")}
+            className="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity"
+          >
+            Fazer Login
+          </button>
+          <button
+            onClick={() => router.push("/cadastro")}
+            className="w-full mt-3 bg-white border-2 border-purple-600 text-purple-600 font-semibold py-3 px-6 rounded-lg hover:bg-purple-50 transition-colors"
+          >
+            Criar Conta Grátis
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-pink-50 py-8 px-4">
       <div className="max-w-6xl mx-auto">
